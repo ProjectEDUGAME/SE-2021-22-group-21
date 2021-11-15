@@ -1,0 +1,14 @@
+[
+    {
+        "school": "test",
+        "user": "igor",
+        "wall": [15,224,158],
+        "bell": 5
+    },
+    {
+        "school": "random school",
+        "user": "mark",
+        "wall": [4,44,4],
+        "bell": 3
+    }
+]
