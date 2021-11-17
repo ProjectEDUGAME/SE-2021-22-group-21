@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Anaheim&display=swap');
+
+@font-face {
+    font-family: Ballonku;
+    src: url("balonku/Balonku-Regular.ttf") format("truetype"),
+         url("balonku/Balonku-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: OpenDyslexic;
+    src: url("opendyslexic/OpenDyslexic3-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: OpenDyslexic;
+    src: url("opendyslexic/OpenDyslexic3-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+body{
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+#bg, .content-box{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+}
+
+#bg{
+    width: min(140vh,100vw);
+    height: min(71.11vw,100vh);
+    
+    background-image: url('lbbackground.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.content-box {
+    width: 82%;
+    height: 68%;
+
+    background-color: rgba(255, 255, 255, 0.76);
+
+    border: min(2vh,2vw) solid #F8D5BF;
+    box-sizing: border-box;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 6.5%/11%;
+
+    padding: 5% 2.5%;
+}
+
+.content-box h1 {
+    /*font-family: Ballonku;
+    color: #3181F9;
+    border: 1rem solid #F8D5BF;*/
+    text-align: center;
+    width: 100%;
+}
+
+.content-box h1 img {
+    display: inline-block;
+    height: min(20vh,20vw);
+}
+
+.content-box form {
+    width: 100%;
+    text-align: center;
+    margin-top: min(3.5vh,2.5vw);
+}
+
+.content-box form * {
+    font-family: 'Anaheim';
+    display: block;
+    font-size: min(3.5vh,2.5vw);
+}
+
+.content-box form label {
+    
+
+    text-shadow: 1px 1px #FFAAAA,
+        0px 2px #FFAAAA,
+        -1px 1px #FFAAAA,
+        -2px 0px #FFAAAA,
+        -1px -1px #FFAAAA,
+        0px -2px #FFAAAA,
+        1px -1px #FFAAAA,
+        2px 0px #FFAAAA;
+}
+
+.content-box form input {
+    margin: auto;
+    margin-top: min(3.5vh,2.5vw);
+    line-height: 0;
+    padding: 0 min(1.75vh, 1.25vw);
+}
+
+.btn-pink{
+    margin: auto;
+    margin-top: min(3.5vh,2.5vw);
+    border: min(0.65vh,0.65vw) solid #FFCDAD;
+    border-radius: min(3.5vh,2.5vw);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+    line-height: min(3.5vh,2.5vw);
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 0 min(2vh,2vw);
+    font-weight: bold;
+}
+
+.btn-brown{
+    font-family: 'Anaheim';
+    font-size: min(3.5vh,2.5vw);
+    border: min(0.65vh,0.65vw) solid #C07070;
+    border-radius: min(5.5vh,4.5vw);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+    line-height: min(3.5vh,2.5vw);
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: min(1vh,1vw) min(2vh,2vw);
+    font-weight: bold;
+}
