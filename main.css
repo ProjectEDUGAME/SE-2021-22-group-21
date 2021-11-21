@@ -104,26 +104,36 @@ body{
     padding: 0 min(1.75vh, 1.25vw);
 }
 
+.btn {
+    font-family: 'Anaheim';
+    font-weight: bold;
+    border-width: min(0.65vh,0.65vw);
+    border-style: solid;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
 .btn-pink{
     margin: auto;
     margin-top: min(3.5vh,2.5vw);
-    border: min(0.65vh,0.65vw) solid #FFCDAD;
+    border-color: #FFCDAD;
     border-radius: min(3.5vh,2.5vw);
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
     line-height: min(3.5vh,2.5vw);
-    background-color: rgba(255, 255, 255, 0.75);
     padding: 0 min(2vh,2vw);
-    font-weight: bold;
 }
 
 .btn-brown{
-    font-family: 'Anaheim';
     font-size: min(3.5vh,2.5vw);
-    border: min(0.65vh,0.65vw) solid #C07070;
+    border-color: #C07070;
     border-radius: min(5.5vh,4.5vw);
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
     line-height: min(3.5vh,2.5vw);
-    background-color: rgba(255, 255, 255, 0.75);
     padding: min(1vh,1vw) min(2vh,2vw);
-    font-weight: bold;
+}
+
+.btn-violet{
+    margin: auto;
+    font-size: min(3.5vh,2.5vw);
+    border-color: #9C54BE;
+    border-radius: min(5.5vh,4.5vw);
+
 }

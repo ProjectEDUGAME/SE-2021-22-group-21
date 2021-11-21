@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 const switchTo = (currentID, nextID) => {
     // currentID = "child-log-in"
     // nextID = "admin-log-in"

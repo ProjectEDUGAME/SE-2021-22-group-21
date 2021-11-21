@@ -29,9 +29,18 @@
             <form>
                 <label for="admin-str">Please input the admin access string:</label>
                 <input type="text" name="access-str" id="admin-str">
-                <button type="submit" class="btn btn-pink">OK !</button>
+                <button type="button" class="btn btn-pink" onclick="switchTo('admin-log-in', 'welcome-admin');">OK !</button>
             </form>
             <button type="button" class="btn btn-brown" onclick="switchTo('admin-log-in', 'child-log-in');">Back</button>
+        </div>
+
+        <div class="content-box hidden" id="welcome-admin">
+            <h1><img src="welcome-admin.svg"></h1>
+            
+            <button type="button" class="btn btn-violet">Generate institute string</button>
+            <button type="button" class="btn btn-indigo">Download institute data</button>
+            <button type="button" class="btn btn-turquoise">Generate new admin string</button>
+            <button type="button" class="btn btn-pink" onclick="switchTo('welcome-admin', 'admin-log-in');">Log out</button>
         </div>
     </div>
     
