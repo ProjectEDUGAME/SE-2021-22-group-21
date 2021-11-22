@@ -82,9 +82,18 @@ body{
     width: 100%;
 }
 
-.content-box h1 img {
+/*.content-box h1 img {
     display: inline-block;
     height: min(20vh,14.3vw);
+}*/
+#admin-log-in h1{
+    font-size: min(13vh,9.3vw);
+}
+
+#welcome-admin h1{
+    font-size:min(11vh,7.85vw);
+    margin-bottom: min(2.5vh,1.5vw);
+
 }
 
 .content-box form {
@@ -145,10 +154,28 @@ body{
     padding: min(1vh,1vw) min(2vh,2vw);
 }
 
-.btn-violet{
+#welcome-admin .btn-violet, .btn-indigo, .btn-turquoise{
+    display: block;
     margin: auto;
     font-size: min(3.5vh,2.5vw);
-    border-color: #9C54BE;
     border-radius: min(5.5vh,4.5vw);
-
+    width: min(40vw,46vh);
+    margin-bottom: min(1.5vh,1vw);
 }
+
+#welcome-admin .btn-pink{
+    display: block;
+    font-size: min(3vh,2vw);
+}
+.btn-violet{
+    border-color: #9C54BE;
+}
+
+.btn-indigo{
+    border-color: #5458BE;
+}
+
+.btn-turquoise{
+    border-color: #54B8BE;
+}
+
