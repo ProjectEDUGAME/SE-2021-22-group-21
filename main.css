@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Anaheim&display=swap');
 
 @font-face {
-    font-family: Ballonku;
-    src: url("balonku/Balonku-Regular.ttf") format("truetype"),
-         url("balonku/Balonku-Regular.otf") format("opentype");
+    font-family: Helsinki;
+    src: url("helsinki/helsinki.ttf") format("truetype");
 }
 
 @font-face {
@@ -46,8 +45,8 @@ body{
 }
 
 .content-box {
-    width: 82%;
-    height: 68%;
+    width: min(115vh,82vw);
+    height: min(68vh,48.6vw);
 
     background-color: rgba(255, 255, 255, 0.76);
 
@@ -56,20 +55,36 @@ body{
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
     border-radius: 6.5%/11%;
 
-    padding: 5% 2.5%;
+    padding: min(5.75vh,4.1vw);
 }
 
 .content-box h1 {
-    /*font-family: Ballonku;
-    color: #3181F9;
-    border: 1rem solid #F8D5BF;*/
+    font-size: min(15vh,10.7vw);
+    color: #7e2830;
+    /* text-shadow: 0.4rem 0.4rem #F8D5BF,
+        0px 0.5rem #F8D5BF,
+        -0.4rem 0.4rem #F8D5BF,
+        -0.5rem 0px #F8D5BF,
+        -0.4rem -0.4rem #F8D5BF,
+        0px -0.5rem #F8D5BF,
+        0.4rem -0.4rem #F8D5BF,
+        0.5rem 0px #F8D5BF; */
+    text-shadow: min(0.42vh,0.3vw) min(0.42vh,0.3vw) #F8D5BF,
+        0px min(0.5vh,0.36vw) #F8D5BF,
+        min(-0.42vh,-0.3vw) min(0.42vh,0.3vw) #F8D5BF,
+        min(-0.5vh,-0.36vw) 0px #F8D5BF,
+        min(-0.42vh,-0.3vw) min(-0.42vh,-0.3vw) #F8D5BF,
+        0px min(-0.5vh,-0.36vw) #F8D5BF,
+        min(0.42vh,0.3vw) min(-0.42vh,-0.3vw) #F8D5BF,
+        min(0.5vh,0.36vw) 0px #F8D5BF;
+    font-family: Helsinki;
     text-align: center;
     width: 100%;
 }
 
 .content-box h1 img {
     display: inline-block;
-    height: min(20vh,20vw);
+    height: min(20vh,14.3vw);
 }
 
 .content-box form {
