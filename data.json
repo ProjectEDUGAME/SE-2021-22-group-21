@@ -1,14 +1,20 @@
 [
     {
-        "school": "ABC123",
-        "user": "34570",
-        "wall": [15,224,158],
-        "bell": 5
+        "school": "HA34HZsdf3TG7gf",
+        "user": 34570,
+        "wallColor": "#0fe09e",
+        "chatterLevel": 5
     },
     {
-        "school": "random school",
-        "user": "mark",
-        "wall": [4,44,4],
-        "bell": 3
+        "school": "Gr490dfsFF55aa1",
+        "user": 11134,
+        "wallColor": "#ea9999",
+        "chatterLevel": 3
+    },
+    {
+        "school": "Gr490dfsFF55aa1",
+        "user": 53298,
+        "wallColor": "#ea9999",
+        "chatterLevel": 3
     }
 ]

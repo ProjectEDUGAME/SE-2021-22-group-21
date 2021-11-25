@@ -1,10 +1,12 @@
 [
     {
-        "school": "Durham primary",
-        "string": "ABC123"
+        "schoolName": "Durham primary",
+        "loginString": "HA34HZsdf3TG7gf",
+        "userIDs": [34570]
     },
     {
-        "school": "Random school in London",
-        "string": "ZZZ455"
+        "schoolName": "London primary",
+        "loginString": "Gr490dfsFF55aa1",
+        "userIDs": [11134, 53298]
     }
 ]
