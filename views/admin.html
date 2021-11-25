@@ -1,45 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>ADMIN PAGE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body{
-            font-size: 1.5rem;
-            color: black;
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
         }
-        a {
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .bg-image {
+            /* The image used */
+            background-image: url("/img/classroom.jpeg");
+
+            /* Add the blur effect */
+            filter: blur(3px);
+            -webkit-filter: blur(3px);
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Position text in the middle of the page/image */
+        .bg-text {
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+            color: white;
+            font-weight: bold;
+            border: 3px solid #f1f1f1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+            border: 5px solid #afbed0;
+        }
+        .btn{
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
             text-decoration: none;
-            color: black;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            color: #ffc107;
+            border-color: #ffc107;
+            margin: 3rem 0.125rem;
+            cursor: pointer;
+            display: block;
+
         }
-        a:hover{
-            text-decoration: none;
-            color: darkorange;
-        }
-        .button{
-            margin-bottom:3rem;
-            background-color: bisque;
-            padding: 20px
+        .btn:hover{
+            background-color: #ffc107;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-<div class="" style="width:100%; max-width: 450px; margin: 50px auto; text-align: center">
-    <h2>Welcome to Admin Page</h2>
+<div class="bg-image"></div>
 
-    <div class="button">
-        <a href="/admin/institutestring">Generate Institute String</a>
-    </div>
-    <div class="button">
-        <a href="/admin/">Download Institute data</a>
-    </div>
-    <div class="button">
-        <a href="/admin/newstring">Generate New Admin String</a>
-    </div>
+<div class="bg-text">
+    <h1 style="color:orange">Welcome to Admin Page</h1>
+
+    {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+
+    <a href="/admin/institute" class="btn" style="border: 1px solid; padding: 0.6rem">Generate Institute String</a>
+    <a href="/admin/institute/download" class="btn" style="border: 1px solid;padding: 0.6rem">Download Institute data</a>
+    <a href="/admin/newstring" class="btn" style="border: 1px solid;padding: 0.6rem">Generate New Admin String</a>
+
+    <a href="/admin/logout" class="btn" style="float:left;border: 1px solid;">Login Out</a>
+
 </div>
-
-
 
 </body>
 </html>

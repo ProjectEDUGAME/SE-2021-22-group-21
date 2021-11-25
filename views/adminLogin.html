@@ -47,6 +47,32 @@
             text-align: center;
             border: 5px solid #afbed0;
         }
+        .form-label{
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        .form-control {
+            display: block;
+            width: 60%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0.25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin: 0 auto;
+        }
+        .form_container{
+            padding: 1.5rem;
+            margin: 1rem -0.75rem 0;
+        }
         .btn{
             display: inline-block;
             font-weight: 400;
@@ -65,24 +91,8 @@
             transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
             color: #ffc107;
             border-color: #ffc107;
-            margin: 3rem 0.125rem;
+            margin: 0.25rem 0.125rem;
             cursor: pointer;
-            display: block;
-
-        }
-        .btn:hover{
-            background-color: #ffc107;
-            color: white;
-        }
-        .string_container{
-            display: inline-block;
-            font-weight: 400;
-            line-height: 1.5;
-            text-align: center;
-            padding: 1rem;
-            width: 100%;
-            border:4px solid orange;
-            font-size: x-large;
         }
     </style>
 </head>
@@ -91,21 +101,23 @@
 <div class="bg-image"></div>
 
 <div class="bg-text">
-    <h5 style="color:orange">New Admin String already generated! please note down in other safe place.</h5>
+    <h1 style="color:orange">Admin Login</h1>
 
     {% if message %}
-    <p>{{message}}</p>
+        <p>{{message}}</p>
     {% endif %}
 
-    <div class="string_container">{{ string }}</div>
+    <form class="form_container" method="POST" action="">
+        <div style="margin-bottom: 3rem">
+            <label for="adminstring" class="form-label">Please input the admin acess string</label>
+            <input type="text" name="adminstring" class="form-control" id="adminstring" placeholder="">
+            <button class="btn" type="submit">OK</button>
+        </div>
+    </form>
 
-    <a href="/admin/" class="btn" style="float:left;border: 1px solid;">Back</a>
+    <a href="/" class="btn" style="float:left;border: 1px solid;">User Login</a>
 
 </div>
 
 </body>
 </html>
-
-
-
-</div>
