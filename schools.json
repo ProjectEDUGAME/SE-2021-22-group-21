@@ -1,12 +1,17 @@
 [
     {
         "schoolName": "Durham primary",
+        "postcode": "DH1 1EF",
         "loginString": "HA34HZsdf3TG7gf",
-        "userIDs": [34570]
+        "userIDs": [34570, 45689]
     },
     {
         "schoolName": "London primary",
+        "postcode": "LR4 3EE",
         "loginString": "Gr490dfsFF55aa1",
-        "userIDs": [11134, 53298]
+        "userIDs": [11134, 53298, 77467, 42346]
+    },
+    {
+        "adminLog": "564334fEF45"
     }
 ]
