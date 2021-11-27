@@ -35,11 +35,53 @@
         </div>
 
         <div class="content-box hidden" id="welcome-admin">
-            <h1>Welcome Admin</h1>
-            <button type="button" class="btn btn-violet">Generate institute string</button>
-            <button type="button" class="btn btn-indigo">Download institute data</button>
-            <button type="button" class="btn btn-turquoise">Generate new admin string</button>
+            <h1>Welcome, Admin!</h1>
+            <button type="button" class="btn btn-violet" onclick="switchTo('welcome-admin', 'generate-institute-string');">Generate institute string</button>
+            <button type="button" class="btn btn-indigo" onclick="switchTo('welcome-admin', 'download-data');">Download institute data</button>
+            <button type="button" class="btn btn-turquoise" onclick="switchTo('welcome-admin', 'change-admin-string');">Change new admin string</button>
             <button type="button" class="btn btn-pink" onclick="switchTo('welcome-admin', 'admin-log-in');">Log out</button>
+        </div>
+
+        <div class="content-box hidden" id="generate-institute-string">
+            <h2>Generate Institute String</h2>
+            <form>
+                <label for="institue-str">Input school name below, its postcode and how many participant IDs you would like to generate, then click the button
+                below.</label>
+                <input type="text" name="access-str" id="institue-name" placeholder="Institute Name">
+                <input type="text" name="access-str" id="institue-postcode" placeholder="Postcode">
+                <input type="text" name="access-str" id="institue-num-of-id" placeholder="Number of IDs, eg: 10">
+                <button type="button" class="btn btn-violet">Download string and IDs</button>
+            </form>
+            <button type="button" class="btn btn-brown" onclick="switchTo('generate-institute-string', 'welcome-admin');">Back</button>
+        </div>
+
+        <div class="content-box hidden" id="download-data">
+            <h2>Download Data</h2>
+            <form>
+                <label for="schoolList" class="form-label">Type in the name of a school into the box</label>
+                <input class="form-control" list="datalistOptions" id="schoolList" placeholder="Type to search...">
+                <datalist id="datalistOptions">
+                    <option value="Durham University">
+                    <option value="Durham Primary School">
+                    <option value="Durham Gilesgate Primary School">
+                    <option value="Dene House Primary School">
+                </datalist>
+            </form>
+            <button type="button" class="btn btn-violet">Download CSV</button>
+            <button type="button" class="btn btn-brown"
+                onclick="switchTo('download-data', 'welcome-admin');">Back</button>
+        </div>
+
+        <div class="content-box hidden" id="change-admin-string">
+            <h2>Change Admin String</h2>
+            <form>
+                <label for="admin-new-str">Type in a new admin login string into the box below and press the button below to confirm it. The one used currently
+                will be no longer active. Please note it down immediately after and keep it safe!</label>
+                <input type="text" name="access-str" id="admin-new-str">
+                <button type="button" class="btn btn-violet">Get new login string</button>
+            </form>
+            <button type="button" class="btn btn-brown"
+                onclick="switchTo('change-admin-string', 'welcome-admin');">Back</button>
         </div>
     </div>
     
