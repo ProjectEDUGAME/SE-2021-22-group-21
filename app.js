@@ -1,8 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+// Mongoose object created to connect to the database
+const mongoose = require("mongoose");
+
 // Starts a server
 const app = express();
+
+// MongoDB (using collections (tables) and documents (containing JSON data - rows and columns))
+// Connects to the cloud database (MongoDB)
+const dbLink = "mongodb+srv://se21:kkmjssymhh2000@edugame.fvs2e.mongodb.net/edugame-database?retryWrites=true&w=majority";
+// Mongoose connects to the MongoDB database
+mongoose.connect(dbLink, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then((result) => console.log("Connected to the database"))
+    .catch((err) => console.log(err));
 
 app.use(express.static("client"));
 app.use(bodyParser.json());
@@ -61,4 +72,10 @@ app.post("/wallColor", function (req, resp){
 
 });
 
-modules.exports = app;
+module.exports = app;
+
+
+
+
+// Mongoose (allows us to create simple data models with query methods to change the database)
+// Schema defines the structure

@@ -1,3 +1,4 @@
+const app = require("./app");
 var data = require("./data.json");
 var data = require("./schools.json");
 
