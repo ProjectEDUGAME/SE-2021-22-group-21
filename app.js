@@ -11,8 +11,8 @@ const app = express();
 // Connects to the cloud database (MongoDB)
 const dbLink = "mongodb+srv://se21:kkmjssymhh2000@edugame.fvs2e.mongodb.net/edugame-database?retryWrites=true&w=majority";
 // Mongoose connects to the MongoDB database
-mongoose.connect(dbLink, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then((result) => console.log("Connected to the database"))
+mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then((result) => /*console.log("Poggers! You've connected to the database")*/ app.listen(888))
     .catch((err) => console.log(err));
 
 app.use(express.static("client"));
