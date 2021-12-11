@@ -170,7 +170,7 @@ h2{
     margin: auto;
     font-size: min(3.5vh,2.5vw);
     border-radius: min(5.5vh,4.5vw);
-    width: min(40vw,46vh);
+    width: min(50vw,56vh);
     margin-bottom: min(1.5vh,1vw);
 }
 
@@ -200,6 +200,10 @@ h2{
     width: min(40vw,46vh);
     margin-top: min(2.5vh,1.5vw);
     line-height: min(3.5vh,2.5vw);
+}
+
+#generate-institute-string h2{
+    font-size: min(5.5vh,4.6vw);
 }
 
 #generate-institute-string input{
