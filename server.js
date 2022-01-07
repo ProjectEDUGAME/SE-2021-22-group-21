@@ -1,5 +1,5 @@
 const app = require("./app");
 var data = require("./data.json");
-var data = require("./schools.json");
+var schools = require("./schools.json");
 
 app.listen(888);
