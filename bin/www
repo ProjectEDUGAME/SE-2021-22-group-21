@@ -5,6 +5,10 @@
  */
 
 var app = require('../app');
+
+var data = require("./data.json");
+var schools = require("./schools.json");
+
 var debug = require('debug')('311806-nodejs:server');
 var http = require('http');
 
