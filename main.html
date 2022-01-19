@@ -86,14 +86,21 @@
 
         <div class="content-box hidden" id="participant-details">
             <h2>Participant details</h2>
-            <form>
+            <form onsubmit="event.preventDefault();">
                 <p>Your school name is <span id='school-name'>St. Mary Primary School</span><p>
                 <label for="participant-id">Please input a participant ID into the field and press the button below to start the game:</label>
                 <input type="text" name="participant-id" id="participant-id">
-                <button type="button" class="btn btn-pink">Start Activity</button>
+                <button type="button" class="btn btn-pink" onclick="switchTo('participant-details', 'check-sound-level');">Start Activity</button>
             </form>
             <button type="button" class="btn btn-brown"
                 onclick="switchTo('participant-details', 'child-log-in');">Return & log out</button>
+        </div>
+
+        <div class="content-box hidden" id="check-sound-level">
+            <h3>Check your sound level!</h3>
+            <div class='pregame'>Some sounds will play now. Please make sure they're not too quiet or too loud! Change your volume of your device if you need. </div>
+            <div class='pregame'>Press the GREEN TICK once you're ready to start.</div>
+            <button type="button" class="btn btn-brown" onclick="switchTo('participant-details', 'child-log-in');">Return & log out</button>
         </div>
     </div>
     

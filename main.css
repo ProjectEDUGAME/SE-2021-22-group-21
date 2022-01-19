@@ -251,7 +251,7 @@ h2{
 }
 
 #participant-details input{
-    margin-top: min(0.5vh,1vw);
+    margin-top: min(2.5vh,1.5vw);
     margin-bottom: min(1.75vh, 1.25vw);
 }
 
@@ -275,4 +275,39 @@ h2{
 #participant-details span{
     text-shadow: none;
     font-weight: bolder;
+    display: inline;
+}
+
+h3{
+    font-family: OpenDyslexic;
+    text-align: center;
+    font-size: min(6.5vh,4.5vw);
+    color: #3181F9;
+    font-weight: bolder;
+        text-shadow: 1px 1px #FFAAAA,
+            0px 2px #FFAAAA,
+            -1px 1px #FFAAAA,
+            -2px 0px #FFAAAA,
+            -1px -1px #FFAAAA,
+            0px -2px #FFAAAA,
+            1px -1px #FFAAAA,
+            2px 0px #FFAAAA;
+}
+
+.pregame{
+    margin: auto;
+    margin-top: min(3.2vh,2vw);
+    font-family: OpenDyslexic;
+    text-align: center;
+    font-size: min(3.2vh,2vw);
+    color: #F99131;
+    width: min(80.5vh,50.5vw);
+    text-shadow: 1px 1px #F8D5BF,
+            0px 2px #F8D5BF,
+            -1px 1px #F8D5BF,
+            -2px 0px #F8D5BF,
+            -1px -1px #F8D5BF,
+            0px -2px #F8D5BF,
+            1px -1px #F8D5BF,
+            2px 0px #F8D5BF;
 }
