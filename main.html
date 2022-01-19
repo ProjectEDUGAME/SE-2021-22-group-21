@@ -16,10 +16,10 @@
     <div id="bg">
         <div class="content-box" id="child-log-in">
             <h1>log in</h1>
-            <form>
+            <form onsubmit="event.preventDefault();">
                 <label for="child-str">Please input the institute access string:</label>
                 <input type="text" name="access-str" id="child-str">
-                <button type="submit" class="btn btn-pink">OK !</button>
+                <button type="submit" class="btn btn-pink" onclick="switchTo('child-log-in', 'participant-details');">OK !</button>
             </form>
             <button type="button" class="btn btn-brown" onclick="switchTo('child-log-in', 'admin-log-in');">Admin login</button>
         </div>
@@ -87,14 +87,13 @@
         <div class="content-box hidden" id="participant-details">
             <h2>Participant details</h2>
             <form>
-                <label for="admin-new-str">Type in a new admin login string into the box below and press the button below to
-                    confirm it. The one used currently
-                    will be no longer active. Please note it down immediately after and keep it safe!</label>
-                <input type="text" name="access-str" id="admin-new-str">
-                <button type="button" class="btn btn-violet">Get new login string</button>
+                <p>Your school name is <span id='school-name'>St. Mary Primary School</span><p>
+                <label for="participant-id">Please input a participant ID into the field and press the button below to start the game:</label>
+                <input type="text" name="participant-id" id="participant-id">
+                <button type="button" class="btn btn-pink">Start Activity</button>
             </form>
             <button type="button" class="btn btn-brown"
-                onclick="switchTo('change-admin-string', 'welcome-admin');">Back</button>
+                onclick="switchTo('participant-details', 'child-log-in');">Return & log out</button>
         </div>
     </div>
     

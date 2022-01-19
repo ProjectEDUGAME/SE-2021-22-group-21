@@ -249,3 +249,30 @@ h2{
 #change-admin-string input{
     margin-top: min(3.5vh,1vw);
 }
+
+#participant-details input{
+    margin-top: min(0.5vh,1vw);
+    margin-bottom: min(1.75vh, 1.25vw);
+}
+
+#participant-details label{
+    width: min(60vh,30vw);
+    margin: auto;
+    font-size: min(3vh,2.5vw);
+}
+
+#participant-details p{
+    text-shadow: 1px 1px #FFAAAA,
+        0px 2px #FFAAAA,
+        -1px 1px #FFAAAA,
+        -2px 0px #FFAAAA,
+        -1px -1px #FFAAAA,
+        0px -2px #FFAAAA,
+        1px -1px #FFAAAA,
+        2px 0px #FFAAAA;
+}
+
+#participant-details span{
+    text-shadow: none;
+    font-weight: bolder;
+}
