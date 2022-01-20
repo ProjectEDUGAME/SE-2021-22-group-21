@@ -6,6 +6,11 @@
 }
 
 @font-face {
+    font-family: Balloda;
+    src: url("balloda/balooda-regular.ttf") format("truetype");
+}
+
+@font-face {
     font-family: OpenDyslexic;
     src: url("opendyslexic/OpenDyslexic3-Regular.ttf") format("truetype");
 }
@@ -23,6 +28,8 @@ body{
 .hidden {
     display: none;
 }
+
+
 
 #bg, .content-box{
     position: absolute;
@@ -58,17 +65,7 @@ body{
     padding: min(5.75vh,4.1vw);
 }
 
-.content-box h1 {
-    font-size: min(15vh,10.7vw);
-    color: #7e2830;
-    /* text-shadow: 0.4rem 0.4rem #F8D5BF,
-        0px 0.5rem #F8D5BF,
-        -0.4rem 0.4rem #F8D5BF,
-        -0.5rem 0px #F8D5BF,
-        -0.4rem -0.4rem #F8D5BF,
-        0px -0.5rem #F8D5BF,
-        0.4rem -0.4rem #F8D5BF,
-        0.5rem 0px #F8D5BF; */
+.content-box h1, h2{
     text-shadow: min(0.42vh,0.3vw) min(0.42vh,0.3vw) #F8D5BF,
         0px min(0.5vh,0.36vw) #F8D5BF,
         min(-0.42vh,-0.3vw) min(0.42vh,0.3vw) #F8D5BF,
@@ -77,15 +74,29 @@ body{
         0px min(-0.5vh,-0.36vw) #F8D5BF,
         min(0.42vh,0.3vw) min(-0.42vh,-0.3vw) #F8D5BF,
         min(0.5vh,0.36vw) 0px #F8D5BF;
-    font-family: Helsinki;
     text-align: center;
     width: 100%;
 }
 
+h1{
+    font-size: min(13vh,10.7vw);
+    color: #7e2830;
+    font-family: Helsinki;
+}
+
+h2{
+    font-size: min(8.5vh,5.5vw);
+    color: #3181F9;
+    font-family: Balloda;
+}
 /*.content-box h1 img {
     display: inline-block;
     height: min(20vh,14.3vw);
 }*/
+#child-log-in form{
+    margin-bottom: min(2.5vh,1.5vw);
+}
+
 #admin-log-in h1{
     font-size: min(13vh,9.3vw);
 }
@@ -159,9 +170,10 @@ body{
     margin: auto;
     font-size: min(3.5vh,2.5vw);
     border-radius: min(5.5vh,4.5vw);
-    width: min(40vw,46vh);
+    width: min(50vw,56vh);
     margin-bottom: min(1.5vh,1vw);
 }
+
 
 #welcome-admin .btn-pink{
     display: block;
@@ -177,4 +189,125 @@ body{
 
 .btn-turquoise{
     border-color: #54B8BE;
+}
+
+
+#generate-institute-string .btn-violet{
+    display: block;
+    margin: auto;
+    font-size: min(3.5vh,2.5vw);
+    border-radius: min(5.5vh,4.5vw);
+    width: min(40vw,46vh);
+    margin-top: min(2.5vh,1.5vw);
+    line-height: min(3.5vh,2.5vw);
+}
+
+#generate-institute-string h2{
+    font-size: min(5.5vh,4.6vw);
+}
+
+#generate-institute-string input{
+    margin-top: min(1.5vh,1vw);
+}
+
+#generate-institute-string form{
+    margin-top: min(3.5vh,1vw);
+}
+
+#str-generate{
+    display: block;
+}
+
+#schoolList{
+    width: auto;
+    display: block;
+}
+
+#download-data .btn-violet{
+    display: block;
+    margin: auto;
+    font-size: min(3.5vh,2.5vw);
+    border-radius: min(5.5vh,4.5vw);
+    width: min(25vw,35vh);
+    line-height: min(3.5vh,2.5vw);
+}
+
+#download-data .btn-brown{
+    margin-bottom: min(2.5vh,1.5vw);
+}
+
+#change-admin-string .btn-violet{
+    display: block;
+    margin: auto;
+    font-size: min(3.5vh,2.5vw);
+    margin-top: min(2.5vh,1.5vw);
+    border-radius: min(5.5vh,4.5vw);
+    width: min(35vw,40vh);
+    line-height: min(3.5vh,2.5vw);
+}
+
+#change-admin-string input{
+    margin-top: min(3.5vh,1vw);
+}
+
+#participant-details input{
+    margin-top: min(2.5vh,1.5vw);
+    margin-bottom: min(1.75vh, 1.25vw);
+}
+
+#participant-details label{
+    width: min(60vh,30vw);
+    margin: auto;
+    font-size: min(3vh,2.5vw);
+}
+
+#participant-details p{
+    text-shadow: 1px 1px #FFAAAA,
+        0px 2px #FFAAAA,
+        -1px 1px #FFAAAA,
+        -2px 0px #FFAAAA,
+        -1px -1px #FFAAAA,
+        0px -2px #FFAAAA,
+        1px -1px #FFAAAA,
+        2px 0px #FFAAAA;
+}
+
+#participant-details span{
+    text-shadow: none;
+    font-weight: bolder;
+    display: inline;
+}
+
+h3{
+    font-family: OpenDyslexic;
+    text-align: center;
+    font-size: min(6.5vh,4.5vw);
+    color: #3181F9;
+    font-weight: bolder;
+        text-shadow: 1px 1px #FFAAAA,
+            0px 2px #FFAAAA,
+            -1px 1px #FFAAAA,
+            -2px 0px #FFAAAA,
+            -1px -1px #FFAAAA,
+            0px -2px #FFAAAA,
+            1px -1px #FFAAAA,
+            2px 0px #FFAAAA;
+}
+
+.pregame{
+    margin: auto;
+    margin-top: min(3.2vh,2vw);
+    font-family: OpenDyslexic;
+    text-align: center;
+    font-size: min(3.2vh,2vw);
+    color: #F99131;
+    width: min(80.5vh,50.5vw);
+    text-shadow: 1px 1px #F8D5BF,
+            0px 2px #F8D5BF,
+            -1px 1px #F8D5BF,
+            -2px 0px #F8D5BF,
+            -1px -1px #F8D5BF,
+            0px -2px #F8D5BF,
+            1px -1px #F8D5BF,
+            2px 0px #F8D5BF;
 }

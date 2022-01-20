@@ -1,86 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        .bg-image {
-            /* The image used */
-            background-image: url("/img/classroom.jpeg");
-
-            /* Add the blur effect */
-            filter: blur(3px);
-            -webkit-filter: blur(3px);
-
-            /* Full height */
-            height: 100%;
-
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        /* Position text in the middle of the page/image */
-        .bg-text {
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-            color: white;
-            font-weight: bold;
-            border: 3px solid #f1f1f1;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            width: 80%;
-            padding: 20px;
-            text-align: center;
-            border: 5px solid #afbed0;
-        }
-        .btn{
-            display: inline-block;
-            font-weight: 400;
-            line-height: 1.5;
-            text-align: center;
-            text-decoration: none;
-            vertical-align: middle;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-            background-color: transparent;
-            padding: 0.375rem 0.75rem;
-            font-size: 1rem;
-            border-radius: 0.25rem;
-            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-            color: #ffc107;
-            border-color: #ffc107;
-            margin: 3rem 0.125rem;
-            cursor: pointer;
-            display: block;
-
-        }
-        .btn:hover{
-            background-color: #ffc107;
-            color: white;
-        }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="/css/main.css" rel="stylesheet">
+        <style>
+            .lnkbtn{
+        /* display: block; */
+        width: 100px;
+        /* background-color: lightgrey; */
+        /* border: 1px solid black; */
+        /* text-align: center;
+        text-decoration: none; */
+        /* padding: 5px 0px 5px 0px; */
+    }
+        </style>
+    </head>
 <body>
 
-<div class="bg-image"></div>
+<div id="bg">
+    <div class="content-box" id="welcome-admin">
+        <h1>Welcome, Admin!</h1>
 
-<div class="bg-text">
+        {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+        <a type="button" class="btn btn-violet" href="/admin/institute" >Generate institute string and IDs</a>
+        <a type="button" class="btn btn-indigo" href="/admin/institute/download" >Download institute data</a>
+        <a type="button" class="btn btn-turquoise" href="/admin/newstring">Change new admin string</a>
+        <a type="button" class="btn btn-pink lnkbtn" href="/admin/logout">Log out</a>
+    </div>
+
+<!-- 
     <h1 style="color:orange">Welcome to Admin Page</h1>
 
     {% if message %}
@@ -91,9 +45,11 @@
     <a href="/admin/institute/download" class="btn" style="border: 1px solid;padding: 0.6rem">Download Institute data</a>
     <a href="/admin/newstring" class="btn" style="border: 1px solid;padding: 0.6rem">Generate New Admin String</a>
 
-    <a href="/admin/logout" class="btn" style="float:left;border: 1px solid;">Login Out</a>
+    <a href="/admin/logout" class="btn" style="float:left;border: 1px solid;">Login Out</a> -->
 
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>
