@@ -10,8 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 
-// Mongoose object created to connect to the database
-const mongoose = require("mongoose");
+
 // For testing
 // Access the data.js file
 const User = require("./models/data")
@@ -19,13 +18,6 @@ const User = require("./models/data")
 // Starts a server
 var app = express();
 
-// MongoDB (using collections (tables) and documents (containing JSON data - rows and columns))
-// Connects to the cloud database (MongoDB)
-const dbLink = "mongodb+srv://se21:kkmjssymhh2000@edugame.fvs2e.mongodb.net/edugame-database?retryWrites=true&w=majority";
-// Mongoose connects to the MongoDB database, and displays an error if one occurs. It listens for requests only when connected to the database
-mongoose.connect(dbLink, {useNewUrlParser: true, useUnifiedTopology: true} /* Removes command line warning print */)
-    .then((result) => /*console.log("Poggers! You've connected to the database")*/ app.listen(888))
-    .catch((err) => console.log(err));
 
 app.use(express.static("client"));
 app.use(bodyParser.json());
