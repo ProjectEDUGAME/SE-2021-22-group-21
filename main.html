@@ -16,10 +16,10 @@
     <div id="bg">
         <div class="content-box" id="child-log-in">
             <h1>log in</h1>
-            <form onsubmit="event.preventDefault();">
+            <form onsubmit="accessStringSubmit(event);">
                 <label for="child-str">Please input the institute access string:</label>
                 <input type="text" name="access-str" id="child-str">
-                <button type="submit" class="btn btn-pink" onclick="switchTo('child-log-in', 'participant-details');">OK !</button>
+                <button type="submit" class="btn btn-pink">OK !</button>
             </form>
             <button type="button" class="btn btn-brown" onclick="switchTo('child-log-in', 'admin-log-in');">Admin login</button>
         </div>
@@ -136,7 +136,7 @@
             <h3>Design your dream classroom!</h3>
             <div class='pregame'>Use the SLIDING BAR or COLOUR PICKER to select your favorite! :D </div>
             <button type="button" class="btn btn-brown" onclick="switchTo('slider-tutorial', 'button-tutorial');">Back</button>
-            <button type="button" class="btn btn-pink" onclick="switchTo('slider-tutorial', 'puzzle-tutorial');">Next</button>
+            <button type="button" class="btn btn-pink" onclick="switchTo('slider-tutorial', 'puzzle-tutorial');">Next</button>o
             
         </div>
         <!-- might be deleted later on, COULD-HAVE-EVENT -->
