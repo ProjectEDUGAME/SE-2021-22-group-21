@@ -5,7 +5,7 @@ var database =  require("../data.json");
 const adminController =  require("../controllers/adminController.js");
 const {render} = require("nunjucks");
 
-/* amdin home page. */
+/* admin home page. */
 router.get('/', function(req, res, next) {
     res.render("admin.html");
 });

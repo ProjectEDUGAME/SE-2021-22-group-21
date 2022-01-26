@@ -14,6 +14,7 @@ var adminRouter = require('./routes/admin');
 // For testing
 // Access the data.js file
 const User = require("./models/data")
+const School = require("./models/schools")
 
 // Starts a server
 var app = express();
@@ -69,8 +70,9 @@ app.get("/add-user", (req, res) => {
         user: 105,
         school: "Gr490dfsFF55aa1",
         wallColour: "#9534eb",
-        chatterLevel: 4
+        bell: 4
     })
+
 // Mongoose saves this new instance to the database
     user.save()
 // Allows us to see the result in the browser, or displays an error in the console
@@ -81,6 +83,21 @@ app.get("/add-user", (req, res) => {
          console.log(err);
      });
 })
+
+app.get("/add-school", (req, res) => {
+    const school = new School({
+        school: "Durham",
+        string: "Hi"
+    })
+    school.save()
+    .then((result) => {
+        res.send(result)
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+})
+
 // We can check our collections on cloud.mongo.db or http://localhost:888/add-user to see that this new data is in our database
 
 // MORE DATABASE TESTING

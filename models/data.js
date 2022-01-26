@@ -21,7 +21,7 @@ const dataSchema = new Schema({
           required: true
      },
 // The selected chatter level
-     chatterLevel: {
+     bell: {
           type: Number,
           required: true,
           min: 1,
