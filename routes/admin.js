@@ -4,6 +4,11 @@ const { v4: uuidv4 } = require('uuid');
 var database =  require("../data.json");
 const adminController =  require("../controllers/adminController.js");
 const {render} = require("nunjucks");
+// Access the data.js and school.js files
+const User = require("../models/data")
+const School = require("../models/schools")
+
+
 
 /* admin home page. */
 router.get('/', function(req, res, next) {
@@ -17,11 +22,15 @@ router.get('/login', function(req, res, next) {
 
 
 /* POST LOGIN page. */
-router.post('/login', function(req, res, next) {
+router.post('/login', async(req, res) => {
     // get user input
     let adminstring = req.body.adminstring;
     // find users with adminstring
-    const result = database.admins.filter(admin => admin.string ===  adminstring);
+    const result = await School.find(
+        {"string": adminstring}
+    );//database.admins.filter(admin => admin.string ===  adminstring); 
+
+    console.log(result.length);
 
     if (result.length > 0){    // if succeed, return to admin home page
         req.app.locals.isAdminLogin = true; // set global variables in app.js to true
@@ -31,6 +40,8 @@ router.post('/login', function(req, res, next) {
         res.render("adminLogin.html", {message: "Whoops! We can't found this string. please input again!"});
     }
 });
+
+
 
 router.get('/logout', function (req,res) {
     req.app.locals.isAdminLogin = false; // set global variables in app.js to true

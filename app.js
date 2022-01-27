@@ -12,7 +12,7 @@ var adminRouter = require('./routes/admin');
 
 
 // For testing
-// Access the data.js file
+// Access the data.js and school.js files
 const User = require("./models/data")
 const School = require("./models/schools")
 
@@ -70,9 +70,8 @@ app.get("/add-user", (req, res) => {
         user: 105,
         school: "Gr490dfsFF55aa1",
         wallColour: "#9534eb",
-        bell: 4
+        bell: 3
     })
-
 // Mongoose saves this new instance to the database
     user.save()
 // Allows us to see the result in the browser, or displays an error in the console
@@ -104,7 +103,7 @@ app.get("/add-school", (req, res) => {
 // Seeing all the users
 app.get("/all-users", (req, res) => {
 // Finds all the users - applied to the Users - instead of using the save instance method on a single user
-    User.find()
+    User.find({bell: 6})
 // Same process as before, to see results or display an error
      .then((result) => {
          res.send(result)
