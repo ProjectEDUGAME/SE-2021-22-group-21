@@ -142,7 +142,11 @@ module.exports.generateNewString = async function (string) {
         return {succeed: false, message: err}
     }
 
-    new_data.admins.push({"string": string})
+    for (let i of new_data.admins){
+        i["string"] = string
+    }
+
+    // new_data.admins.push({"string": string})
 
     try {
         await fs.writeFile("data.json", JSON.stringify(new_data));
