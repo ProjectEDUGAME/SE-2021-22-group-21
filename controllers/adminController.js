@@ -3,26 +3,18 @@ const {json} = require("express");
 const fs = require('fs').promises;
 const {Parser} = require("json2csv");
 
-// Access the data.js and school.js files
-const User = require("../models/data")
-const School = require("../models/schools")
-
-
 module.exports.findInstituteByString = async function (string) {
     let data;
 
-//    try {
-//        data = await fs.readFile("school.json");
-//        data = JSON.parse(data);
-//    } catch (err) {
-//        return {succeed: false, message: err}
-//    }
+    try {
+        data = await fs.readFile("school.json");
+        data = JSON.parse(data);
+    } catch (err) {
+        return {succeed: false, message: err}
+    }
 
     // find school with string
-    const result = await School.find(
-        {"string": string}
-    );
-    //const result = data.filter(school => school.string === string)
+    const result = data.filter(school => school.string === string)
 
     if (result.length > 0) {    // if succeed, return to admin home page
         return {succeed: true, data: result[0]}
@@ -149,10 +141,8 @@ module.exports.generateNewString = async function (string) {
     } catch (err) {
         return {succeed: false, message: err}
     }
-    for (let i of new_data.admins){
-        i["string"] = string
-    }
-    // new_data.admins.push({"string": string})
+
+    new_data.admins.push({"string": string})
 
     try {
         await fs.writeFile("data.json", JSON.stringify(new_data));
