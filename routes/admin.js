@@ -138,17 +138,8 @@ router.get("/institute/del/:string", async function (req, res) {
 // download
 router.get("/institute/download", adminController.downloadInstitute);
 
-
-
-
 router.get("/newstring", async function (req, res) {
-    res.render("string.html")
-
-});
-
-router.post("/newstring", async function (req, res) {
-    const string = req.body.accessstr;
-    console.log(string)
+    const string = uuidv4();
     let result = await adminController.generateNewString(string);
 
     if (!result.succeed){
