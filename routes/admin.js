@@ -21,14 +21,30 @@ router.post('/login', function(req, res, next) {
     // get user input
     let adminstring = req.body.adminstring;
     // find users with adminstring
+<<<<<<< Updated upstream
     const result = database.admins.filter(admin => admin.string ===  adminstring);
+=======
+    const result = await School.find(
+        {"string": adminstring}
+    );//database.admins.filter(admin => admin.string ===  adminstring); 
+
+    const result2 = await User.find(
+        {"string": adminstring}
+    );
+
+    console.log(result.length);
+>>>>>>> Stashed changes
 
     if (result.length > 0){    // if succeed, return to admin home page
         req.app.locals.isAdminLogin = true; // set global variables in app.js to true
         res.redirect("/admin");
     }
+    if (result2.length > 0){    // if succeed, return to admin home page
+        req.app.locals.isAdminLogin = true; // set global variables in app.js to true
+        res.redirect("/user");
+    }
     else{ // if not, stay in the same page and display erross
-        res.render("adminLogin.html", {message: "Whoops! We can't found this string. please input again!"});
+        res.render("adminLogin.html", {message: "Whoops! We can't found this string. Please input again!"});
     }
 });
 
@@ -45,7 +61,7 @@ router.get("/institute", async function (req, res) {
         message = allFlashMessages[0]
     }
 
-    let allData = await adminController.readInstitute();
+    let allData = await adminController.readInstitute(); // CHANGE THIS (allData) SO THAT THE DATA IS TAKEN FROM MONGODB INSTEAD
     if (allData.succeed) {
         res.render('adminInstitute.html', {message: message, data: allData.data, string: uuidv4()})
     }else{
