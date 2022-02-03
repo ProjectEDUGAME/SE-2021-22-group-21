@@ -6,9 +6,8 @@ const Schema = mongoose.Schema;
 const dataSchema = new Schema({
 // The unique user ID
      user: {
-          type: Number,
+          type: String,
           required: true,
-          min: 1
      },
 // The name of the school this pupil is at
      school: {

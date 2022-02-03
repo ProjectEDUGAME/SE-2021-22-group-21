@@ -67,7 +67,7 @@ app.use('/admin', adminRouter);
 // We however want this to be automatically generated once clicking (so add the click events here to add this information in)
 app.get("/add-user", (req, res) => {
     const user = new User({
-        user: 105,
+        user: "105",
         school: "Gr490dfsFF55aa1",
         wallColour: "#9534eb",
         bell: 3

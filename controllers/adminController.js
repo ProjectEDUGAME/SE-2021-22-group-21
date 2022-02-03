@@ -6,15 +6,19 @@ const {Parser} = require("json2csv");
 module.exports.findInstituteByString = async function (string) {
     let data;
 
-    try {
-        data = await fs.readFile("school.json");
-        data = JSON.parse(data);
-    } catch (err) {
-        return {succeed: false, message: err}
-    }
+//    try {
+//        data = await fs.readFile("school.json");
+//        data = JSON.parse(data);
+//    } catch (err) {
+//        return {succeed: false, message: err}
+//    }
 
     // find school with string
-    const result = data.filter(school => school.string === string)
+//    const result = data.filter(school => school.string === string)
+
+    const result = await School.find(
+       {"string": string}
+    );
 
     if (result.length > 0) {    // if succeed, return to admin home page
         return {succeed: true, data: result[0]}
