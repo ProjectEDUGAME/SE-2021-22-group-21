@@ -19,4 +19,9 @@
 
 ### 2. Contribution
 
-Data structure of JSON file was created by Sofie and Hash.
+Data structure of JSON file was created by Sofie.
+
+
+For testing
+Admin: Hi
+User Login: 105
