@@ -68,8 +68,8 @@ app.use('/admin', adminRouter);
 app.get("/add-user", (req, res) => {
     const user = new User({
         user: "105",
-        school: "Gr490dfsFF55aa1",
-        wallColour: "#9534eb",
+        school: "Br490dfsFF55aa1",
+        wallColour: "#6534eb",
         bell: 3
     })
 // Mongoose saves this new instance to the database
@@ -85,8 +85,8 @@ app.get("/add-user", (req, res) => {
 
 app.get("/add-school", (req, res) => {
     const school = new School({
-        school: "Durham",
-        string: "Hi"
+        school: "Durham5",
+        string: "Hi2"
     })
     school.save()
     .then((result) => {

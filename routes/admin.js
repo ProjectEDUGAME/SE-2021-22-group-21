@@ -9,7 +9,6 @@ const User = require("../models/data")
 const School = require("../models/schools")
 
 
-
 /* admin home page. */
 router.get('/', function(req, res, next) {
     res.render("admin.html");
