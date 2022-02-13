@@ -3,9 +3,12 @@ const {json} = require("express");
 const fs = require('fs').promises;
 const {Parser} = require("json2csv");
 
-module.exports.findInstituteByString = async function (string) {
-    let data;
+// Access the data.js and school.js files
+const User = require("../models/data")
+const School = require("../models/schools")
 
+module.exports.findInstituteByString = async function (string) {
+//    let data;
 //    try {
 //        data = await fs.readFile("school.json");
 //        data = JSON.parse(data);
@@ -27,6 +30,7 @@ module.exports.findInstituteByString = async function (string) {
 
     }
 }
+
 
 module.exports.readInstitute = async function () {
     let data;
@@ -134,8 +138,14 @@ module.exports.downloadInstitute = async function (req, res) {
 
 }
 
-module.exports.generateNewString = async function (string) {
-    let data;
+
+
+// Input a password, hash it and set this as the new password
+// The password is the string that belongs to "schools"
+// find the current access string, change this to what is inputted
+
+module.exports.generateNewString = async function (string, string2) {
+/*     let data;
     let new_data;
     try {
         data = await fs.readFile("data.json");
@@ -156,6 +166,19 @@ module.exports.generateNewString = async function (string) {
         await fs.writeFile("data.json", JSON.stringify(new_data));
     } catch (err) {
         await fs.writeFile("data.json", JSON.stringify(data));
+        return {succeed:false, message:err}
+    }
+    return {succeed:true} */
+
+    // Find the original admin string
+    // Replace with the input
+    try {
+        await School.findOneAndUpdate({
+            "string": string2
+        }, {
+            "string": string
+        })
+    } catch (err) {
         return {succeed:false, message:err}
     }
     return {succeed:true}

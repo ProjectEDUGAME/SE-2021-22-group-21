@@ -25,10 +25,15 @@ router.get('/login', function(req, res, next) {
 router.post('/login', async(req, res) => {
     // get user input
     let adminstring = req.body.adminstring;
+    original = adminstring
     // find users with adminstring
     const result = await School.find(
         {"string": adminstring}
     );//database.admins.filter(admin => admin.string ===  adminstring); 
+
+/*     const result2 = await User.find(
+        {"string": adminstring}
+    ); */
 
     console.log(result.length);
 
@@ -36,8 +41,12 @@ router.post('/login', async(req, res) => {
         req.app.locals.isAdminLogin = true; // set global variables in app.js to true
         res.redirect("/admin");
     }
+    /* if (result2.length > 0){    // if succeed, return to admin home page
+        req.app.locals.isAdminLogin = true; // set global variables in app.js to true
+        res.redirect("/user");
+    } */
     else{ // if not, stay in the same page and display erross
-        res.render("adminLogin.html", {message: "Whoops! We can't found this string. please input again!"});
+        res.render("adminLogin.html", {message: "Whoops! We can't found this string. Please input again!"});
     }
 });
 
@@ -133,9 +142,17 @@ router.get("/institute/del/:string", async function (req, res) {
 // download
 router.get("/institute/download", adminController.downloadInstitute);
 
+
+// Display the admin string page and change the admin string
 router.get("/newstring", async function (req, res) {
-    const string = uuidv4();
-    let result = await adminController.generateNewString(string);
+    res.render("string.html")
+});
+
+router.post("/newstring", async function (req, res) {
+    const string = req.body.accessstr;
+    console.log(string)
+
+    let result = await adminController.generateNewString(string, original);
 
     if (!result.succeed){
         res.render("string.html", {message:result.message})
@@ -145,7 +162,6 @@ router.get("/newstring", async function (req, res) {
     }
 
 });
-
 
 
 module.exports = router;
