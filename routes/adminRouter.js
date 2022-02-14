@@ -4,16 +4,17 @@ const { v4: uuidv4 } = require('uuid');
 var database =  require("../data.json");
 const adminController =  require("../controllers/adminController.js");
 const {render} = require("nunjucks");
-// Access the data.js and school.js files
-const User = require("../models/data")
-const School = require("../models/schools")
+// Access the userModel.js and school.js files
+const User = require("../models/userModel")
+const School = require("../models/schoolModel")
+const {Parser} = require("json2csv");
 
 
 
 /* admin home page. */
-router.get('/', function(req, res, next) {
-    res.render("admin.html");
-});
+// router.get('/', function(req, res, next) {
+//     res.render("admin.html");
+// });
 
 /* GET LOGIN page. */
 router.get('/login', function(req, res, next) {
@@ -146,6 +147,50 @@ router.get("/newstring", async function (req, res) {
 
 });
 
+
+
+/* admin home page. */
+router.get('/', function(req, res, next) {
+    res.render("adminSchool.html", {message:req.flash('message')});
+});
+
+/* admin home page. */
+router.post('/', async function(req, res, next) {
+
+    let name = req.body.name;
+    let numberOfIDs = req.body.num;
+    let  postCode = req.body.postCode;
+
+    let newSchool;
+    if (name !== "" && postCode !== "" && numberOfIDs !== "") {
+
+        // save into mongodb
+        for (let step = 0; step < numberOfIDs; step++) {
+            newSchool = new School({school: name, string: uuidv4(), postCode: postCode})
+            // Save the new model instance, passing a callback
+            await newSchool.save();
+        }
+
+        // download
+        // find all schools with the postCode
+        let schools = await School.find({ 'postCode': postCode, 'school': name }).lean()
+        console.log(schools);
+        const fields = ['school', 'postCode', 'string'];
+        const json2csv = new Parser({fields});
+        const csv = json2csv.parse(schools);
+
+        res.header('Content-Type', 'text/csv');
+        res.attachment("schools.csv");
+        return res.send(csv);
+
+    } else {
+        console.log("sss");
+        req.flash('message', "please input school name or string!")
+        res.redirect("/admin");
+    }
+
+
+});
 
 
 module.exports = router;

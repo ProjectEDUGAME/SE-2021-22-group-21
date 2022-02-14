@@ -9,7 +9,7 @@
     
 2. run app
 
-   DEBUG=SE-2021-22-group-21:* npm start
+   npm run serverstart
    
 3. open web browser by type below address
 
@@ -19,4 +19,4 @@
 
 ### 2. Contribution
 
-Data structure of JSON file was created by Sofie and Hash.
+UserModel structure of JSON file was created by Sofie and Hash.

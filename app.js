@@ -6,15 +6,16 @@ var flash = require('connect-flash');
 var session = require('express-session');
 const bodyParser = require('body-parser');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var adminRouter = require('./routes/admin');
+
+var indexRouter = require('./routes/indexRouter');
+var userRouter = require('./routes/userRouter');
+var adminRouter = require('./routes/adminRouter');
 
 
 // For testing
-// Access the data.js and school.js files
-const User = require("./models/data")
-const School = require("./models/schools")
+// Access the userModel.js and school.js files
+const User = require("./models/userModel")
+const School = require("./models/schoolModel")
 
 // Starts a server
 var app = express();
@@ -38,80 +39,86 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({   secret: 'sd12312d123121213912', cookie: { maxAge: 60000 }}));
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: 'sd12312d123121213912',
+    cookie: { maxAge: 60000 }
+}));
 app.use(flash());
 
-// variable across routes
-app.locals.isAdminLogin = false;
-app.use(function (req,res,next) {
-
-    if (req.path.startsWith("/admin")){
-        if (!req.app.locals.isAdminLogin & req.path !== "/" && req.path !== "/admin/login"){
-            res.status(301).redirect("/admin/login")
-        }else{
-            next();
-        }
-    } else{ // to do with user login
-        // TODO
-        next();
-    }
-
-});
-
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', userRouter);
 app.use('/admin', adminRouter);
 
-// DATABASE TESTING
-// Adds a new user to the collection database, with a unique ID (by MongoDB) and timestamps, for testing
-// We however want this to be automatically generated once clicking (so add the click events here to add this information in)
-app.get("/add-user", (req, res) => {
-    const user = new User({
-        user: 105,
-        school: "Gr490dfsFF55aa1",
-        wallColour: "#9534eb",
-        bell: 3
-    })
-// Mongoose saves this new instance to the database
-    user.save()
-// Allows us to see the result in the browser, or displays an error in the console
-     .then((result) => {
-         res.send(result)
-     })
-     .catch((err) => {
-         console.log(err);
-     });
-})
+// // variable across routes
+// app.locals.isAdminLogin = false;
+// app.use(function (req,res,next) {
+//
+//     if (req.path.startsWith("/admin")){
+//         if (!req.app.locals.isAdminLogin & req.path !== "/" && req.path !== "/admin/login"){
+//             res.status(301).redirect("/admin/login")
+//         }else{
+//             next();
+//         }
+//     } else{ // to do with user login
+//         // TODO
+//         next();
+//     }
+//
+// });
 
-app.get("/add-school", (req, res) => {
-    const school = new School({
-        school: "Durham",
-        string: "Hi"
-    })
-    school.save()
-    .then((result) => {
-        res.send(result)
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-})
+
+// // DATABASE TESTING
+// // Adds a new user to the collection database, with a unique ID (by MongoDB) and timestamps, for testing
+// // We however want this to be automatically generated once clicking (so add the click events here to add this information in)
+// app.get("/add-user", (req, res) => {
+//     const user = new User({
+//         user: 105,
+//         school: "Gr490dfsFF55aa1",
+//         wallColour: "#9534eb",
+//         bell: 3
+//     })
+// // Mongoose saves this new instance to the database
+//     user.save()
+// // Allows us to see the result in the browser, or displays an error in the console
+//      .then((result) => {
+//          res.send(result)
+//      })
+//      .catch((err) => {
+//          console.log(err);
+//      });
+// })
+//
+// app.get("/add-school", (req, res) => {
+//     const school = new School({
+//         school: "Durham",
+//         string: "Hi"
+//     })
+//     school.save()
+//     .then((result) => {
+//         res.send(result)
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });
+// })
 
 // We can check our collections on cloud.mongo.db or http://localhost:888/add-user to see that this new data is in our database
 
 // MORE DATABASE TESTING
 // Seeing all the users
-app.get("/all-users", (req, res) => {
-// Finds all the users - applied to the Users - instead of using the save instance method on a single user
-    User.find({bell: 6})
-// Same process as before, to see results or display an error
-     .then((result) => {
-         res.send(result)
-     })
-     .catch((err) => {
-         console.log(err);
-     });
-})
+// app.get("/all-users", (req, res) => {
+// // Finds all the users - applied to the Users - instead of using the save instance method on a single user
+//     User.find({bell: 6})
+// // Same process as before, to see results or display an error
+//      .then((result) => {
+//          res.send(result)
+//      })
+//      .catch((err) => {
+//          console.log(err);
+//      });
+// })
 
 // Mongoose (allows us to create simple data models with query methods to change the database)
 // Schema defines the structure of our documents (e.g. each user) within a collection (e.g. user table)
