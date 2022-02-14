@@ -174,10 +174,10 @@ h2{
     margin-bottom: min(1.5vh,1vw);
 }
 
-
 #welcome-admin .btn-pink{
     display: block;
     font-size: min(3vh,2vw);
+    width: min(13vh,15vw);
 }
 .btn-violet{
     border-color: #9C54BE;
