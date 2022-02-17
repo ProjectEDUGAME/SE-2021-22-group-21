@@ -139,7 +139,28 @@ router.get("/institute/del/:string", async function (req, res) {
 
 
 // download
-router.get("/institute/download", adminController.downloadInstitute);
+// router.get("/institute/download", adminController.downloadInstitute);
+
+router.get("/download", async function (req, res) {
+    res.render("download.html")
+});
+
+router.post("/download", adminController.downloadInstitute);
+
+// router.post("/download", async function (req, res) {
+//     const string = req.body.schooldl;
+//     console.log(string)
+
+//     let result = await adminController.downloadInstitute();
+
+//     if (!result.succeed){
+//         res.render("download.html", {message:result.message})
+//     }else{
+//         res.render("download.html", {string: string})
+
+//     }
+
+// });
 
 
 // Display the admin string page and change the admin string
