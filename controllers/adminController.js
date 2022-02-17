@@ -120,25 +120,44 @@ module.exports.updateInstitute =  async function (newData) {
     return {succeed:true}
 }
 
+//downloads and returns csv with data from school
 module.exports.downloadInstitute = async function (req, res) {
-    var data;
-    let schoolL = "Br490dfsFF55aa1"
+    let data;
+    let schoolS = req.body.schooldl;
+    let schoolN;
 
-    try {
-        data = await User.find({school: schoolL}, {_id: 0, user: 1, school: 1, wallColour: 1, bell: 1})
-        console.log(data)
-
-    } catch (err) {
-        return {succeed: false, message: err}
+    if (schoolS == ""){
+        try {
+            data = await User.find({}, {_id: 0, user: 1, school: 1, wallColour: 1, bell: 1})
+            console.log(data)
+    
+        } catch (err) {
+            return {succeed: false, message: err}
+        }
     }
+    else{
+        try {
+            schoolN = await School.find({school: schoolS}, {_id: 0, string: 1})
+            console.log(schoolN[0].string)
 
+        } catch (err) {
+            return {succeed: false, message: err}
+        }
+        
+        try {
+            data = await User.find({school: schoolN[0].string}, {_id: 0, user: 1, school: 1, wallColour: 1, bell: 1})
+            console.log(data)
+
+        } catch (err) {
+            return {succeed: false, message: err}
+        }
+    }
 
     const fields = ["user", "school", "wallColour", "bell"];
 
     const json2csv = new Parser({fields});
     const csv = json2csv.parse(data);
 
-    console.log(data)
 
     res.header('Content-Type', 'text/csv');
     res.attachment("schools.csv");
