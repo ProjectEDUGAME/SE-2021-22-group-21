@@ -121,16 +121,24 @@ module.exports.updateInstitute =  async function (newData) {
 }
 
 module.exports.downloadInstitute = async function (req, res) {
-    let data;
+    var data;
+    let schoolL = "Br490dfsFF55aa1"
+
     try {
-        data = await fs.readFile("school.json");
-        data = JSON.parse(data);
+        data = await User.find({school: schoolL}, {_id: 0, user: 1, school: 1, wallColour: 1, bell: 1})
+        console.log(data)
+
     } catch (err) {
         return {succeed: false, message: err}
     }
 
-    const json2csv = new Parser();
+
+    const fields = ["user", "school", "wallColour", "bell"];
+
+    const json2csv = new Parser({fields});
     const csv = json2csv.parse(data);
+
+    console.log(data)
 
     res.header('Content-Type', 'text/csv');
     res.attachment("schools.csv");
