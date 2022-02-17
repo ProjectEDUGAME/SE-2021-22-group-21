@@ -177,7 +177,7 @@ h2{
 #welcome-admin .btn-pink{
     display: block;
     font-size: min(3vh,2vw);
-    width: min(13vh,15vw);
+    width: min(15vh,13vw);
 }
 .btn-violet{
     border-color: #9C54BE;

@@ -149,12 +149,12 @@ router.get("/newstring", async function (req, res) {
 
 
 
-/* admin home page. */
+/* admin generate institute string page. */
 router.get('/inst', function(req, res, next) {
-    res.render("adminSchool.html", {message:req.flash('message')});
+    res.render("generateInstituteString.html", {message:req.flash('message')});
 });
 
-/* admin home page. */
+/* admin generate institue string page. */
 router.post('/inst', async function(req, res, next) {
 
     let name = req.body.name;
