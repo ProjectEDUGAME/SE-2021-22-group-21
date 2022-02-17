@@ -12,9 +12,9 @@ const {Parser} = require("json2csv");
 
 
 /* admin home page. */
-// router.get('/', function(req, res, next) {
-//     res.render("admin.html");
-// });
+router.get('/', function(req, res, next) {
+    res.render("admin.html");
+});
 
 /* GET LOGIN page. */
 router.get('/login', function(req, res, next) {
@@ -150,12 +150,12 @@ router.get("/newstring", async function (req, res) {
 
 
 /* admin home page. */
-router.get('/', function(req, res, next) {
+router.get('/inst', function(req, res, next) {
     res.render("adminSchool.html", {message:req.flash('message')});
 });
 
 /* admin home page. */
-router.post('/', async function(req, res, next) {
+router.post('/inst', async function(req, res, next) {
 
     let name = req.body.name;
     let numberOfIDs = req.body.num;
