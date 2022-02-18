@@ -163,25 +163,32 @@ router.post('/inst', async function(req, res, next) {
 
     let newSchool;
     if (name !== "" && postCode !== "" && numberOfIDs !== "") {
+        let id = 0
+
+        // generate ids
+        let ids = []
+        for (let step = 0; step < numberOfIDs; step++) {
+            let newId = Math.floor(10000 + Math.random() * 90000);
+            ids.push(newId)
+        }
 
         // save into mongodb
-        for (let step = 0; step < numberOfIDs; step++) {
-            newSchool = new School({school: name, string: uuidv4(), postCode: postCode})
-            // Save the new model instance, passing a callback
-            await newSchool.save();
-        }
+        newSchool = new School({school: name, string: uuidv4(), postCode: postCode, ids: ids})
+        // Save the new model instance, passing a callback
+        await newSchool.save();
 
         // download
         // find all schools with the postCode
         let schools = await School.find({ 'postCode': postCode, 'school': name }).lean()
-        console.log(schools);
-        const fields = ['school', 'postCode', 'string'];
-        const json2csv = new Parser({fields});
-        const csv = json2csv.parse(schools);
 
-        res.header('Content-Type', 'text/csv');
-        res.attachment("schools.csv");
-        return res.send(csv);
+        let text = "School: " + schools[0].school
+        text += "\nPostcode: " + schools[0].postCode
+        text += "\nAccess string: " + schools[0].string
+        text += "\nIDs: " + schools[0].ids
+
+        res.attachment(schools[0].school + ".txt");
+        res.type("txt")
+        return res.send(text);
 
     } else {
         console.log("sss");

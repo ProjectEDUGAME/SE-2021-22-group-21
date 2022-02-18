@@ -18,6 +18,10 @@ const schoolSchema = new Schema({
           type: String,
           required: true
      },
+     ids: {
+          type: Array,
+          required: false
+     }
 // Automatically creates timestamps for each of these above
 }, {timestamps: true});
 
