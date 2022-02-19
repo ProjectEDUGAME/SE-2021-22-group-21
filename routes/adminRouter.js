@@ -69,69 +69,71 @@ router.get("/institute", async function (req, res) {
 
 
 // add institute
-router.post("/institute/add", async function (req, res) {
+// old :(
+// router.post("/institute/add", async function (req, res) {  
 
-    if (req.body.school !== "" && req.body.string !== "" ) {
-        let school = {school: req.body.school, string: req.body.string}
-        let result = await adminController.addInstitute(school);
-        if (result.succeed) {
-            req.flash('message', result.message)
-            res.redirect('/admin/institute');
-        }else{
-            req.flash('message', result.message)
-            res.redirect("/admin/institute")
-        }
-    } else {
-        req.flash('message',  "please input school name or string!")
-        res.redirect("/admin/institute")
-    }
+//     if (req.body.school !== "" && req.body.string !== "" ) {
+//         let school = {school: req.body.school, string: req.body.string}
+//         let result = await adminController.addInstitute(school);
+//         if (result.succeed) {
+//             req.flash('message', result.message)
+//             res.redirect('/admin/institute');
+//         }else{
+//             req.flash('message', result.message)
+//             res.redirect("/admin/institute")
+//         }
+//     } else {
+//         req.flash('message',  "please input school name or string!")
+//         res.redirect("/admin/institute")
+//     }
 
-})
-
-// update institute by id
-router.get("/institute/update/:string", async function (req, res) {
-    let string = req.params.string;
-    let result = await adminController.findInstituteByString(string);
-    if (!result.succeed) {
-        req.flash("message", result.message)
-        res.redirect("/admin/institute")
-    }else{
-        res.render("adminInstituteUpdate.html", {data:result.data})
-    }
-
-})
-
+// })
 
 // update institute by id
-router.post("/institute/update", async function (req, res) {
-    console.log(req.body);
+// router.get("/institute/update/:string", async function (req, res) {
+//     let string = req.params.string;
+//     let result = await adminController.findInstituteByString(string);
+//     if (!result.succeed) {
+//         req.flash("message", result.message)
+//         res.redirect("/admin/institute")
+//     }else{
+//         res.render("adminInstituteUpdate.html", {data:result.data})
+//     }
 
-    let new_school = {
-        school:req.body.school,
-        string:req.body.string
-    };
-    let result = await adminController.updateInstitute(new_school);
-    if (!result.succeed) {
-        req.flash("message", result.message)
-    }
-    res.redirect("/admin/institute")
+// })
 
-})
+
+// update institute by id
+// router.post("/institute/update", async function (req, res) {
+//     console.log(req.body);
+
+//     let new_school = {
+//         school:req.body.school,
+//         string:req.body.string
+//     };
+//     let result = await adminController.updateInstitute(new_school);
+//     if (!result.succeed) {
+//         req.flash("message", result.message)
+//     }
+//     res.redirect("/admin/institute")
+
+// })
 
 // remove institute by id
-router.get("/institute/del/:string", async function (req, res) {
-    let string = req.params.string;
-    let result = await adminController.deleteInstitute(string);
+// router.get("/institute/del/:string", async function (req, res) {
+//     let string = req.params.string;
+//     let result = await adminController.deleteInstitute(string);
 
-    if (!result.succeed) {
-        req.flash("message", result.message)
-    }
-    res.redirect("/admin/institute")
+//     if (!result.succeed) {
+//         req.flash("message", result.message)
+//     }
+//     res.redirect("/admin/institute")
 
-})
+// })
 
 
 // download
+// been working on the different branch
 router.get("/institute/download", adminController.downloadInstitute);
 
 router.get("/newstring", async function (req, res) {
@@ -142,7 +144,6 @@ router.get("/newstring", async function (req, res) {
         res.render("string.html", {message:result.message})
     }else{
         res.render("string.html", {string: string})
-
     }
 
 });
