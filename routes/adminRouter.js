@@ -164,7 +164,8 @@ router.post('/inst', async function(req, res, next) {
 
     let newSchool;
     if (name !== "" && postCode !== "" && numberOfIDs !== "") {
-        let id = 0
+        let existSchool = await School.find({ 'postCode': postCode, 'school': name }).lean()
+        console.log(existSchool)
 
         // generate ids
         let ids = []
@@ -173,10 +174,20 @@ router.post('/inst', async function(req, res, next) {
             ids.push(newId)
         }
 
-        // save into mongodb
-        newSchool = new School({school: name, string: uuidv4(), postCode: postCode, ids: ids})
-        // Save the new model instance, passing a callback
-        await newSchool.save();
+        if(existSchool.length == 0){
+            // save into mongodb
+            newSchool = new School({school: name, string: uuidv4(), postCode: postCode, ids: ids})
+            // Save the new model instance, passing a callback
+            await newSchool.save();
+        }
+        else{
+            let schols = await School.find({ 'postCode': postCode, 'school': name }).lean()
+            for (const el of schols[0].ids){
+                ids.push(el)
+            }
+            console.log(ids)
+            await School.updateOne({ 'postCode': postCode, 'school': name },{ $set: { ids: ids}})
+        }
 
         // download
         // find all schools with the postCode
