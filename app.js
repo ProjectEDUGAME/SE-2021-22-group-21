@@ -86,7 +86,7 @@ app.get("/add-user", (req, res) => {
 app.get("/add-school", (req, res) => {
     const school = new School({
         school: "Durham5",
-        string: "Hi2"
+        string: "Hi5"
     })
     school.save()
     .then((result) => {

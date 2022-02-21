@@ -5,8 +5,10 @@ var database =  require("../data.json");
 const adminController =  require("../controllers/adminController.js");
 const {render} = require("nunjucks");
 // Access the data.js and school.js files
-const User = require("../models/data")
-const School = require("../models/schools")
+const User = require("../models/data");
+const School = require("../models/schools");
+const bcrypt = require("bcrypt");
+const { find } = require('../models/data');
 
 
 /* admin home page. */
@@ -19,36 +21,80 @@ router.get('/login', function(req, res, next) {
     res.render("adminLogin.html");
 });
 
+// SAME HASH & OUTPUT DIFFERENT 
 
 /* POST LOGIN page. */
 router.post('/login', async(req, res) => {
     // get user input
     let adminstring = req.body.adminstring;
-    original = adminstring
+    original = adminstring;
     // find users with adminstring
-    const result = await School.find(
-        {"string": adminstring}
-    );//database.admins.filter(admin => admin.string ===  adminstring); 
 
-/*     const result2 = await User.find(
-        {"string": adminstring}
-    ); */
+    //adminstring = await bcrypt.hash(adminstring.toString(), global.salt);
+    let result = false;
+    const doc = await School.distinct("string");
+    for (const string of doc) {
+        const final = await bcrypt.compare(adminstring, string)
+        if (final == true){
+            result = true;
+        }
+    };
+    console.log(result);
 
-    console.log(result.length);
+//     const result = await School.find(
+//        {"string": adminstring}
+//    );//database.admins.filter(admin => admin.string ===  adminstring); 
 
-    if (result.length > 0){    // if succeed, return to admin home page
+//     const result2 = await User.find(
+//        {"string": adminstring}
+//    ); 
+
+//     console.log(result);
+
+//    console.log(result.length); 
+    if (result == true){    // if succeed, return to admin home page
         req.app.locals.isAdminLogin = true; // set global variables in app.js to true
         res.redirect("/admin");
     }
-    /* if (result2.length > 0){    // if succeed, return to admin home page
-        req.app.locals.isAdminLogin = true; // set global variables in app.js to true
-        res.redirect("/user");
-    } */
+
+    // if (result2.length > 0){    // if succeed, return to admin home page
+    //    req.app.locals.isAdminLogin = true; // set global variables in app.js to true
+    //    res.redirect("/user");
+    //} 
     else{ // if not, stay in the same page and display erross
         res.render("adminLogin.html", {message: "Whoops! We can't found this string. Please input again!"});
     }
-});
+}); 
 
+
+/* POST LOGIN page. */
+//router.post('/login', async(req, res) => {
+    // get user input
+//    let adminstring = req.body.adminstring;
+//    original = adminstring
+    // find users with adminstring
+//    const result = await School.find(
+//        {"string": adminstring}
+//    );//database.admins.filter(admin => admin.string ===  adminstring); 
+
+///*     const result2 = await User.find(
+//        {"string": adminstring}
+//    ); */
+//
+//    console.log(result.length);
+//
+//    if (result.length > 0){    // if succeed, return to admin home page
+//        req.app.locals.isAdminLogin = true; // set global variables in app.js to true
+//        res.redirect("/admin");
+//    }
+//    /* if (result2.length > 0){    // if succeed, return to admin home page
+//        req.app.locals.isAdminLogin = true; // set global variables in app.js to true
+//        res.redirect("/user");
+//    } */
+//    else{ // if not, stay in the same page and display erross
+//        res.render("adminLogin.html", {message: "Whoops! We can't found this string. Please input again!"});
+//    }
+//});
 
 
 router.get('/logout', function (req,res) {

@@ -4,10 +4,13 @@ const fs = require('fs').promises;
 const {Parser} = require("json2csv");
 
 // Access the data.js and school.js files
-const User = require("../models/data")
-const School = require("../models/schools")
+const User = require("../models/data");
+const School = require("../models/schools");
+//var salt = sessionStorage.getItem("salt");
+const bcrypt = require("bcrypt");
 
-module.exports.findInstituteByString = async function (string) {
+
+//module.exports.findInstituteByString = async function (string) {
 //    let data;
 //    try {
 //        data = await fs.readFile("school.json");
@@ -18,18 +21,20 @@ module.exports.findInstituteByString = async function (string) {
 
     // find school with string
 //    const result = data.filter(school => school.string === string)
+/*     string = await bcrypt.hash(string.toString(), global.salt);
+    console.log(string); */
 
-    const result = await School.find(
-       {"string": string}
-    );
+//    const result = await School.find(
+//       {"string": string}
+//    );
 
-    if (result.length > 0) {    // if succeed, return to admin home page
-        return {succeed: true, data: result[0]}
-    }else{
-        return {succeed: false, message: "Whoops, We can not find such string!"}
+//    if (result.length > 0) {    // if succeed, return to admin home page
+//        return {succeed: true, data: result[0]}
+//    }else{
+//        return {succeed: false, message: "Whoops, We can not find such string!"}
 
-    }
-}
+//    }
+//}
 
 
 module.exports.readInstitute = async function () {
@@ -172,6 +177,9 @@ module.exports.generateNewString = async function (string, string2) {
 
     // Find the original admin string
     // Replace with the input
+    //string = await bcrypt.hash(string.toString(), global.salt);
+    //string2 = await bcrypt.hash(string.toString(), global.salt);
+
     try {
         await School.findOneAndUpdate({
             "string": string2

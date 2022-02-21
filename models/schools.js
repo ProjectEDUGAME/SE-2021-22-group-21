@@ -24,7 +24,7 @@ const schoolSchema = new Schema({
 // Hashing function run before saving to the dabase
 schoolSchema.pre("save", async function (next){
 // Creates a salt (a consistent string added to the front of a password) before hashing     
-     const salt = await bcrypt.genSalt();
+     salt = await bcrypt.genSalt();
      this.string = await bcrypt.hash(this.string, salt);
      next();
 });
