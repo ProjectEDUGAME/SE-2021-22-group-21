@@ -278,7 +278,15 @@ h2{
     display: inline;
 }
 
-#participant-details 
+
+#participant-details .btn-pink{
+    width: min(25vh,20vw);
+    display: block;
+    margin-top: min(2.5vh,0.5vw);
+    font-size: min(3.5vh,2.5vw);
+}
+
+#tutorial
 h3{
     font-family: OpenDyslexic;
     text-align: center;
@@ -293,13 +301,6 @@ h3{
             0px -2px #FFAAAA,
             1px -1px #FFAAAA,
             2px 0px #FFAAAA;
-}
-
-#participant-details .btn-pink{
-    width: min(25vh,20vw);
-    display: block;
-    margin-top: min(2.5vh,0.5vw);
-    font-size: min(3.5vh,2.5vw);
 }
 
 .pregame{
@@ -319,4 +320,30 @@ h3{
             1px -1px #F8D5BF,
             2px 0px #F8D5BF;
 }
+
+.svg-btn{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    box-shadow: none;
+}
+
+.svg-btn:active {
+  border-style: none;
+  border: none;
+}
+
+#check-sound-level .tick{
+    text-align: center;
+    margin-top: min(2vh,1.5vw);
+}
+
+#check-sound-level img{
+    width: min(17vh, 12vw);
+    height: auto;
+}
+
 
