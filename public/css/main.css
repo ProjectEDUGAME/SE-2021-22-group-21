@@ -331,9 +331,8 @@ h3{
     box-shadow: none;
 }
 
-.svg-btn:active {
-  border-style: none;
-  border: none;
+#check-sound-level .btn:focus {
+    box-shadow: none;
 }
 
 #check-sound-level .tick{
