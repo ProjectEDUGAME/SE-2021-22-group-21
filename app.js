@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 var indexRouter = require('./routes/indexRouter');
 var userRouter = require('./routes/userRouter');
 var adminRouter = require('./routes/adminRouter');
+var authRouter = require('./routes/authRouter');
 
 
 // For testing
@@ -51,6 +52,7 @@ app.use(flash());
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
+app.use('/auth', authRouter);
 
 // // variable across routes
 // app.locals.isAdminLogin = false;
