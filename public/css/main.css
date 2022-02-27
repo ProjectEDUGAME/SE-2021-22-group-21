@@ -101,6 +101,11 @@ h2{
     font-size: min(13vh,9.3vw);
 }
 
+#admin-log-in .warning{
+    color: #b50705;
+    font-size: min(2vh,1.5vw);
+}
+
 #welcome-admin h1{
     font-size:min(11vh,7.85vw);
     margin-bottom: min(2.5vh,1.5vw);
@@ -120,8 +125,6 @@ h2{
 }
 
 .content-box form label {
-    
-
     text-shadow: 1px 1px #FFAAAA,
         0px 2px #FFAAAA,
         -1px 1px #FFAAAA,
@@ -164,6 +167,13 @@ h2{
     line-height: min(3.5vh,2.5vw);
     padding: min(1vh,1vw) min(2vh,2vw);
 }
+
+.invalid{
+    border: 1px solid #b50705;
+}
+
+
+
 
 #welcome-admin .btn-violet, .btn-indigo, .btn-turquoise{
     display: block;

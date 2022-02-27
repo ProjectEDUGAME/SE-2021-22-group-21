@@ -39,7 +39,7 @@ router.post('/login/:string', async function(req, res, next) {
         let idstring = req.body.idstring;
         // if contains specific ids
         if (doc.ids.includes(parseInt(idstring))){
-            req.flash('message', "Sorry, ID is in used!")
+            req.flash('message', "Sorry, this ID is in use!")
         }else{
             doc.ids.push(parseInt(idstring));
             await doc.save();

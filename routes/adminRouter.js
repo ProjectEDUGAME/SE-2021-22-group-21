@@ -38,7 +38,7 @@ router.post('/login', async(req, res) => {
         res.redirect("/admin");
     }
     else{ // if not, stay in the same page and display erross
-        res.render("adminLogin.html", {message: "Whoops! We can't found this string. please input again!"});
+        res.render("adminLogin.html", {invalidStr: "Whoops! We can't found this string. please input again!"});
     }
 });
 

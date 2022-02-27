@@ -14,16 +14,15 @@
 <div id="bg">
     <div class="content-box" id="admin-log-in">
         <h1>Admin Log In</h1>
-
-        {% if message %}
-            <p>{{message}}</p>
-        {% endif %}
-
         <form  method="POST" action="">
             <label for="admin-str">Please input the admin access string:</label>
-            <input type="text" name="adminstring" id="adminstring">
+            <input {% if invalidStr %} class="invalid" {% endif %} type="text" name="adminstring" id="adminstring">
+            {% if invalidStr %}
+            <div class="warning">{{invalidStr}}</div>
+            {% endif %}
             <button type="submit" class="btn btn-pink">OK !</button>
         </form>
+            
         <a type="button" class="btn btn-brown" href="/">Back</a>
     </div>
     
