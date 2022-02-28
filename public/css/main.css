@@ -45,7 +45,7 @@ body{
     width: min(140vh,100vw);
     height: min(71.11vw,100vh);
     
-    background-image: url('../img/lbbackground.png');
+    background-image: url('../img/bbackground.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -355,4 +355,43 @@ h3{
     height: auto;
 }
 
+#button-tutorial img{
+    width: min(10vh, 8vw);
+    height: auto;
+}
 
+#btnmouse {
+    text-align: center;
+    margin-top: min(2.5vh,1.5vw);
+}
+
+#button-tutorial .btn-pink{
+    float: right;
+    font-size: min(3.5vh,2.5vw);
+    padding: min(1vh,1vw) min(2vh,2vw);
+    line-height: min(3.5vh,2.5vw);
+    margin-top: 0;
+} 
+
+#button-tutorial .pregame{
+    font-size: min(4vh,2.3vw);
+    color: #F931C1;
+    width: min(50vh,30.5vw)
+}
+
+#slider img{
+    width: min(50vh, 25vw);
+    height: auto;
+}
+
+#slider {
+    text-align: center;
+    margin-top: min(2.5vh,1.5vw);
+}
+
+#slider-tutorial .btn-pink{
+    float: right;
+    font-size: min(3.5vh,2.5vw);
+    padding: min(1vh,1vw) min(2vh,2vw);
+    line-height: min(3.5vh,2.5vw);
+}
