@@ -370,7 +370,7 @@ h3{
     font-size: min(3.5vh,2.5vw);
     padding: min(1vh,1vw) min(2vh,2vw);
     line-height: min(3.5vh,2.5vw);
-    margin-top: 0;
+    margin-top: -32px;
 } 
 
 #button-tutorial .pregame{
@@ -386,7 +386,7 @@ h3{
 
 #slider {
     text-align: center;
-    margin-top: min(2.5vh,1.5vw);
+    margin-top: min(3vh,3.5vw);
 }
 
 #slider-tutorial .btn-pink{
@@ -394,4 +394,10 @@ h3{
     font-size: min(3.5vh,2.5vw);
     padding: min(1vh,1vw) min(2vh,2vw);
     line-height: min(3.5vh,2.5vw);
+    margin-top: 0;
+}
+
+#slider-tutorial .pregame{
+    width: min(75.5vh,53.5vw);
+    margin-top: min(4vh,3vw);
 }
