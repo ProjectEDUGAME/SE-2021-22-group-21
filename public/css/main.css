@@ -97,6 +97,11 @@ h2{
     margin-bottom: min(2.5vh,1.5vw);
 }
 
+#child-log-in .warning{
+    color: #b50705;
+    font-size: min(2vh,1.5vw);
+}
+
 #admin-log-in h1{
     font-size: min(13vh,9.3vw);
 }

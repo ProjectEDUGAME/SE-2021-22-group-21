@@ -18,10 +18,10 @@
             <h1>log in</h1>
             <form method="post">
                 <label for="child-str">Please input the institute access string:</label>
+                <input {% if message %} class="invalid" {% endif %} type="text" name="schoolString" id="child-str">
                 {% if message %}
-                <p style="text-align: center; color:red; font-weight: bolder">{{message}}</p>
+                <div class="warning">{{message}}</div>
                 {% endif %}
-                <input type="text" name="schoolString" id="child-str">
                 <button type="submit" class="btn btn-pink">OK !</button>
             </form>
             <a type="button" class="btn btn-brown"  href="/admin/login">Admin login</a>

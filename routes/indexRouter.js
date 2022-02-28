@@ -15,7 +15,7 @@ router.post('/', async function(req,res){
     req.flash('message', "School String is corrected! please continue enter ID now.")
     res.redirect("/user/login/"+schoolString)
   }else{
-    req.flash('message', "Whoops!!! School not Found! please enter string again. ")
+    req.flash('message', "Invalid input, please try again! ")
     res.render('index.html', { title: 'Express', message:req.flash('message')});
   }
 });
@@ -27,7 +27,7 @@ router.get('/user/login/:string', async function(req, res, next) {
   if (doc){
     res.render('participantDetails.html', { title: 'Express', message:req.flash('message'), doc:doc});
   }else{
-    req.flash('message', "School not Found! please enter string again. ")
+    req.flash('message', "Invalid input, please try again! ")
     res.redirect("/")
   }
 
@@ -50,7 +50,7 @@ router.post('/user/login/:string', async function(req, res, next) {
         }
         res.render('participantDetails.html', { title: 'Express', message:req.flash('message'), doc:doc});
   }else{
-    req.flash('message', "School not Found! please enter string again. ")
+    req.flash('message', "Invalid input, please try again! ")
     res.redirect("/")
   }
 });
