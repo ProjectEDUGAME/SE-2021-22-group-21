@@ -2,6 +2,7 @@ const buffer = require("buffer");
 const {json} = require("express");
 const fs = require('fs').promises;
 const {Parser} = require("json2csv");
+const { v4: uuidv4 } = require('uuid');
 
 // Access the data.js and school.js files
 const User = require("../models/userModel")
@@ -9,140 +10,26 @@ const School = require("../models/schoolModel")
 //var salt = sessionStorage.getItem("salt");
 const bcrypt = require("bcrypt");
 
-module.exports.findInstituteByString = async function (string) {
-    let data;
-
-    try {
-        data = await fs.readFile("school.json");
-        data = JSON.parse(data);
-    } catch (err) {
-        return {succeed: false, message: err}
-    }
-
-    // find school with string
-    const result = data.filter(school => school.string === string)
-
-    if (result.length > 0) {    // if succeed, return to admin home page
-        return {succeed: true, data: result[0]}
-    }else{
-        return {succeed: false, message: "Whoops, We can not find such string!"}
-
-    }
-}
-
-module.exports.readInstitute = async function () {
-    let data;
-    try {
-        data = await fs.readFile("school.json");
-        data = JSON.parse(data);
-        return {succeed: true, data: data}
-    } catch (err) {
-        return {succeed: false, message: err}
-    }
-
-}
-
-module.exports.addInstitute = async function (school) {
-    let data;
-    let new_data;
-    try {
-        data = await fs.readFile("school.json");
-        data = JSON.parse(data);
-        // deep copy
-        new_data = JSON.parse(JSON.stringify(data));
-
-    } catch (err) {
-        return {succeed:false, message:err}
-    }
-
-    new_data.push(school);
-    try {
-        await fs.writeFile("school.json", JSON.stringify(new_data));
-    } catch (err) {
-        await fs.writeFile("school.json", JSON.stringify(data));
-        return {succeed:false, message:err}
-    }
-    return {succeed:true, message:"add succeed!"}
-}
-
-module.exports.deleteInstitute =  async function (string) {
-    let new_data;
-    let data;
-    try {
-        data = await fs.readFile("school.json");
-        data = JSON.parse(data);
-        // deep copy
-        new_data = JSON.parse(JSON.stringify(data));
-    } catch (err) {
-        return {succeed:false, message:err}
-    }
-
-    const result = new_data.filter(school => school.string !== string)
-
-
-    try {
-        await fs.writeFile("school.json", JSON.stringify(result));
-    } catch (err) {
-        await fs.writeFile("school.json", JSON.stringify(data));
-
-        return {succeed:false, message:err}
-    }
-    return {succeed:true}
-}
-
-module.exports.updateInstitute =  async function (newData) {
-    let new_data;
-    let data;
-    try {
-        data = await fs.readFile("school.json");
-        data = JSON.parse(data);
-        // deep copy
-        new_data = JSON.parse(JSON.stringify(data));
-    } catch (err) {
-        return {succeed:false, message:err}
-    }
-
-    const result = new_data.map(function (item) {
-        if (item.string === newData.string){
-            item.school = newData.school;
-        }
-        return item;
-    })
-
-    try {
-        await fs.writeFile("school.json", JSON.stringify(result));
-    } catch (err) {
-        await fs.writeFile("school.json", JSON.stringify(data));
-        return {succeed:false, message:err}
-    }
-    return {succeed:true}
-}
-
 module.exports.downloadInstitute = async function (req, res) {
     let data;
     let schoolS = req.body.schooldl;
     let schoolN;
-    console.log("hello?");
 
     if (schoolS == ""){
-        console.log("inHere")
         try {
             data = await User.find({}, {_id: 0, user: 1, school: 1, wallColour: 1, bell: 1})
             console.log(data)
 
         } catch (err) {
-            console.log("aghh")
             return {succeed: false, message: err}
         }
     }
     else{
-        console.log("In here?")
         try {
             schoolN = await School.find({school: schoolS}, {_id: 0, string: 1})
             console.log(schoolN[0].string)
 
         } catch (err) {
-            console.log("error")
             return {succeed: false, message: err}
         }
 
@@ -168,6 +55,60 @@ module.exports.downloadInstitute = async function (req, res) {
 
 }
 
+module.exports.generateInstitute = async function (req, res) {
+    let name = req.body.name;
+    let numberOfIDs = req.body.num;
+    let  postCode = req.body.postCode;
+
+    let newSchool;
+    if (name !== "" && postCode !== "" && numberOfIDs !== "") {
+        let existSchool = await School.find({ 'postCode': postCode, 'school': name }).lean()
+        console.log(existSchool)
+
+        // generate ids
+        let ids = []
+        for (let step = 0; step < numberOfIDs; step++) {
+            let newId = Math.floor(10000 + Math.random() * 90000);
+            ids.push(newId)
+        }
+
+        if(existSchool.length == 0){
+            // save into mongodb
+            newSchool = new School({school: name, string: uuidv4(), postCode: postCode, ids: ids})
+            // Save the new model instance, passing a callback
+            await newSchool.save();
+        }
+        else{
+            let schols = await School.find({ 'postCode': postCode, 'school': name }).lean()
+            for (const el of schols[0].ids){
+                ids.push(el)
+            }
+            console.log(ids)
+            await School.updateOne({ 'postCode': postCode, 'school': name },{ $set: { ids: ids}})
+        }
+
+        // download
+        // find all schools with the postCode
+        let schools = await School.find({ 'postCode': postCode, 'school': name }).lean()
+
+        let text = "School: " + schools[0].school
+        text += "\nPostcode: " + schools[0].postCode
+        text += "\nAccess string: " + schools[0].string
+        text += "\nIDs: " + schools[0].ids
+
+        res.attachment(schools[0].school + ".txt");
+        res.type("txt")
+        return res.send(text);
+
+    } else {
+        console.log("sss");
+        req.flash('message', "please input school name or string!")
+        res.redirect("/admin/home");
+    }
+}
+
+
+// OLD
 module.exports.generateNewString = async function (string) {
     let data;
     let new_data;
