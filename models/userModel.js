@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
 // The unique user ID
      user: {
-          type: Number,
+          type: String,
           required: true,
           min: 1
      },
@@ -36,6 +36,6 @@ const userSchema = new Schema({
 
 // Creating the model
 // Looks for "Users" in mongo.db
-const UserModel = mongoose.model("UserModel", userSchema)
+const User = mongoose.model("User", userSchema)
 // Allowing us to use this model to save new user's data in our database collection
-module.exports = UserModel;
+module.exports = User;

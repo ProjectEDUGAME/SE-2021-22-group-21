@@ -13,20 +13,19 @@
 <body>
 
     <div id="bg">
-        <div class="content-box" id="download-data">
+        <div class="content-box " id="download-data">
             <h2>Download Data</h2>
-            <form>
+            <form method="post" action="">
                 <label for="schoolList" class="form-label">Type in the name of a school into the box</label>
-                <input class="form-control" list="datalistOptions" id="schoolList" placeholder="Type to search...">
+                <input class="form-control" list="datalistOptions" id="schoolList" name="schooldl" placeholder="Type to search...">
                 <datalist id="datalistOptions">
-                    <option value="Durham University">
-                    <option value="Durham Primary School">
-                    <option value="Durham Gilesgate Primary School">
-                    <option value="Dene House Primary School">
+                    <option value="">
+                    <option value="">
+                    <option value="">
                 </datalist>
+                <button type="submit" class="btn btn-violet">Download CSV</button>
             </form>
-            <button type="button" class="btn btn-violet">Download CSV</button>
-            <a type="button" class="btn btn-brown" href="/admin">Back</a>
+            <a type="button" class="btn btn-brown" href="/admin/">Back</a>
         </div>
     </div>
 

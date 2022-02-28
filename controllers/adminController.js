@@ -1,4 +1,13 @@
 const buffer = require("buffer");
+const {json} = require("express");
+const fs = require('fs').promises;
+const {Parser} = require("json2csv");
+
+// Access the data.js and school.js files
+const User = require("../models/userModel")
+const School = require("../models/schoolModel")
+//var salt = sessionStorage.getItem("salt");
+const bcrypt = require("bcrypt");
 
 module.exports.findInstituteByString = async function (string) {
     let data;
@@ -111,19 +120,51 @@ module.exports.updateInstitute =  async function (newData) {
 
 module.exports.downloadInstitute = async function (req, res) {
     let data;
-    try {
-        data = await fs.readFile("school.json");
-        data = JSON.parse(data);
-    } catch (err) {
-        return {succeed: false, message: err}
+    let schoolS = req.body.schooldl;
+    let schoolN;
+    console.log("hello?");
+
+    if (schoolS == ""){
+        console.log("inHere")
+        try {
+            data = await User.find({}, {_id: 0, user: 1, school: 1, wallColour: 1, bell: 1})
+            console.log(data)
+
+        } catch (err) {
+            console.log("aghh")
+            return {succeed: false, message: err}
+        }
+    }
+    else{
+        console.log("In here?")
+        try {
+            schoolN = await School.find({school: schoolS}, {_id: 0, string: 1})
+            console.log(schoolN[0].string)
+
+        } catch (err) {
+            console.log("error")
+            return {succeed: false, message: err}
+        }
+
+        try {
+            data = await User.find({school: schoolN[0].string}, {_id: 0, user: 1, school: 1, wallColour: 1, bell: 1})
+            console.log(data)
+
+        } catch (err) {
+            return {succeed: false, message: err}
+        }
     }
 
-    const json2csv = new Parser();
+    const fields = ["user", "school", "wallColour", "bell"];
+
+    const json2csv = new Parser({fields});
     const csv = json2csv.parse(data);
 
+
     res.header('Content-Type', 'text/csv');
-    res.attachment("schools.csv");
+    res.attachment(schoolS + "_data.csv");
     return res.send(csv);
+
 
 }
 

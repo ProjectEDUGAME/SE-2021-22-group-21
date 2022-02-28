@@ -133,8 +133,13 @@ router.get("/institute", async function (req, res) {
 
 
 // download
-// been working on the different branch
-router.get("/institute/download", adminController.downloadInstitute);
+router.get("/download", async function (req, res) {
+    res.render("downloadData.html")
+});
+
+router.post("/download", adminController.downloadInstitute);
+
+
 
 router.get("/newstring", async function (req, res) {
     const string = uuidv4();
