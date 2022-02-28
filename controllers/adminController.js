@@ -218,6 +218,7 @@ module.exports.generateNewString = async function (string, string2) {
         }
     };
     
+    salt = await bcrypt.genSalt();
     const new_hashed_string = await bcrypt.hash(string, salt);
     console.log(string, string2, new_hashed_string, hashed_string);
 
