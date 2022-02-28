@@ -17,14 +17,19 @@
     <div id="bg">
         <div class="content-box" id="participant-details">
             <h2>Participant details</h2>
-            <form onsubmit="event.preventDefault();">
-                <p>Your school name is <span id='school-name'>St. Mary Primary School</span>
+            <form method="post">
+                {% if message %}
+                <p style="text-align: center; color:red; font-weight: bolder">{{message}}</p>
+                {% endif %}
+                <p>Your school name is <span id='school-name'>{{ doc.school }}</span>
                 <p>
                     <label for="participant-id">Please input a participant ID into the field and press the button below
                         to start the game:</label>
-                    <input type="text" name="participant-id" id="participant-id">
+
+                    <input type="number" name="idstring" id="participant-id" value="">
+                <button type="submit" class="btn btn-pink" >Start Activity</button> <!-- to fill -->
+
             </form>
-            <a type="button" class="btn btn-pink" href="">Start Activity</a> <!-- to fill -->
             <a type="button" class="btn btn-brown" href="">Return & log out</a> <!-- to fill -->
         </div>
     </div>

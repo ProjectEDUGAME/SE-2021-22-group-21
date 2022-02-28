@@ -16,9 +16,12 @@
     <div id="bg">
         <div class="content-box" id="child-log-in">
             <h1>log in</h1>
-            <form>
+            <form method="post">
                 <label for="child-str">Please input the institute access string:</label>
-                <input type="text" name="access-str" id="child-str">
+                {% if message %}
+                <p style="text-align: center; color:red; font-weight: bolder">{{message}}</p>
+                {% endif %}
+                <input type="text" name="schoolString" id="child-str">
                 <button type="submit" class="btn btn-pink">OK !</button>
             </form>
             <a type="button" class="btn btn-brown"  href="/admin/login">Admin login</a>
