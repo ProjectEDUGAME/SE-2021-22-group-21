@@ -165,7 +165,7 @@ module.exports.downloadInstitute = async function (req, res) {
 
 
     res.header('Content-Type', 'text/csv');
-    res.attachment("schools.csv");
+    res.attachment(schoolS + "_data.csv");
     return res.send(csv);
 
 }
