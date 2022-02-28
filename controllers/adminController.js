@@ -207,11 +207,25 @@ module.exports.generateNewString = async function (string, string2) {
     //string = await bcrypt.hash(string.toString(), global.salt);
     //string2 = await bcrypt.hash(string.toString(), global.salt);
 
+    //Must find the hashed string in the database
+    let result = false;
+    const doc = await School.distinct("string");
+    for (const string of doc) {
+        const final = await bcrypt.compare(string2, string)
+        if (final == true){
+            result = true;
+            hashed_string = string;
+        }
+    };
+    
+    const new_hashed_string = await bcrypt.hash(string, salt);
+    console.log(string, string2, new_hashed_string, hashed_string);
+
     try {
         await School.findOneAndUpdate({
-            "string": string2
+            "string": hashed_string
         }, {
-            "string": string
+            "string": new_hashed_string
         })
     } catch (err) {
         return {succeed:false, message:err}
