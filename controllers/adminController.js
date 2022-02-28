@@ -107,32 +107,59 @@ module.exports.generateInstitute = async function (req, res) {
     }
 }
 
+module.exports.generateNewString = async function (string, string2) {
+        let result = false;
+        const doc = await School.distinct("string");
+        for (const string of doc) {
+            const final = await bcrypt.compare(string2, string)
+            if (final == true){
+                result = true;
+                hashed_string = string;
+            }
+        };
 
-// OLD
-module.exports.generateNewString = async function (string) {
-    let data;
-    let new_data;
-    try {
-        data = await fs.readFile("data.json");
-        data = JSON.parse(data);
-        // deep copy
-        new_data = JSON.parse(JSON.stringify(data));
-    } catch (err) {
-        return {succeed: false, message: err}
-    }
+        salt = await bcrypt.genSalt();
+        const new_hashed_string = await bcrypt.hash(string, salt);
+        console.log(string, string2, new_hashed_string, hashed_string);
 
-    for (let i of new_data.admins){
-        i["string"] = string
-    }
-
-    // new_data.admins.push({"string": string})
-
-    try {
-        await fs.writeFile("data.json", JSON.stringify(new_data));
-    } catch (err) {
-        await fs.writeFile("data.json", JSON.stringify(data));
-        return {succeed:false, message:err}
-    }
-    return {succeed:true}
+        try {
+            await School.findOneAndUpdate({
+                "string": hashed_string
+            }, {
+                "string": new_hashed_string
+            })
+        } catch (err) {
+            return {succeed:false, message:err}
+        }
+        return {succeed:true}
 
 }
+
+// OLD
+// module.exports.generateNewString = async function (string) {
+//     let data;
+//     let new_data;
+//     try {
+//         data = await fs.readFile("data.json");
+//         data = JSON.parse(data);
+//         // deep copy
+//         new_data = JSON.parse(JSON.stringify(data));
+//     } catch (err) {
+//         return {succeed: false, message: err}
+//     }
+
+//     for (let i of new_data.admins){
+//         i["string"] = string
+//     }
+
+//     // new_data.admins.push({"string": string})
+
+//     try {
+//         await fs.writeFile("data.json", JSON.stringify(new_data));
+//     } catch (err) {
+//         await fs.writeFile("data.json", JSON.stringify(data));
+//         return {succeed:false, message:err}
+//     }
+//     return {succeed:true}
+
+// }

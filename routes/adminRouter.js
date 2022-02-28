@@ -8,6 +8,8 @@ const {render} = require("nunjucks");
 const User = require("../models/userModel")
 const School = require("../models/schoolModel")
 const {Parser} = require("json2csv");
+const bcrypt = require("bcrypt");
+const { find } = require('../models/userModel');
 
 
 
@@ -23,29 +25,57 @@ router.get('/login', function(req, res, next) {
 
 
 // Admin login functionality
+// router.post('/login', async(req, res) => {
+//     // get user input
+//     let adminstring = req.body.adminstring;
+//     // find users with adminstring
+//     const result = await School.find(
+//         {"string": adminstring}
+//     );//database.admins.filter(admin => admin.string ===  adminstring); 
+
+//     console.log(result.length);
+
+//     if (result.length > 0){    // if succeed, return to admin home page
+//         req.app.locals.isAdminLogin = true; // set global variables in app.js to true
+//         res.redirect("/admin/home");
+//     }
+//     else{ // if not, stay in the same page and display erross
+//         res.render("adminLogin.html", {invalidStr: "Invalid input, please try again!"});
+//     }
+// });
+
 router.post('/login', async(req, res) => {
     // get user input
     let adminstring = req.body.adminstring;
+    original = adminstring;
     // find users with adminstring
-    const result = await School.find(
-        {"string": adminstring}
-    );//database.admins.filter(admin => admin.string ===  adminstring); 
 
-    console.log(result.length);
+    //adminstring = await bcrypt.hash(adminstring.toString(), global.salt);
+    let result = false;
+    const doc = await School.distinct("string");
+    for (const string of doc) {
+        const final = await bcrypt.compare(adminstring, string)
+        if (final == true){
+            result = true;
+        }
+    };
+    console.log(result);
 
-    if (result.length > 0){    // if succeed, return to admin home page
+    if (result == true){    // if succeed, return to admin home page
         req.app.locals.isAdminLogin = true; // set global variables in app.js to true
         res.redirect("/admin/home");
     }
+
     else{ // if not, stay in the same page and display erross
         res.render("adminLogin.html", {invalidStr: "Invalid input, please try again!"});
     }
-});
+}); 
 
 
 //logs out
 router.get('/logout', function (req,res) {
     req.app.locals.isAdminLogin = false; // set global variables in app.js to true
+    origin = ""
     res.redirect("/admin/login");
 })
 
@@ -61,15 +91,29 @@ router.get("/download", async function (req, res) {
 router.post("/download", adminController.downloadInstitute);
 
 
-// OLD - need to migrate new one
+// load change admin string page
 router.get("/newstring", async function (req, res) {
-    const string = uuidv4();
-    let result = await adminController.generateNewString(string);
+    res.render("string.html")
+});
+
+// changes admin string
+router.post("/newstring", async function (req, res) {
+    const string = req.body.access_str;
+    console.log(string);
+    let result;
+
+    if (string.length > 1){
+        result = await adminController.generateNewString(string, original);
+    }else{
+        res.render("string.html", {message:"psw too short"})
+        return
+    }
 
     if (!result.succeed){
         res.render("string.html", {message:result.message})
     }else{
         res.render("string.html", {string: string})
+
     }
 
 });
