@@ -41,8 +41,8 @@ router.post('/login/:string', async function(req, res, next) {
         if (doc.ids.includes(parseInt(idstring))){
             req.flash('message', "Sorry, this ID is in use!")
         }else{
-            doc.ids.push(parseInt(idstring));
-            await doc.save();
+            // doc.ids.push(parseInt(idstring));
+            // await doc.save();
             req.flash('message', "ID has not been used and created succeed!")
         }
         res.render('authLoginID.html', { title: 'Express', message:req.flash('message')});

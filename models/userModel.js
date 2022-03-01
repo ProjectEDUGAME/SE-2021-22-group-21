@@ -24,7 +24,7 @@ const userSchema = new Schema({
      bell: {
           type: Number,
           required: true,
-          min: 1,
+          min: 0,
           max: 5
      }
 // Automatically creates timestamps for each of these above

@@ -1,5 +1,6 @@
 const express = require('express');
 const SchoolModel = require("../models/schoolModel");
+const User = require("../models/userModel")
 const router = express.Router();
 
 /* GET home page. */
@@ -12,7 +13,7 @@ router.post('/', async function(req,res){
   let schoolString = req.body.schoolString;
   const doc = await SchoolModel.findOne({string: schoolString});
   if (doc){
-    req.flash('message', "School String is corrected! please continue enter ID now.")
+    req.flash('message', "School String is correct! please continue enter ID now.")
     res.redirect("/user/login/"+schoolString)
   }else{
     req.flash('message', "Invalid input, please try again! ")
@@ -41,12 +42,20 @@ router.post('/user/login/:string', async function(req, res, next) {
   if (doc){
         let idstring = req.body.idstring;
         // if contains specific ids
+
         if (doc.ids.includes(parseInt(idstring))){
-          req.flash('message', "Sorry, this ID is in use!")
+          const userId = await User.findOne({user: idstring})
+          if (userId){
+            req.flash('message', "Sorry, this ID is in use!")
+          }else{
+            // doc.ids.push(parseInt(idstring));
+            // await doc.save();
+            newUser = new User({user: idstring, school: schoolString, wallColour: "0", bell: 0})
+            await newUser.save();
+            return res.redirect("/user/tutorial")
+          }
         }else{
-          doc.ids.push(parseInt(idstring));
-          await doc.save();
-          req.flash('message', "ID has not been used and created succeed!")
+          req.flash('message', "Invalid input, please try again!")
         }
         res.render('participantDetails.html', { title: 'Express', message:req.flash('message'), doc:doc});
   }else{
