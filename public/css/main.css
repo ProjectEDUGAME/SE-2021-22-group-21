@@ -267,11 +267,11 @@ h2{
 
 #participant-details input{
     margin-top: min(2.5vh,1.5vw);
-    margin-bottom: min(1.75vh, 1.25vw);
+    
 }
 
 #participant-details label{
-    width: min(60vh,30vw);
+    width: min(60vh,50vw);
     margin: auto;
     font-size: min(3vh,2.5vw);
 }
@@ -293,9 +293,14 @@ h2{
     display: inline;
 }
 
+#participant-details .warning{
+    color: #b50705;
+    font-size: min(2vh,1.5vw);
+    margin-bottom: min(1.75vh, 1.25vw);
+}
 
 #participant-details .btn-pink{
-    width: min(25vh,20vw);
+    width: min(26vh,20vw);
     display: block;
     margin-top: min(2.5vh,0.5vw);
     font-size: min(3.5vh,2.5vw);
