@@ -411,3 +411,12 @@ h3{
     width: min(75.5vh,53.5vw);
     margin-top: min(4vh,3vw);
 }
+
+#game-bg{
+    width: min(140vh,100vw);
+    height: min(71.11vw,100vh);
+    background-image: url('../img/lschool_bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
