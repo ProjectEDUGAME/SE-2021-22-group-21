@@ -5,11 +5,11 @@
 
 1. install packages, navigate to root directory, run
 
-   npm install
+   ```npm install```
     
 2. run app
 
-   npm run serverstart
+   ```npm run start```
    
 3. open web browser by type below address
 
