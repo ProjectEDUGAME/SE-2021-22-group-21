@@ -9,7 +9,7 @@
     
 2. run app
 
-   ```npm run start```
+   ```npm start```
    
 3. open web browser by type below address
 
