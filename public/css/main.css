@@ -78,13 +78,13 @@ body{
 }
 
 h1{
-    font-size: min(13vh,10.7vw);
+    font-size: min(13vh,9.28vw);
     color: #7e2830;
     font-family: Helsinki;
 }
 
 h2{
-    font-size: min(8.5vh,5.5vw);
+    font-size: min(8.5vh,6.07vw);
     color: #3181F9;
     font-family: Balloda;
 }
@@ -93,12 +93,12 @@ h2{
     height: min(20vh,14.3vw);
 }*/
 #child-log-in form{
-    margin-bottom: min(2.5vh,1.5vw);
+    margin-bottom: min(2.5vh,1.78vw);
 }
 
 #child-log-in .warning{
     color: #b50705;
-    font-size: min(2vh,1.5vw);
+    font-size: min(3vh,2.14vw);
 }
 
 #admin-log-in h1{
@@ -107,12 +107,12 @@ h2{
 
 #admin-log-in .warning{
     color: #b50705;
-    font-size: min(2vh,1.5vw);
+    font-size: min(3vh,2.14vw);
 }
 
 #welcome-admin h1{
     font-size:min(11vh,7.85vw);
-    margin-bottom: min(2.5vh,1.5vw);
+    margin-bottom: min(2.5vh,1.78vw);
 
 }
 
@@ -184,14 +184,14 @@ h2{
     margin: auto;
     font-size: min(3.5vh,2.5vw);
     border-radius: min(5.5vh,4.5vw);
-    width: min(50vw,56vh);
-    margin-bottom: min(1.5vh,1vw);
+    width: min(58vh,41.42vw);
+    margin-bottom: min(1.5vh,1.07vw);
 }
 
 #welcome-admin .btn-pink{
     display: block;
-    font-size: min(3vh,2vw);
-    width: min(15vh,13vw);
+    font-size: min(3vh,2.14vw);
+    width: min(18.2vh,13vw);
 }
 .btn-violet{
     border-color: #9C54BE;
@@ -210,22 +210,22 @@ h2{
     display: block;
     margin: auto;
     font-size: min(3.5vh,2.5vw);
-    border-radius: min(5.5vh,4.5vw);
-    width: min(40vw,46vh);
-    margin-top: min(2.5vh,1.5vw);
+    border-radius: min(5.5vh,3.92vw);
+    width: min(46vh,32.85vw);
+    margin-top: min(2.5vh,1.78vw);
     line-height: min(3.5vh,2.5vw);
 }
 
 #generate-institute-string h2{
-    font-size: min(5.5vh,4.6vw);
+    font-size: min(6vh,4.28vw);
 }
 
 #generate-institute-string input{
-    margin-top: min(1.5vh,1vw);
+    margin-top: min(1.5vh,1.07vw);
 }
 
 #generate-institute-string form{
-    margin-top: min(3.5vh,1vw);
+    margin-top: min(2vh,1.42vw);
 }
 
 #str-generate{
@@ -241,13 +241,13 @@ h2{
     display: block;
     margin: auto;
     font-size: min(3.5vh,2.5vw);
-    border-radius: min(5.5vh,4.5vw);
-    width: min(25vw,35vh);
+    border-radius: min(5.5vh,3.92vw);
+    width: min(35vh,25vw);
     line-height: min(3.5vh,2.5vw);
 }
 
 #download-data .btn-brown{
-    margin-bottom: min(2.5vh,1.5vw);
+    margin-bottom: min(2.5vh,1.78vw);
 }
 
 #change-admin-string .btn-violet{
@@ -428,4 +428,25 @@ h3{
     right: 0;
     
     margin: auto;
+}
+
+#classroom-context-box {
+    width: 100%;
+    height: min(8.3vh,5.92vw) ;
+    background-color: rgba(255, 255, 255, 0.76);
+    border: min(1vh,1vw) solid #F8D5BF;
+    box-sizing: border-box;
+    padding: min(1.5vh,1.07vw);
+    font-family: OpenDyslexic;
+    font-size: min(2.5vh,1.78vw);
+    text-align: center;
+    border-radius: 20px;
+}
+
+#classroom-red-text{
+    background-color: red;
+    border-radius: 50%;
+    width: 3em;
+    display: inline-block;
+    text-align: center;
 }

@@ -14,4 +14,8 @@ router.get('/classroom/', function(req, res, next) {
   res.render('classroom.html', { title: 'Express' });
 });
 
+router.get('/wallcolour/', function(req, res, next) {
+  res.render('wallColour.html', { title: 'Express' });
+});
+
 module.exports = router;
