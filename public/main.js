@@ -40,3 +40,12 @@ const switchTo = (currentID, nextID) => {
 //     });
 // }
 
+const copyText = () =>{
+    let newPasscode = document.getElementById("newPassword");
+    navigator.clipboard.writeText(newPasscode.innerText);
+    document.getElementById("copy-text-btn").innerText="Copied"
+}
+
+const hidePopUp = () =>{
+    document.getElementById("staticBackdrop").style.display = "none";
+}

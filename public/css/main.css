@@ -450,3 +450,44 @@ h3{
     display: inline-block;
     text-align: center;
 }
+
+.modal-title{
+    color: #3181F9;
+    font-family: Balloda;
+}
+
+.modal-dialog{
+    max-width: min(60vh,42.85vw);
+    margin: auto;
+    margin-top: auto;
+    margin-top: min(35vh,25vw);
+}
+
+.modal-content{
+    border: min(1.5vh,1.5vw) solid #F8D5BF;
+    border-radius: 20px;
+    font-family: 'Anaheim';
+}
+
+
+.modal-body{
+    margin: auto;
+    padding: min(1vh,1vw);
+    font-size: min(3vh,2.14vw);
+}
+
+.modal-footer{
+    border-top: none;
+    float: right;
+    padding-top: 0;
+    display: block;
+}
+
+#staticBackdrop .btn-pink{
+    font-size: min(2.5vh,1.78vw);
+    border-radius: min(5.5vh,4.5vw);
+    line-height: min(3.5vh,2.5vw);
+    padding: min(1vh,1vw) min(2vh,2vw);
+    margin-top: 0;
+    float: right;
+}

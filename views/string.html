@@ -9,26 +9,25 @@
     <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
-    
+
+<!-- Modal -->
 {% if string %}
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Change Admin String</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Your new string is: {{string}}
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Copy to clickboard</button>
-                        </div>
-                    </div>
-                </div>
+<div class="modal" id="staticBackdrop" style="display: initial;" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Your new log in string is:</h5>
+                <button type="button" onclick="hidePopUp()" class="btn-close" aria-label="Close"></button>
             </div>
+            <div class="modal-body" id="newPassword">
+                {{string}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="copyText()" class="btn btn-pink" id="copy-text-btn">Copy String</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endif %}
 
 <div id="bg">
@@ -39,27 +38,19 @@
             will be no longer active. Please note it down immediately after and keep it safe!</label>
             <input type="text" name="access_str" id="admin-new-str">
             <!-- Button trigger modal -->
-            <button type="submit" class="btn btn-violet" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save new login string</button>
-            <!-- Modal -->
-            <!--  -->
+            <button type="submit" class="btn btn-violet">Save new login string</button>
+            
         </form>
 
-        <!-- <div id="str_change_msg">{{message}}</div> -->
         <a type="button" class="btn btn-brown" href="/admin/home">Back</a>
     </div>
 </div>
 
-<!-- 
-    <h5 style="color:orange">New Admin String already generated! please note down in other safe place.</h5>
-    {% if message %}
-    <p>{{message}}</p>
-    {% endif %}
-    <div class="string_container">{{ string }}</div>
-    <a href="/admin/" class="btn" style="float:left;border: 1px solid;">Back</a> -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+<script src="/main.js"></script>
 </body>
 
 </html>

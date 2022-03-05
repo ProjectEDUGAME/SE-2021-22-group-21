@@ -11,7 +11,7 @@ router.post("/login", async function(req,res){
     let schoolString = req.body.schoolString;
     const doc = await SchoolModel.findOne({string: schoolString});
     if (doc){
-        req.flash('message', "School String is corrected! please continue enter ID now.")
+        // req.flash('message', "School String is corrected! please continue enter ID now.")
         res.redirect("/auth/login/"+schoolString)
     }else{
         req.flash('message', "School not Found! please enter string again. ")
