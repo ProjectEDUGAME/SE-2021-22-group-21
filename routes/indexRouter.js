@@ -69,4 +69,8 @@ router.post('/user/login/:string', async function(req, res, next) {
 });
 
 
+// router.get('/user/logout', function (req,res) {
+//   res.redirect("/");
+// })
+
 module.exports = router;
