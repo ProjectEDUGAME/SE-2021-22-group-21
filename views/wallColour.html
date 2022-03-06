@@ -14,7 +14,43 @@
 
 <body>
     <div id="game-bg">
+        <div id="space-fill"></div>
+        <div id="wallColour-info-box">
+            Use the colour boexes to pick your favourite wall colour, then click the green tick!
+        </div>
+        <div id="wallColour-colour-box">
+            <form>
 
+            </form>
+            <div id="colour-btn" style="display:inline-block">
+
+                <input type="radio" class="btn-check " name="options" id="option1" autocomplete="off" checked>
+                <label class="btn btn-green wall-btn" for="option1"></label>
+                
+                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                <label class="btn btn-yellow wall-btn" for="option2"></label>
+
+                <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+                <label class="btn btn-orange wall-btn" for="option3"></label>
+
+                <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+                <label class="btn btn-pink-wall wall-btn" for="option4"></label>
+
+                <input type="radio" class="btn-check" name="options" id="option5" autocomplete="off">
+                <label class="btn btn-purple wall-btn" for="option5"></label>
+
+                <input type="radio" class="btn-check" name="options" id="option6" autocomplete="off">
+                <label class="btn btn-blue wall-btn" for="option6"></label>
+
+            <div id="wallcolour-tick" style="display:inline-block">
+                <button type="submit" class="btn btn-green svg-btn" onclick="switchTo('check-sound-level', 'button-tutorial');"><img
+                        src="/img/tickmark.svg"></button>
+            </div>
+                
+
+            </div>
+            
+        </div>
     </div>
 
 

@@ -492,3 +492,95 @@ h3{
     margin-top: 0;
     float: right;
 }
+
+#wallColour-info-box{
+    font-family: OpenDyslexic;
+    text-align: center;
+    font-size: min(3.5vh,2.5vw);
+    color: #3181F9;
+    font-weight: bolder;
+        text-shadow: 1px 1px #FFAAAA,
+            0px 2px #FFAAAA,
+            -1px 1px #FFAAAA,
+            -2px 0px #FFAAAA,
+            -1px -1px #FFAAAA,
+            0px -2px #FFAAAA,
+            1px -1px #FFAAAA,
+            2px 0px #FFAAAA;
+
+    width: min(50.5vh,36.01vw);
+    background-color: rgba(255, 255, 255, 0.76);
+    border: min(1vh,1vw) solid #F8D5BF;
+    box-sizing: border-box;
+    padding: min(2vh,1.42vw);
+    font-size: min(2.3vh,1.64vw);
+    text-align: center;
+    border-radius: 20px;
+}
+
+#wallColour-colour-box{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.76);
+    border: min(1vh,1vw) solid #F8D5BF;
+    box-sizing: border-box;
+    padding: min(1.5vh,1.07vw);
+    font-size: min(2.5vh,1.78vw);
+    text-align: center;
+    border-radius: 20px;
+    margin-top: min(1vh,0.713vw);
+
+}
+
+#colour-btn .wall-btn{
+    display: inline-block;
+    height: min(11.5vh, 8.21vw);
+    width: min(9vh,6.42vw);
+    margin: 0 min(3vh,2.14vw) 0 0;
+    border: min(0.3vh,0.21vw) solid #a5a5a5;
+
+}
+
+#space-fill{
+    height: min(65.4vh,46.71vw);
+}
+
+#wallcolour-tick .svg-btn{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    box-shadow: none;
+    margin-left: min(2vh,1.42vw);
+}
+
+#wallcolour-tick img{
+    width: min(15vh,10.71vw);
+    height: auto;
+    margin-top: min(2vh,1.42vw);
+}
+
+.btn-green{
+    background-color: #aedeb8;
+}
+
+.btn-yellow{
+    background-color: #e8d63b;
+}
+
+.btn-pink-wall{
+    background-color: #f5b7c8;
+}
+
+.btn-purple{
+    background-color: #d6bdf6;
+}
+
+.btn-blue{
+    background-color: #72f0f6;
+}
+
+.btn-orange{
+    background-color: #F5C773;
+}

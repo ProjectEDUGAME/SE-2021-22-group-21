@@ -43,7 +43,7 @@ const switchTo = (currentID, nextID) => {
 const copyText = () =>{
     let newPasscode = document.getElementById("newPassword");
     navigator.clipboard.writeText(newPasscode.innerText);
-    document.getElementById("copy-text-btn").innerText="Copied"
+    document.getElementById("copy-text-btn").innerText="Copied!"
 }
 
 const hidePopUp = () =>{
