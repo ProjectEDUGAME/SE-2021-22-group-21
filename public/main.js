@@ -51,25 +51,25 @@ const hidePopUp = () =>{
 }
 
 const changeGreenBg = () =>{
-    document.getElementById("game-bg").style.backgroundImage = "url('../img/lschool_bg.png')";
+    document.getElementById("game-bg").style.backgroundImage = "url('/img/lschool_bg.png')";
 }
 
 const changeYellowBg = ()=>{
-    document.getElementById("game-bg").style.backgroundImage = "url('../img/yellow-bg.png')";
+    document.getElementById("game-bg").style.backgroundImage = "url('/img/yellow-bg.png')";
 }
 
 const changeOrangeBg = ()=>{
-    document.getElementById("game-bg").style.backgroundImage = "url('../img/orange-bg.png')";
+    document.getElementById("game-bg").style.backgroundImage = "url('/img/orange-bg.png')";
 }
 
 const changePinkBg = ()=>{
-    document.getElementById("game-bg").style.backgroundImage = "url('../img/pink-bg.png')";
+    document.getElementById("game-bg").style.backgroundImage = "url('/img/pink-bg.png')";
 }
 
 const changePurpleBg = ()=>{
-    document.getElementById("game-bg").style.backgroundImage = "url('../img/purple-bg.png')";
+    document.getElementById("game-bg").style.backgroundImage = "url('/img/purple-bg.png')";
 }
 
 const changeBlueBg = ()=>{
-    document.getElementById("game-bg").style.backgroundImage = "url('../img/blue-bg.png')";
+    document.getElementById("game-bg").style.backgroundImage = "url('/img/blue-bg.png')";
 }
