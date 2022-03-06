@@ -284,6 +284,7 @@ h2{
         0px -2px #FFAAAA,
         1px -1px #FFAAAA,
         2px 0px #FFAAAA;
+    margin-bottom: 0.5rem;
 }
 
 #participant-details span{
@@ -299,7 +300,7 @@ h2{
 }
 
 #participant-details .btn-pink{
-    width: min(26vh,20vw);
+    width: min(29vh,20.71vw);
     display: block;
     margin-top: min(2.5vh,0.5vw);
     font-size: min(3.5vh,2.5vw);
