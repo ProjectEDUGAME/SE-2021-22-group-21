@@ -523,7 +523,7 @@ h3{
     background-color: rgba(255, 255, 255, 0.76);
     border: min(1vh,1vw) solid #F8D5BF;
     box-sizing: border-box;
-    padding: min(1.5vh,1.07vw);
+    padding: min(0.8vh,0.57vw);
     font-size: min(2.5vh,1.78vw);
     text-align: center;
     border-radius: 20px;
@@ -561,26 +561,31 @@ h3{
     margin-top: min(2vh,1.42vw);
 }
 
-.btn-green{
+#btn-green{
     background-color: #aedeb8;
 }
 
-.btn-yellow{
+#btn-yellow{
     background-color: #e8d63b;
 }
 
-.btn-pink-wall{
+#btn-pink-wall{
     background-color: #f5b7c8;
 }
 
-.btn-purple{
+#btn-purple{
     background-color: #d6bdf6;
 }
 
-.btn-blue{
+#btn-blue{
     background-color: #72f0f6;
 }
 
-.btn-orange{
+#btn-orange{
     background-color: #F5C773;
+}
+
+body::after{
+   position:absolute; width:0; height:0; overflow:hidden; z-index:-1; 
+   content:url("../img/lschool_bg.png") url("../img/yellow-bg.png") url("../img/orange-bg.png") url("../img/pink-bg.png") url("../img/purple-bg.png") url("../img/blue-bg.png"); 
 }
