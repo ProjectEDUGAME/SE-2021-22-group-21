@@ -261,7 +261,6 @@ h2{
     margin-bottom: min(2.5vh,1.78vw);
     position: relative;
     z-index: 100;
-
 }
 
 #change-admin-string .btn-violet{
@@ -355,34 +354,38 @@ h3{
             2px 0px #F8D5BF;
 }
 
-.svg-btn{
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
-    box-shadow: none;
-}
+
 
 #check-sound-level .btn:focus {
     box-shadow: none;
 }
 
-#check-sound-level .tick{
+#check-sound-level .audio{
     text-align: center;
     margin-top: min(2vh,1.5vw);
 }
 
-#check-sound-level .btn-pink{
-    float: right;
-    margin-top: min(-6.5vh,-4.64vw);
+#check-sound-level .btn-audio{
+    background-color: #D9FFFA;
+    border: 0.5vh solid #00FFFF;
+    border-radius: 25px;
+    width: min(11vh,5.57vw);
+    margin-top: min(2vh,1.42vw);
 }
 
-#check-sound-level img{
-    width: min(17vh, 12vw);
-    height: auto;
+#check-sound-level i{
+    color: #259189;
+    padding-left: min(0.5vh,0.35vw);
+    padding-top: min(0.5vh,0.35vw);
+    font-size: (3vh,2.14vw);
 }
+
+
+#check-sound-level .btn-pink{
+    float: right;
+    margin-top: min(-3.3vh,-2.35vw);
+}
+
 
 #button-tutorial img{
     width: min(10vh, 8vw);
@@ -455,7 +458,7 @@ h3{
 #classroom-context-box {
     width: 100%;
     height: min(8.3vh,5.92vw) ;
-    background-color: rgba(255, 255, 255, 0.76);
+    background-color: rgba(255, 255, 255, 0.76); 
     border: min(1vh,1vw) solid #F8D5BF;
     box-sizing: border-box;
     padding: min(1.5vh,1.07vw);
