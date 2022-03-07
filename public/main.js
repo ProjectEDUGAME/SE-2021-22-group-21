@@ -51,7 +51,7 @@ const hidePopUp = () =>{
 }
 
 const changeGreenBg = () =>{
-    document.getElementById("game-bg").style.backgroundImage = "url('/img/lschool_bg.png')";
+    document.getElementById("game-bg").style.backgroundImage = "url('/img/green-bg.png')";
 }
 
 const changeYellowBg = ()=>{

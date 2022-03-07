@@ -415,7 +415,7 @@ h3{
 #game-bg{
     width: min(140vh,100vw);
     height: min(71.11vw,100vh);
-    background-image: url('../img/lschool_bg.png');
+    background-image: url('../img/green-bg.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -588,5 +588,5 @@ h3{
 /* preload all background-images in the browser to smoothify background transition */
 body::after{
    position:absolute; width:0; height:0; overflow:hidden; z-index:-1; 
-   content:url("/img/lschool_bg.png") url("/img/yellow-bg.png") url("/img/orange-bg.png") url("/img/pink-bg.png") url("/img/purple-bg.png") url("/img/blue-bg.png"); 
+   content:url("/img/green-bg.png") url("/img/yellow-bg.png") url("/img/orange-bg.png") url("/img/pink-bg.png") url("/img/purple-bg.png") url("/img/blue-bg.png"); 
 }
