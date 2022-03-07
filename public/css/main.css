@@ -252,6 +252,7 @@ h2{
     border-radius: min(5.5vh,3.92vw);
     width: min(35vh,25vw);
     line-height: min(3.5vh,2.5vw);
+    margin-top: min(-10vh,-7.14vw);
 }
 
 #download-data .btn-brown{
