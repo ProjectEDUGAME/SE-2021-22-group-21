@@ -54,22 +54,22 @@ const changeGreenBg = () =>{
     document.getElementById("game-bg").style.backgroundImage = "url('/img/green-bg.png')";
 }
 
-const changeYellowBg = ()=>{
+const changeYellowBg = () =>{
     document.getElementById("game-bg").style.backgroundImage = "url('/img/yellow-bg.png')";
 }
 
-const changeOrangeBg = ()=>{
+const changeOrangeBg = () =>{
     document.getElementById("game-bg").style.backgroundImage = "url('/img/orange-bg.png')";
 }
 
-const changePinkBg = ()=>{
+const changePinkBg = () =>{
     document.getElementById("game-bg").style.backgroundImage = "url('/img/pink-bg.png')";
 }
 
-const changePurpleBg = ()=>{
+const changePurpleBg = () =>{
     document.getElementById("game-bg").style.backgroundImage = "url('/img/purple-bg.png')";
 }
 
-const changeBlueBg = ()=>{
+const changeBlueBg = () =>{
     document.getElementById("game-bg").style.backgroundImage = "url('/img/blue-bg.png')";
 }

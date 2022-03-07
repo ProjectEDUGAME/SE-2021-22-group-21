@@ -19,16 +19,9 @@
                 <label for="schoolList" class="form-label">Please type in the name of a school into the box</label>
                 <input class="form-control" list="datalistOptions" id="schoolList" name="schooldl" placeholder="Type to search...">
                 <datalist id="datalistOptions">
-                    <option value="{{schools[0]}}">
-                    <option value="{{schools[1]}}">
-                    <option value="{{schools[2]}}">
-                    <option value="{{schools[3]}}">
-                    <option value="{{schools[4]}}">
-                    <option value="{{schools[5]}}">
-                    <option value="{{schools[6]}}">
-                    <option value="{{schools[7]}}">
-                    <option value="{{schools[8]}}">
-                    <option value="{{schools[9]}}">
+                    {% for inst in schools %}
+                        <option value="{{inst}}">
+                    {% endfor %}
                 </datalist>
                 <button type="submit" class="btn btn-violet">Download CSV</button>
             </form>
