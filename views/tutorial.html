@@ -22,17 +22,23 @@
                     the volume of your device if you need. </div>
                 <div class='pregame'>Press the GREEN TICK once you're ready to start.</div>
                 <div class = "tick">
-                    <button type="button" class="btn btn-green svg-btn" onclick="switchTo('check-sound-level', 'button-tutorial');"><img
+                    <button type="button" class="btn btn-green svg-btn"><img
                     src="/img/tickmark.svg"></button>
                 </div>
+                <button type="button" class="btn btn-pink" onclick="switchTo('check-sound-level', 'button-tutorial');">Next</button>
             
             </div>
             
             <div class="content-box hidden" id="button-tutorial">
                 <h3>Design your dream classroom!</h3>
                 <div class='pregame'>Use your cursor to select RED buttons and CLICK on them! </div>
-                <div id="btnmouse"><img src="/img/btnmouse.svg"></div>
-                <button type="button" class="btn btn-pink" onclick="switchTo('button-tutorial', 'slider-tutorial');">Next</button>
+                <div id="btnmouse">
+                    <button type="button" class="btn btn-brown" onclick="switchTo('button-tutorial', 'check-sound-level');">Back</button>
+                    <img src="/img/btnmouse.svg">
+                    <button type="button" class="btn btn-pink" onclick="switchTo('button-tutorial', 'slider-tutorial');">Next</button>
+                </div>
+                
+                
             </div>
             
             <div class="content-box hidden" id="slider-tutorial">

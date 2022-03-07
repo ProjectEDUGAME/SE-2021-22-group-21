@@ -155,7 +155,7 @@ h2{
     background-color: rgba(255, 255, 255, 0.75);
 }
 
-.btn-pink{
+.btn-pink-submit{
     margin: auto;
     margin-top: min(3.5vh,2.5vw);
     border-color: #FFCDAD;
@@ -172,6 +172,14 @@ h2{
     padding: min(1vh,1vw) min(2vh,2vw);
 }
 
+.btn-pink{
+    font-size: min(3.5vh,2.5vw);
+    border-color: #FFCDAD;
+    border-radius: min(5.5vh,4.5vw);
+    line-height: min(3.5vh,2.5vw);
+    padding: min(1vh,1vw) min(2vh,2vw);
+} 
+
 .invalid{
     border: 1px solid #b50705;
 }
@@ -184,14 +192,14 @@ h2{
     margin: auto;
     font-size: min(3.5vh,2.5vw);
     border-radius: min(5.5vh,4.5vw);
-    width: min(58vh,41.42vw);
+    width: min(58vh,43.42vw);
     margin-bottom: min(1.5vh,1.07vw);
 }
 
-#welcome-admin .btn-pink{
+#welcome-admin .btn-pink-submit{
     display: block;
     font-size: min(3vh,2.14vw);
-    width: min(18.2vh,13vw);
+    width: min(16.2vh,13.42vw);
 }
 .btn-violet{
     border-color: #9C54BE;
@@ -299,7 +307,7 @@ h2{
     margin-bottom: min(1.75vh, 1.25vw);
 }
 
-#participant-details .btn-pink{
+#participant-details .btn-pink-submit{
     width: min(29vh,20.71vw);
     display: block;
     margin-top: min(2.5vh,0.5vw);
@@ -360,6 +368,11 @@ h3{
     margin-top: min(2vh,1.5vw);
 }
 
+#check-sound-level .btn-pink{
+    float: right;
+    margin-top: min(-6.5vh,-4.64vw);
+}
+
 #check-sound-level img{
     width: min(17vh, 12vw);
     height: auto;
@@ -377,10 +390,12 @@ h3{
 
 #button-tutorial .btn-pink{
     float: right;
-    font-size: min(3.5vh,2.5vw);
-    padding: min(1vh,1vw) min(2vh,2vw);
-    line-height: min(3.5vh,2.5vw);
-    margin-top: -32px;
+    margin-top: min(9vh,6.42vw);
+} 
+
+#button-tutorial .btn-brown{
+    float: left;
+    margin-top: min(9vh,6.42vw);
 } 
 
 #button-tutorial .pregame{
