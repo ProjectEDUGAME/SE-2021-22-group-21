@@ -30,7 +30,7 @@ router.get('/user/login/:string', async function(req, res, next) {
   let schoolString = req.params["string"];
   const doc = await SchoolModel.findOne({string: schoolString});
   if (doc){
-    res.render('participantDetails.html', { title: 'Express', message:req.flash('message'), doc:doc});
+    res.render('participantDetails.html', { title: 'Express', doc:doc});
   }else{
     req.flash('message', "Invalid input, please try again! ")
     res.redirect("/")
