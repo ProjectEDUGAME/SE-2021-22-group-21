@@ -253,10 +253,15 @@ h2{
     width: min(35vh,25vw);
     line-height: min(3.5vh,2.5vw);
     margin-top: min(-10vh,-7.14vw);
+    position: relative;
+    z-index: 100;
 }
 
 #download-data .btn-brown{
     margin-bottom: min(2.5vh,1.78vw);
+    position: relative;
+    z-index: 100;
+
 }
 
 #change-admin-string .btn-violet{
