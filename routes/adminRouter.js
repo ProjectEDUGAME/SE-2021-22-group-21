@@ -84,7 +84,17 @@ router.get('/logout', function (req,res) {
 
 // loads download data page
 router.get("/download", async function (req, res) {
-    res.render("downloadData.html")
+    schoools = await School.find({}, {_id: 0, school: 1})
+    console.log(schoools)
+    schooolsL = []
+    for (schol in schoools){
+        if (schoools[schol].school != 'Durham5'){
+            schooolsL.push(schoools[schol].school)
+        }
+    }
+    console.log(schooolsL)
+
+    res.render("downloadData.html", {schools: schooolsL}) //{shipper_names: results}
 });
 
 //finds and downloads data
