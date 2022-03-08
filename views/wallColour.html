@@ -20,33 +20,31 @@
             Use the colour boxes to pick your favourite wall colour, then click the green tick!
         </div>
         <div id="wallColour-colour-box">
-            <div id="colour-btn" style="display:inline-block">
+            <form id="colour-btn" style="display:inline-block" method="post">
+                    <input onclick="changeGreenBg()" type="radio" class="btn-check" name="options" value="green" id="option1" autocomplete="off" checked>
+                    <label class="btn wall-btn" id="btn-green" for="option1"></label>
 
-                <input onclick="changeGreenBg()" type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                <label class="btn wall-btn" id="btn-green" for="option1"></label>
-                
-                <input onclick="changeYellowBg()" type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                <label class="btn wall-btn" id="btn-yellow" for="option2"></label>
+                    <input onclick="changeYellowBg()" type="radio" class="btn-check" name="options" value="yellow"  id="option2" autocomplete="off">
+                    <label class="btn wall-btn" id="btn-yellow" for="option2"></label>
 
-                <input onclick="changeOrangeBg()" type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
-                <label class="btn wall-btn" id="btn-orange" for="option3"></label>
+                    <input onclick="changeOrangeBg()" type="radio" class="btn-check" name="options" value="orange"  id="option3" autocomplete="off">
+                    <label class="btn wall-btn" id="btn-orange" for="option3"></label>
 
-                <input onclick="changePinkBg()" type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                <label class="btn wall-btn" id="btn-pink-wall" for="option4"></label>
+                    <input onclick="changePinkBg()" type="radio" class="btn-check" name="options" value="pink"  id="option4" autocomplete="off">
+                    <label class="btn wall-btn" id="btn-pink-wall" for="option4"></label>
 
-                <input onclick="changePurpleBg()" type="radio" class="btn-check" name="options" id="option5" autocomplete="off">
-                <label class="btn wall-btn" id="btn-purple" for="option5"></label>
+                    <input onclick="changePurpleBg()" type="radio" class="btn-check" name="options" value="purple"  id="option5" autocomplete="off">
+                    <label class="btn wall-btn" id="btn-purple" for="option5"></label>
 
-                <input onclick="changeBlueBg()" type="radio" class="btn-check" name="options" id="option6" autocomplete="off">
-                <label class="btn wall-btn" id="btn-blue" for="option6"></label>
+                    <input onclick="changeBlueBg()" type="radio" class="btn-check" name="options" value="blue"  id="option6" autocomplete="off">
+                    <label class="btn wall-btn" id="btn-blue" for="option6"></label>
 
-            <div id="wallcolour-tick" style="display:inline-block">
-                <button type="submit" class="btn btn-green svg-btn" onclick="switchTo('check-sound-level', 'button-tutorial');"><img
-                        src="/img/tickmark.svg"></button>
-            </div>
-                
-
-            </div>
+                    <div id="wallcolour-tick" style="display:inline-block">
+                        <button type="submit" class="btn btn-green svg-btn" onclick="switchTo('check-sound-level', 'button-tutorial');">
+                            <img src="/img/tickmark.svg">
+                        </button>
+                    </div>
+            </form>
             
         </div>
     </div>

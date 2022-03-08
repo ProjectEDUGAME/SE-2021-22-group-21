@@ -25,6 +25,7 @@ app.use(express.static("client"));
 app.use(bodyParser.json());
 
 const nunjucks=require("nunjucks");
+const passport = require("passport");
 
 // configure
 nunjucks.configure(path.resolve(__dirname,'views'),{
@@ -46,7 +47,17 @@ app.use(session({
     secret: 'sd12312d123121213912',
     cookie: { maxAge: 60000 }
 }));
+// passport
+const LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 app.use(flash());
+
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);

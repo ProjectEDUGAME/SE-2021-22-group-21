@@ -377,7 +377,7 @@ h3{
     color: #259189;
     padding-left: min(0.5vh,0.35vw);
     padding-top: min(0.5vh,0.35vw);
-    font-size: (3vh,2.14vw);
+    font-size: min(3vh,2.14vw);
 }
 
 
