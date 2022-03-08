@@ -35,5 +35,8 @@ router.post('/wallcolour', auth.loginRequired,function(req, res, next) {
   })
 });
 
+router.get('/bell', auth.loginRequired,function(req, res, next) {
+  res.render('bell.html', { title: 'Express' });
+});
 
 module.exports = router;

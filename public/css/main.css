@@ -614,3 +614,23 @@ body::after{
    position:absolute; width:0; height:0; overflow:hidden; z-index:-1; 
    content:url("/img/green-bg.png") url("/img/yellow-bg.png") url("/img/orange-bg.png") url("/img/pink-bg.png") url("/img/purple-bg.png") url("/img/blue-bg.png"); 
 }
+
+
+#bell-bg{
+    width: min(140vh,100vw);
+    height: min(71.11vw,100vh);
+    background-image: url('../img/bell-bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+#bell-bg, .content-box{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+}
