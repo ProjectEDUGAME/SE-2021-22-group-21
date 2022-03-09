@@ -64,7 +64,7 @@ router.post('/login',  function(req, res, next) {
                 res.render("userLogin.html", {message: req.flash('message')});
               }
               req.flash('message', "login successful!");
-              res.redirect("/user")
+              res.redirect("/user/tutorial")
 
             })
           }else{

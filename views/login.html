@@ -17,7 +17,7 @@
     <form  method="POST" action="">
         <label for="admin-str">Please input the admin access string:</label>
         <input type="text"  name="username" style="display:none;" value="admin"/>
-        <input {% if invalidStr %} class="invalid" {% endif %} type="text" name="password" id="password">
+        <input {% if invalidStr %} class="invalid" {% endif %} type="password" name="password" id="password">
         {% if invalidStr %}
         <div class="warning">{{invalidStr}}</div>
         {% endif %}
