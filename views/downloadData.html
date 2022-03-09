@@ -16,9 +16,21 @@
         <div class="content-box " id="download-data">
             <h2>Download Data</h2>
             <form method="POST" action="">
-                <label for="school" class="form-label">Please select a shcool</label>
+
+                <!-- <label for="schoolList" class="form-label">Please type in the name of a school into the box</label>
+                <input class="form-control" list="datalistOptions" id="schoolList" name="schooldl" placeholder="Type to search...">
+                <datalist id="datalistOptions">
+                    {% for inst in schools %}
+                        <option value="{{inst}}">
+                    {% endfor %}
+                </datalist>
+                <button type="submit" class="btn btn-violet">Download CSV</button> -->
+
+
+                <label for="school" class="form-label">Please select a school</label>
                 <div class="d-flex justify-content-center mb-3">
                     <select name="school" id="school">
+                        <option value =""></option> <!-- added by Sof, I need an empty option -->
                         {% for s in schools %}
                         <option value ="{{s.id}}">{{s.name}}</option>
                         {% endfor %}
@@ -28,10 +40,13 @@
                     <button type="submit" class="btn">Download CSV</button>
 
                 </div>
+
             </form>
             <a type="button" class="btn btn-brown" href="/admin/home">Back</a>
         </div>
     </div>
+
+    
 
 
 

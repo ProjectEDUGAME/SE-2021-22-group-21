@@ -10,11 +10,17 @@ router.get('/', auth.loginRequired, function(req, res, next) {
 });
 
 router.get('/tutorial', auth.loginRequired,function(req, res, next) {
+  var user = req.user;
+  user.initialized = 1;
+  user.save();
   res.render('tutorial.html', { title: 'Express' });
 });
 
 router.get('/classroom', auth.loginRequired,function(req, res, next) {
   var color = req.user.wallColour;
+  if (!color){
+    color = "green";
+  }
   res.render('classroom.html', { title: 'Express' , message:req.flash('message'), color:color});
 });
 

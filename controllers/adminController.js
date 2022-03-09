@@ -11,13 +11,29 @@ const School = require("../models/schoolModel")
 const bcrypt = require("bcrypt");
 
 module.exports.downloadInstitute = async function (req, res) {
+    console.log("im alive")
     let data;
-    let schoolS = req.body.schooldl;
-    let schoolN;
+    // let schoolS = req.body.schooldl;
+    let schoolN = "";
 
-    if (schoolS == ""){
+    let sID = req.body.school;
+    console.log(sID)
+
+    if (sID == ""){
         try {
-            data = await User.find({}, {_id: 0, user: 1, school: 1, wallColour: 1, bell: 1})
+            data = await User.find({initialized: 1}, {_id: 0, username: 1, school: 1, wallColour: 1, bell: 1})
+            console.log(data)
+
+        } catch (err) {
+            return {succeed: false, message: err}
+        }
+        try {
+            data = JSON.parse(JSON.stringify(data));
+
+            for (let u of data){
+                let school = await School.find({_id: u.school}, {_id: 0, accessString: 1})
+                u.school = school[0].accessString;
+            }
             console.log(data)
 
         } catch (err) {
@@ -26,30 +42,45 @@ module.exports.downloadInstitute = async function (req, res) {
     }
     else{
         try {
-            schoolN = await School.find({name: schoolS}, {_id: 0, string: 1})
-            console.log(schoolN[0].string)
-
-        } catch (err) {
-            return {succeed: false, message: err}
-        }
-
-        try {
-            data = await User.find({school: schoolN[0].string}, {_id: 0, user: 1, school: 1, wallColour: 1, bell: 1})
+            data = await User.find({school: sID, initialized: 1},  {_id: 0, username: 1, school: 1, wallColour: 1, bell: 1})
             console.log(data)
 
         } catch (err) {
             return {succeed: false, message: err}
         }
+        try {
+            let school = await School.find({_id: sID}, {_id: 0, accessString: 1, name: 1})
+            schoolN = school[0].name
+
+            data = JSON.parse(JSON.stringify(data));
+
+            for (let u of data){
+                u.school = school[0].accessString;
+            }
+            console.log(data)
+
+        } catch (err) {
+            return {succeed: false, message: err}
+        }
+
+        // try {
+        //     data = await User.find({school: schoolN[0].string}, {_id: 0, user: 1, school: 1, wallColour: 1, bell: 1})
+        //     console.log(data)
+
+        // } catch (err) {
+        //     return {succeed: false, message: err}
+        // }
     }
 
-    const fields = ["user", "school", "wallColour", "bell"];
+
+    const fields = ["username", "school", "wallColour", "bell"];
 
     const json2csv = new Parser({fields});
     const csv = json2csv.parse(data);
 
 
     res.header('Content-Type', 'text/csv');
-    res.attachment(schoolS + "_data.csv");
+    res.attachment(schoolN + "_data.csv");
     return res.send(csv);
 
 
@@ -66,18 +97,30 @@ module.exports.generateInstitute = async function (req, res) {
 
         // generate ids
         let users = []
+        let ids = []
+        let oldIds = []
         for (let step = 0; step < numberOfIDs; step++) {
             let newId = Math.floor(10000 + Math.random() * 90000);
             // ids.push(newId)
-            let newUser = await User.register({username: newId.toString()}, newId.toString());
+            let newUser = await User.register({username: newId.toString(), initialized: 0}, newId.toString());
             users.push(newUser);
+            ids.push(newId)
         }
+
 
         if(!school){
             // save into mongodb
-            school = new School({name: name, accessString: uuidv4(), postCode: postCode})
+            school = new School({name: name, accessString: uuidv4(), postCode: postCode, ids: ids}) 
             // Save the new model instance, passing a callback
             await school.save();
+        }
+        else{
+            for (const el of school.ids){
+                oldIds.push(el)
+            }
+            allIds = ids.concat(oldIds)
+            // console.log(allIds, oldIds, ids)
+            await School.updateOne({ 'postCode': postCode, 'school': name },{ $set: { ids: allIds}})
         }
 
         for (let u of users){
@@ -85,14 +128,21 @@ module.exports.generateInstitute = async function (req, res) {
             await u.save()
         }
 
-
+        // console.log(oldIds)
         // download
         let text = "School: " + school.name;
         text += "\nPostcode: " + school.postCode;
         text += "\nAccess string: " + school.accessString;
-        text += "\nIDs: ";
-        for (let u of users){
-            text += u.username + " ";
+        if (oldIds.length){
+            text += "\nnew IDs: " + ids;
+            // for (let u of users){
+            //     text += u.username + " ";
+            // }
+            text += "\nold IDs: " + oldIds;
+
+        }
+        else{
+            text += "\nIDs: " + school.ids;
         }
 
         res.attachment(school.name + ".txt");
