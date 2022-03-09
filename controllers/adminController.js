@@ -69,7 +69,7 @@ module.exports.generateInstitute = async function (req, res) {
         for (let step = 0; step < numberOfIDs; step++) {
             let newId = Math.floor(10000 + Math.random() * 90000);
             // ids.push(newId)
-            let newUser = await User.register({email: newId.toString() + "@test.com", username: newId.toString()}, newId.toString());
+            let newUser = await User.register({username: newId.toString()}, newId.toString());
             users.push(newUser);
         }
 

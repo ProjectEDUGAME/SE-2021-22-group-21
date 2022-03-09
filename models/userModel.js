@@ -18,7 +18,7 @@ const userSchema = new Schema({
                min: 0,
           max: 5
      },
-     email: {type: String},
+     // email: {type: String},
      school : { type: Schema.Types.ObjectId, ref: 'School' }
 // Automatically creates timestamps for each of these above
 }, {timestamps: true});

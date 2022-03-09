@@ -61,7 +61,7 @@ router.get("/register", function(req, res) {
 })
 
 router.post('/register', function(req, res) {
-    if(!req.body.username || !req.body.password || !req.body.password2 || !req.body.email) {
+    if(!req.body.username || !req.body.password || !req.body.password2) {
         req.flash('message', "please fill all field ")
         res.render("register.html", {message:req.flash('message')});
     }
@@ -71,7 +71,7 @@ router.post('/register', function(req, res) {
         res.render("register.html", {message:req.flash('message')});
     }
 
-    User.register({email: req.body.email, username: req.body.username}, req.body.password, function (err, user) {
+    User.register({username: req.body.username}, req.body.password, function (err, user) {
         if (err) {
             req.flash('message',  err)
             res.render("register.html", {message:req.flash('message')});
