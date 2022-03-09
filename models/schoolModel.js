@@ -5,12 +5,12 @@ const Schema = mongoose.Schema;
 // Creating a new schema to describe the type of objects we want to store (the structure)
 const schoolSchema = new Schema({
      // The name of the school this pupil is at
-     school: {
+     name: {
           type: String,
           required: true
      },
      // The unique string required to access the webapp
-     string: {
+     accessString: {
           type: String,
           required: true
      },
@@ -21,7 +21,9 @@ const schoolSchema = new Schema({
      ids: {
           type: Array,
           required: false
-     }
+     },
+     users:[{type: Schema.Types.ObjectId, ref: 'User'}]
+
 // Automatically creates timestamps for each of these above
 }, {timestamps: true});
 

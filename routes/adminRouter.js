@@ -11,132 +11,116 @@ const {Parser} = require("json2csv");
 const bcrypt = require("bcrypt");
 const { find } = require('../models/userModel');
 
-
+const auth = require("../auth")
+const passport = require("passport");
 
 // loads admin home page
-router.get('/home', function(req, res, next) {
-    res.render("admin.html");
+router.get('/home', auth.adminLoginRequired, function(req, res, next) {
+    res.render("admin.html", {user:req.user, message:req.flash("message")});
 });
-
-// load admin login page
-router.get('/login', function(req, res, next) {
-    res.render("adminLogin.html");
-});
-
-
-// Admin login functionality
-// router.post('/login', async(req, res) => {
-//     // get user input
-//     let adminstring = req.body.adminstring;
-//     // find users with adminstring
-//     const result = await School.find(
-//         {"string": adminstring}
-//     );//database.admins.filter(admin => admin.string ===  adminstring); 
-
-//     console.log(result.length);
-
-//     if (result.length > 0){    // if succeed, return to admin home page
-//         req.app.locals.isAdminLogin = true; // set global variables in app.js to true
-//         res.redirect("/admin/home");
-//     }
-//     else{ // if not, stay in the same page and display erross
-//         res.render("adminLogin.html", {invalidStr: "Invalid input, please try again!"});
-//     }
-// });
-
-router.post('/login', async(req, res) => {
-    // get user input
-    let adminstring = req.body.adminstring;
-    original = adminstring;
-    // find users with adminstring
-
-    //adminstring = await bcrypt.hash(adminstring.toString(), global.salt);
-    let result = false;
-    const doc = await School.distinct("string");
-    for (const string of doc) {
-        const final = await bcrypt.compare(adminstring, string)
-        if (final == true){
-            result = true;
-        }
-    };
-    console.log(result);
-
-    if (result == true){    // if succeed, return to admin home page
-        req.app.locals.isAdminLogin = true; // set global variables in app.js to true
-        res.redirect("/admin/home");
-    }
-
-    else{ // if not, stay in the same page and display erross
-        res.render("adminLogin.html", {invalidStr: "Invalid input, please try again!"});
-    }
-}); 
-
-
-//logs out
-router.get('/logout', function (req,res) {
-    req.app.locals.isAdminLogin = false; // set global variables in app.js to true
-    origin = ""
-    res.redirect("/admin/login");
-})
-
-
-
 
 // loads download data page
-router.get("/download", async function (req, res) {
-    schoools = await School.find({}, {_id: 0, school: 1})
-    console.log(schoools)
-    schooolsL = []
-    for (schol in schoools){
-        if (schoools[schol].school != 'Durham5'){
-            schooolsL.push(schoools[schol].school)
-        }
-    }
-    console.log(schooolsL)
+router.get("/download", auth.adminLoginRequired,  async function (req, res) {
+    var schools = await School.find({});
 
-    res.render("downloadData.html", {schools: schooolsL}) //{shipper_names: results}
+
+    res.render("downloadData.html", {schools: schools})
 });
 
 //finds and downloads data
-router.post("/download", adminController.downloadInstitute);
+router.post("/download", auth.adminLoginRequired,  adminController.downloadInstitute);
 
 
 // load change admin string page
-router.get("/newstring", async function (req, res) {
-    res.render("string.html")
+router.get("/passwordChange", auth.adminLoginRequired,  async function (req, res) {
+    res.render("passwordChange.html", {message:req.flash('message')});
 });
 
 // changes admin string
-router.post("/newstring", async function (req, res) {
-    const string = req.body.access_str;
-    console.log(string);
-    let result;
-
-    if (string.length > 1){
-        result = await adminController.generateNewString(string, original);
-    }else{
-        res.render("string.html", {message:"psw too short"})
-        return
-    }
-
-    if (!result.succeed){
-        res.render("string.html", {message:result.message})
-    }else{
-        res.render("string.html", {string: string})
-
-    }
-
+router.post("/passwordChange",  auth.adminLoginRequired, async function (req, res) {
+    await req.user.setPassword(req.body.password);
+    await req.user.save();
+    req.flash("message", "Password Updated")
+    res.render("passwordChange.html", {message:req.flash('message')});
 });
 
 
 
 // load generate institute string page
-router.get('/inst', function(req, res, next) {
+router.get('/inst', auth.adminLoginRequired,  function(req, res, next) {
     res.render("generateInstituteString.html", {message:req.flash('message')});
 });
 
 // Generates new institute
-router.post("/inst", adminController.generateInstitute);
+router.post("/inst", auth.adminLoginRequired,  adminController.generateInstitute);
+
+
+
+router.get("/register", function(req, res) {
+    res.render("register.html", {message:req.flash('message')});
+})
+
+router.post('/register', function(req, res) {
+    if(!req.body.username || !req.body.password || !req.body.password2 || !req.body.email) {
+        req.flash('message', "please fill all field ")
+        res.render("register.html", {message:req.flash('message')});
+    }
+
+    if(req.body.password2 !== req.body.password) {
+        req.flash('message', "password not match ")
+        res.render("register.html", {message:req.flash('message')});
+    }
+
+    User.register({email: req.body.email, username: req.body.username}, req.body.password, function (err, user) {
+        if (err) {
+            req.flash('message',  err)
+            res.render("register.html", {message:req.flash('message')});
+        } else {
+            req.flash('message', "Your account has been saved and you can login now.")
+            res.redirect("/admin/login")
+        }
+    });
+});
+
+router.get("/login", function(req, res) {
+    res.render("login.html", {message:req.flash('message')});
+})
+
+
+
+router.post("/login", function (req, res) {
+    passport.authenticate('local', function (err, user, info) {
+        if (err) {
+            req.flash('message', err)
+            res.render("login.html", {message: req.flash('message')});
+        }else{
+            if (!user) {
+                req.flash('message', "Invalid Username or password")
+                res.render("login.html", {message: req.flash('message')});
+            }else{
+                req.login(user, function (err) {
+                    if (err) {
+                        req.flash('message', err)
+                        res.render("login.html", {message: req.flash('message')});
+                    }
+                    req.flash('message', "login successful!");
+                    res.redirect("/admin/home")
+
+                })
+            }
+        }
+    })(req,res);
+});
+
+
+
+// Logout
+router.get("/logout", function(req, res){
+    req.logout();
+    req.flash("message", "logout successfully!")
+    res.redirect("/admin/login");
+});
+
 
 
 module.exports = router;

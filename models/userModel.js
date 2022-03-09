@@ -7,10 +7,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const userSchema = new Schema({
 // The unique user ID
      username : {type: String, unique: true, required:true},
-// The name of the school this pupil is at
-     school: {
-          type: String,
-     },
+
 // The selected wall colour
      wallColour: {
           type: String,
@@ -21,7 +18,8 @@ const userSchema = new Schema({
                min: 0,
           max: 5
      },
-     email: {type: String, required:true, unique:true},
+     email: {type: String},
+     school : { type: Schema.Types.ObjectId, ref: 'School' }
 // Automatically creates timestamps for each of these above
 }, {timestamps: true});
 

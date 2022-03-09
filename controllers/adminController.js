@@ -26,7 +26,7 @@ module.exports.downloadInstitute = async function (req, res) {
     }
     else{
         try {
-            schoolN = await School.find({school: schoolS}, {_id: 0, string: 1})
+            schoolN = await School.find({name: schoolS}, {_id: 0, string: 1})
             console.log(schoolN[0].string)
 
         } catch (err) {
@@ -60,48 +60,46 @@ module.exports.generateInstitute = async function (req, res) {
     let numberOfIDs = req.body.num;
     let  postCode = req.body.postCode;
 
-    let newSchool;
+    let school;
     if (name !== "" && postCode !== "" && numberOfIDs !== "") {
-        let existSchool = await School.find({ 'postCode': postCode, 'school': name }).lean()
-        console.log(existSchool)
+        school = await School.findOne({ 'postCode': postCode, 'name': name }).lean()
 
         // generate ids
-        let ids = []
+        let users = []
         for (let step = 0; step < numberOfIDs; step++) {
             let newId = Math.floor(10000 + Math.random() * 90000);
-            ids.push(newId)
+            // ids.push(newId)
+            let newUser = await User.register({email: newId.toString() + "@test.com", username: newId.toString()}, newId.toString());
+            users.push(newUser);
         }
 
-        if(existSchool.length == 0){
+        if(!school){
             // save into mongodb
-            newSchool = new School({school: name, string: uuidv4(), postCode: postCode, ids: ids})
+            school = new School({name: name, accessString: uuidv4(), postCode: postCode})
             // Save the new model instance, passing a callback
-            await newSchool.save();
+            await school.save();
         }
-        else{
-            let schols = await School.find({ 'postCode': postCode, 'school': name }).lean()
-            for (const el of schols[0].ids){
-                ids.push(el)
-            }
-            console.log(ids)
-            await School.updateOne({ 'postCode': postCode, 'school': name },{ $set: { ids: ids}})
+
+        for (let u of users){
+            u.school = school.id;  // assign foreign object id to user object
+            await u.save()
         }
+
 
         // download
-        // find all schools with the postCode
-        let schools = await School.find({ 'postCode': postCode, 'school': name }).lean()
+        let text = "School: " + school.name;
+        text += "\nPostcode: " + school.postCode;
+        text += "\nAccess string: " + school.accessString;
+        text += "\nIDs: ";
+        for (let u of users){
+            text += u.username + " ";
+        }
 
-        let text = "School: " + schools[0].school
-        text += "\nPostcode: " + schools[0].postCode
-        text += "\nAccess string: " + schools[0].string
-        text += "\nIDs: " + schools[0].ids
-
-        res.attachment(schools[0].school + ".txt");
+        res.attachment(school.name + ".txt");
         res.type("txt")
         return res.send(text);
 
     } else {
-        console.log("sss");
         req.flash('message', "please input school name or string!")
         res.redirect("/admin/home");
     }

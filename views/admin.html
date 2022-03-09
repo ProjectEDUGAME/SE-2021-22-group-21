@@ -12,14 +12,14 @@
 
 <div id="bg">
     <div class="content-box" id="welcome-admin">
-        <h1>Welcome, Admin!</h1>
+        <h1>Welcome, {{ user.username }}!</h1>
 
         {% if message %}
-    <p>{{message}}</p>
-    {% endif %}
+        <p >{{message}}</p>
+        {% endif %}
         <a type="button" class="btn btn-violet" href="/admin/inst" >Generate institute string and IDs</a>
         <a type="button" class="btn btn-indigo" href="/admin/download" >Download institute data</a>
-        <a type="button" class="btn btn-turquoise" href="/admin/newstring">Change new admin string</a>
+        <a type="button" class="btn btn-turquoise" href="/admin/passwordChange">Change admin password</a>
         <a type="button" class="btn btn-pink-submit" href="/admin/logout">Log out</a>
     </div>
 

@@ -13,23 +13,24 @@
 
 <div id="bg">
   <div class="content-box" id="admin-log-in">
-    <h1>Log In</h1>
+    <h1>User Log In</h1>
     <form  method="post" action="">
       {% if message %}
       <div class="warning">{{message}}</div>
       {% endif %}
 
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username">
+      <label for="schoolstring">School String:</label>
+      <input type="text" name="schoolstring" id="schoolstring">
 
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password">
+      <label for="username">User String:</label>
+      <input type="password" name="username" id="username">
 
       <button type="submit" class="btn btn-pink-submit">Log in</button>
     </form>
     <div class="" style="margin-top: -2rem">
-      <a type="button" class="btn btn-brown "  href="/user/login">User login</a>
+      <a type="button" class="btn btn-brown "  href="/admin/login">Admin login</a>
     </div>
+
   </div>
 
 
