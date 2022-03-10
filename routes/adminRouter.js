@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { v4: uuidv4 } = require('uuid');
-var database =  require("../data.json");
+// var database =  require("../data.json");
 const adminController =  require("../controllers/adminController.js");
 const {render} = require("nunjucks");
 // Access the userModel.js and school.js files
