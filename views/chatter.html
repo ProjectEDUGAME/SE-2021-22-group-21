@@ -14,7 +14,7 @@
 
 <body onload="switchVolume(event);">
     <audio loop onended="audioDone()" id="bell-audio">
-        <source src="/audio/school-bell.mp3" type="audio/mpeg">
+        <source src="/audio/chatter.mp3" type="audio/mpeg">
     </audio>
 
     <div id="chatter-bg">
@@ -30,7 +30,7 @@
                     <i class="fa-solid fa-play" id="bell-icon"></i>
                 </button>
             </div>
-            
+
             <div id="volume-slider">
                 <div id="bell-wrapper">
                     <input oninput="switchVolume(event);" class="slider" id="bell-slider" type="range" min="0" max="100"
