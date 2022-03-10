@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <audio loop onended="audioDone()" id="tutorial-audio">
+        <source src="/audio/tutorial-sound.mp3" type="audio/mpeg">
+    </audio>
 
     <div id="bg">
         <div id="tutorial">
@@ -22,9 +25,9 @@
                 <div class='pregame'>Click the blue button below to play sound. Please make sure they're not too quiet or too loud! Change
                     the volume if you need, or ask an adult to help you. </div>
                 <div class='pregame'>Press the NEXT button once you're ready to start.</div>
-                <div class = "audio">
+                <div onclick="tutorialAudioSwitch()" class="audio">
                     <button type="button" class="btn btn-audio">
-                        <i class="fa-solid fa-play"></i>
+                        <i class="fa-solid fa-play" id="bell-icon"></i>
                     </button>
                 </div>
                 <button type="button" class="btn btn-pink" onclick="switchTo('check-sound-level', 'button-tutorial');">Next</button>

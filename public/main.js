@@ -76,26 +76,40 @@ const changeBlueBg = () =>{
 
 // audio-slider play and pause function
 let x = document.getElementById("bell-audio"); 
+let y = document.getElementById("tutorial-audio");
 
 const audioSwitch=() =>{ 
     if (x.paused) {
         x.play();
-        document.getElementById("bell-icon").classList.remove("fa-play")
-        document.getElementById("bell-icon").classList.add("fa-pause")
+        document.getElementById("bell-icon").classList.remove("fa-play");
+        document.getElementById("bell-icon").classList.add("fa-pause");
     }else{
         x.pause();
         x.currentTime = 0;
-        document.getElementById("bell-icon").classList.remove("fa-pause")
-        document.getElementById("bell-icon").classList.add("fa-play")
+        document.getElementById("bell-icon").classList.remove("fa-pause");
+        document.getElementById("bell-icon").classList.add("fa-play");
+    }
+} 
+
+const tutorialAudioSwitch=() =>{ 
+    if (y.paused) {
+        y.play();
+        document.getElementById("bell-icon").classList.remove("fa-play");
+        document.getElementById("bell-icon").classList.add("fa-pause");
+    }else{
+        y.pause();
+        y.currentTime = 0;
+        document.getElementById("bell-icon").classList.remove("fa-pause");
+        document.getElementById("bell-icon").classList.add("fa-play");
     }
 } 
 
 const switchVolume=(e) =>{
     x.volume = document.getElementById("bell-slider").value/100;
-    console.log(x.volume)
+    console.log(x.volume);
 }
 
 const audioDone=() =>{
-    document.getElementById("bell-icon").classList.remove("fa-pause")
-    document.getElementById("bell-icon").classList.add("fa-play")
+    document.getElementById("bell-icon").classList.remove("fa-pause");
+    document.getElementById("bell-icon").classList.add("fa-play");
 }
