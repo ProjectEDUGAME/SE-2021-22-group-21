@@ -741,3 +741,21 @@ body::after{
     display: flex;
     flex-direction: column;
 }
+
+#chatter-bg{
+    width: min(140vh,100vw);
+    height: min(71.11vw,100vh);
+    background-image: url('../img/chatter-bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+#chatter-bg, .content-box{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

@@ -69,6 +69,10 @@ router.get('/bell', auth.loginRequired,function(req, res, next) {
   res.render('bell.html', { title: 'Express' });
 });
 
+router.get('/chatter', auth.loginRequired,function(req, res, next) {
+  res.render('chatter.html', { title: 'Express' });
+});
+
 router.post('/bell', auth.loginRequired,function(req, res, next) {
   var bell = req.body.options;
   var user = req.user;
