@@ -323,7 +323,7 @@ h2{
 h3{
     font-family: OpenDyslexic;
     text-align: center;
-    font-size: min(6.5vh,4.5vw);
+    font-size: min(5.65vh,4.03vw);
     color: #3181F9;
     font-weight: bolder;
         text-shadow: 1px 1px #FFAAAA,
@@ -338,7 +338,7 @@ h3{
 
 .pregame{
     margin: auto;
-    margin-top: min(3.2vh,2vw);
+    margin-top: min(5vh,3.57vw);
     font-family: OpenDyslexic;
     text-align: center;
     font-size: min(3.2vh,2vw);
@@ -386,6 +386,9 @@ h3{
     margin-top: min(-3.3vh,-2.35vw);
 }
 
+#check-sound-level .pregame{
+    margin-top: min(3vh,2.14vw);
+}
 
 #button-tutorial img{
     width: min(10vh, 8vw);
@@ -395,32 +398,44 @@ h3{
 #btnmouse {
     text-align: center;
     margin-top: min(2.5vh,1.5vw);
+    margin-bottom: (1vh,0.714vw);
 }
 
 #button-tutorial .btn-pink{
     float: right;
-    margin-top: min(9vh,6.42vw);
 } 
 
 #button-tutorial .btn-brown{
     float: left;
-    margin-top: min(9vh,6.42vw);
 } 
 
 #button-tutorial .pregame{
     font-size: min(4vh,2.3vw);
     color: #F931C1;
-    width: min(50vh,30.5vw)
+    width: min(50vh,30.5vw);
 }
 
 #slider img{
-    width: min(50vh, 25vw);
+    width: min(30vh, 21.42vw);
     height: auto;
+}
+#tutorial-volume-slider{
+    width: min(50vh, 25vw);
+    margin: auto;
+    margin-top: min(4.2vh,3vw);
+}
+
+#tutorial-volume-slider .slider{
+    width: min(50vh, 25vw);
+}
+
+#tutorial-volume-slider .ticks{
+    column-gap: min(21.5vh,15.35vw);
 }
 
 #slider {
     text-align: center;
-    margin-top: min(3vh,3.5vw);
+    margin-bottom: min(4vh,2.85vw);
 }
 
 #slider-tutorial .btn-pink{
@@ -433,7 +448,35 @@ h3{
 
 #slider-tutorial .pregame{
     width: min(75.5vh,53.5vw);
-    margin-top: min(4vh,3vw);
+    margin-top: min(8vh,5.7vw);
+}
+
+#colour-picker-tutorial .pregame{
+    width: min(56vh,40vw);
+    color: #54B8BE;
+    text-shadow: 1px 1px #2CD0C6,
+            0px 2px #2CD0C6,
+            -1px 1px #2CD0C6,
+            -2px 0px #2CD0C6,
+            -1px -1px #2CD0C6,
+            0px -2px #2CD0C6,
+            1px -1px #2CD0C6,
+            2px 0px #2CD0C6;
+}
+
+#colour-picker img{
+    width: min(60vh,42.85vw);
+    height: auto;
+    margin-top: min(3.5vh,2.5vw);
+}
+
+#colour-picker{
+    text-align: center;
+    margin-bottom: min(5vh,3.57vw);
+}
+
+#colour-picker-tutorial .btn-pink{
+    float: right;
 }
 
 #game-bg{
@@ -654,6 +697,7 @@ body::after{
 #wallcolour-tick{
     display: inline-block;
 }
+
 #wallcolour-tick img{
     width: min(13vh,9.28vw);
     height: auto;

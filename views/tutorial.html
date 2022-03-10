@@ -18,7 +18,7 @@
     <div id="bg">
         <div id="tutorial">
             <div class="content-box" id="check-sound-level">
-                <h3>Check your sound level!</h3>
+                <h3>Check your sound level</h3>
                 <div class='pregame'>Click the blue button below to play sound. Please make sure they're not too quiet or too loud! Change
                     the volume if you need, or ask an adult to help you. </div>
                 <div class='pregame'>Press the NEXT button once you're ready to start.</div>
@@ -32,26 +32,69 @@
             </div>
             
             <div class="content-box hidden" id="button-tutorial">
-                <h3>Design your dream classroom!</h3>
+                <h3>Design your dream classroom</h3>
                 <div class='pregame'>Use your cursor to select RED buttons and CLICK on them! </div>
                 <div id="btnmouse">
-                    <button type="button" class="btn btn-brown" onclick="switchTo('button-tutorial', 'check-sound-level');">Back</button>
                     <img src="/img/btnmouse.svg">
+                </div>
+                <div>
+                    <button type="button" class="btn btn-brown" onclick="switchTo('button-tutorial', 'check-sound-level');">Back</button>
                     <button type="button" class="btn btn-pink" onclick="switchTo('button-tutorial', 'slider-tutorial');">Next</button>
                 </div>
-                
-                
             </div>
             
             <div class="content-box hidden" id="slider-tutorial">
                 <h3>Design your dream classroom!</h3>
-                <div class='pregame'>Use the SLIDING BAR or COLOUR PICKER to select your favourite volume or colour!</div>
+                <div class='pregame'>Use the SLIDING BAR to select your favourite volume!</div>
+                <div id="tutorial-volume-slider">
+                    <div id="bell-wrapper">
+                        <input class="slider" type="range" min="0" max="100" step="10" list="steplist">
+                        <datalist id="steplist">
+                            <option value="0"></option>
+                            <option value="10"></option>
+                            <option value="20"></option>
+                            <option value="30"></option>
+                            <option value="40"></option>
+                            <option value="50"></option>
+                            <option value="60"></option>
+                            <option value="70"></option>
+                            <option value="80"></option>
+                            <option value="90"></option>
+                            <option value="100"></option>
+                        </datalist>
+                        <div class="ticks">
+                            <span class="tickmark">
+                                <i class="fa-solid fa-volume-xmark"></i>
+                            </span>
+                            <span class="tickmark">
+                                <i class="fa-solid fa-volume-low"></i>
+                            </span>
+                            <span class="tickmark">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
                 <div id="slider"><img src="/img/slider.svg"></div>
                 <button type="button" class="btn btn-brown" onclick="switchTo('slider-tutorial', 'button-tutorial');">Back</button>
-                <!-- COULD-HAVE-EVENT -->
-                <!-- <button type="button" class="btn btn-pink" onclick="switchTo('slider-tutorial', 'puzzle-tutorial');">Next</button> -->
-                <a type="button" class="btn btn-pink" href="/user/classroom">Start Game</a>
+                <button type="button" class="btn btn-pink" onclick="switchTo('slider-tutorial', 'colour-picker-tutorial');">Next</button>
             </div>
+
+            <div class="content-box hidden" id="colour-picker-tutorial">
+                <h3>Design your dream classroom!</h3>
+                <div class='pregame'>Use the COLOUR PICKER to select your favourite colour!</div>
+                <div id="colour-picker"><img src="/img/wall-colour.svg"></div>
+                <div>
+                    <button type="button" class="btn btn-brown"
+                        onclick="switchTo('colour-picker-tutorial', 'slider-tutorial');">Back</button>
+                    <!-- COULD-HAVE-EVENT -->
+                    <!-- <button type="button" class="btn btn-pink" onclick="switchTo('slider-tutorial', 'puzzle-tutorial');">Next</button> -->
+                    <a type="button" class="btn btn-pink" href="/user/classroom">Start Game</a>
+                </div>
+                
+            </div>
+
             <!-- might be deleted later on, COULD-HAVE-EVENT -->
             <!-- <div class="content-box hidden" id="puzzle-tutorial">
                 <h3>Design your dream classroom!</h3>
