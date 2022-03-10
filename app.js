@@ -45,7 +45,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: 'sd12312d123121213912',
-    cookie: { maxAge: 60000 }
+    cookie: { maxAge: 60*60*1000 }
 }));
 // passport
 const LocalStrategy = require('passport-local').Strategy;

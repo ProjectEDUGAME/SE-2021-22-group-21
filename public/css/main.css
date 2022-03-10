@@ -614,3 +614,62 @@ body::after{
    position:absolute; width:0; height:0; overflow:hidden; z-index:-1; 
    content:url("/img/green-bg.png") url("/img/yellow-bg.png") url("/img/orange-bg.png") url("/img/pink-bg.png") url("/img/purple-bg.png") url("/img/blue-bg.png"); 
 }
+
+#bell-bg{
+    width: min(140vh,100vw);
+    height: min(71.11vw,100vh);
+    background-image: url('../img/bell-bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+#bell-bg, .content-box{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+}
+
+#bell-volume-box{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.76);
+    border: min(1vh,1vw) solid #F8D5BF;
+    box-sizing: border-box;
+    padding: min(0.8vh,0.57vw);
+    font-size: min(2.5vh,1.78vw);
+    text-align: center;
+    border-radius: 20px;
+    margin-top: min(1vh,0.713vw);
+}
+
+#play-btn{
+    display: inline-block;
+}
+
+#wallcolour-tick{
+    display: inline-block;
+}
+
+#space-fill-bell{
+    height: min(58.4vh,41.71vw);
+}
+
+.btn-play{
+    font-size: min(3.5vh,2.5vw);
+    border-color: #FFCDAD;
+    border-radius: min(2vh,1.42vw);
+    line-height: min(3.5vh,2.5vw);
+    padding: min(1vh,1vw) min(2vh,2vw);
+    color: #FFA800;
+    text-shadow: 0 0 min(2vh,1.42vw) #FFCDAD;
+}
+
+#volume-slider{
+    display: inline-block;
+    width: min(80vh,57.14vw);
+}
+

@@ -73,3 +73,4 @@ const changePurpleBg = () =>{
 const changeBlueBg = () =>{
     document.getElementById("game-bg").style.backgroundImage = "url('/img/blue-bg.png')";
 }
+
