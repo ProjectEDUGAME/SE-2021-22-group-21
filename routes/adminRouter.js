@@ -33,16 +33,17 @@ router.post("/download", auth.adminLoginRequired,  adminController.downloadInsti
 
 // load change admin string page
 router.get("/passwordChange", auth.adminLoginRequired,  async function (req, res) {
-    res.render("passwordChange.html", {message:req.flash('message')});
+    res.render("passwordChange.html");
 });
 
 // changes admin string
 router.post("/passwordChange",  auth.adminLoginRequired, async function (req, res) {
     await req.user.setPassword(req.body.password);
     await req.user.save();
-    req.flash("message", "Password Updated")
+    req.flash("message", req.body.password)
     res.render("passwordChange.html", {message:req.flash('message')});
 });
+
 
 
 
