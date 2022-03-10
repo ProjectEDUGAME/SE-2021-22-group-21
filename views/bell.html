@@ -8,11 +8,14 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/6de1efbc0e.js" crossorigin="anonymous"></script>
     <link href="/css/main.css" rel="stylesheet">
-
     <title>Edugame</title>
 </head>
 
-<body>
+<body onload="switchVolume(event);">
+    <audio loop onended="audioDone()" id="bell-audio">
+        <source src="/audio/school-bell.mp3" type="audio/mpeg">
+    </audio>
+
     <div id="bell-bg">
         <div id="wallColour-info-box">
             Click the play button <span style="color:#FFA800"> &#9654 </span> to play a bell sound. Use the slider to pick your favourite volume, then click the green tick!
@@ -20,15 +23,15 @@
         <div id="space-fill-bell"></div>
 
         <div id="bell-volume-box">  
-            <div id="play-btn">
+            <div onclick="audioSwitch()" id="play-btn">
                 <button type="button" class="btn btn-play">
-                    <i class="fa-solid fa-play"></i>
+                    <i class="fa-solid fa-play" id="bell-icon"></i>
                 </button>
         <!-- <i class="fa-solid fa-pause"></i> pause--> 
             </div>
             <div id="volume-slider">
                 <div id="bell-wrapper">
-                    <input class="slider" type="range" min="0" max="100" step="10" list="steplist">
+                    <input oninput="switchVolume(event);" class="slider" id="bell-slider" type="range" min="0" max="100" step="10" list="steplist">
                     <datalist id="steplist">
                         <option value="0"></option>
                         <option value="10"></option>
