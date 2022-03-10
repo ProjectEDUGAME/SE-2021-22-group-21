@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +15,7 @@
 <body>
     <div id="bell-bg">
         <div id="wallColour-info-box">
-            Click the play button to play a bell audio, use the slider to pick your favourite volume, then click the green tick!
+            Click the play button <span style="color:#FFA800"> &#9654 </span> to play a bell sound. Use the slider to pick your favourite volume, then click the green tick!
         </div>
         <div id="space-fill-bell"></div>
 
@@ -25,32 +24,38 @@
                 <button type="button" class="btn btn-play">
                     <i class="fa-solid fa-play"></i>
                 </button>
-
+        <!-- <i class="fa-solid fa-pause"></i> pause--> 
             </div>
             <div id="volume-slider">
-                <input type="range" min="0" max="100" step="10" list="tickmarks">
-                <datalist id="tickmarks">
-                    <option value="0"></option>
-                    <option value="10"></option>
-                    <option value="20"></option>
-                    <option value="30"></option>
-                    <option value="40"></option>
-                    <option value="50"></option>
-                    <option value="60"></option>
-                    <option value="70"></option>
-                    <option value="80"></option>
-                    <option value="90"></option>
-                    <option value="100"></option>
-                </datalist>
-                <div class="ticks">
-                    <span class="o_txt">0</span>
-                    <span class="o_txt">10</span>
-                    <span class="o_txt o_on">20</span>
-                    <span class="o_txt">30</span>
-                    <span class="o_txt">40</span>
-                    <span class="o_txt">50</span>
+                <div id="bell-wrapper">
+                    <input class="slider" type="range" min="0" max="100" step="10" list="steplist">
+                    <datalist id="steplist">
+                        <option value="0"></option>
+                        <option value="10"></option>
+                        <option value="20"></option>
+                        <option value="30"></option>
+                        <option value="40"></option>
+                        <option value="50"></option>
+                        <option value="60"></option>
+                        <option value="70"></option>
+                        <option value="80"></option>
+                        <option value="90"></option>
+                        <option value="100"></option>
+                    </datalist>
+                    <div class="ticks">
+                        <span class="tickmark">
+                            <i class="fa-solid fa-volume-xmark"></i>
+                        </span>
+                        <span class="tickmark">
+                            <i class="fa-solid fa-volume-low"></i>
+                        </span>
+                        <span class="tickmark">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </span>
+                    </div>
                 </div>
             </div>
+
             
             <div id="wallcolour-tick" style="display:inline-block">
                 <button type="submit" class="btn btn-green svg-btn">

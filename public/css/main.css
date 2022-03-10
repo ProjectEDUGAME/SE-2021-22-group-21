@@ -648,14 +648,21 @@ body::after{
 
 #play-btn{
     display: inline-block;
+    margin-right: min(6vh,4.28vw);
 }
 
 #wallcolour-tick{
     display: inline-block;
 }
+#wallcolour-tick img{
+    width: min(13vh,9.28vw);
+    height: auto;
+    margin-top: 0;
+    margin-left: min(3vh,2.14vw);
+}
 
 #space-fill-bell{
-    height: min(58.4vh,41.71vw);
+    height: min(61.4vh,43.85vw);
 }
 
 .btn-play{
@@ -668,8 +675,25 @@ body::after{
     text-shadow: 0 0 min(2vh,1.42vw) #FFCDAD;
 }
 
-#volume-slider{
-    display: inline-block;
-    width: min(80vh,57.14vw);
+.ticks {
+    display: flex;
+    column-gap: min(31.5vh,22.5vw);
+    width: min(31.5vh,22.5vw);
 }
 
+#volume-slider {
+    /* width: min(80vh,57.14vw); */
+    text-align: center;
+    display: inline-block;
+}
+
+.slider{
+    width: min(70vh,50vw); /* manually adjust this to look right */
+    margin: auto;
+    cursor: grab; 
+}
+  
+#bell-wrapper{
+    display: flex;
+    flex-direction: column;
+}
