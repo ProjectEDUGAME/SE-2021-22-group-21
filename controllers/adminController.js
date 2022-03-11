@@ -110,7 +110,10 @@ module.exports.generateInstitute = async function (req, res) {
 
         if(!school){
             // save into mongodb
-            school = new School({name: name, accessString: uuidv4(), postCode: postCode, ids: ids}) 
+            let stringA = uuidv4().replace("-", "");
+            let stringB = uuidv4().replace("-", "");
+            string = Buffer.from(stringA, 'hex').toString('base64') + Buffer.from(stringB, 'hex').toString('base64')
+            school = new School({name: name, accessString: string, postCode: postCode, ids: ids}) 
             // Save the new model instance, passing a callback
             await school.save();
         }

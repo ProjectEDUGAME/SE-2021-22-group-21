@@ -110,13 +110,19 @@ router.get('/index', async function(req, res, next) {
 
 router.post('/index', async function(req, res, next) {
   let schoolString = req.body.schoolString;
-  const doc = await School.findOne({string: schoolString});
-  if (doc){
-    // req.flash('message', "School String is correct! please continue enter ID now.")
-    res.redirect("/user/login/"+schoolString)
-  }else{
-    req.flash('message', "Invalid input, please try again! ")
-    res.render('index.html', { title: 'Express', message:req.flash('message')});
+  if(schoolString){
+    const doc = await School.findOne({string: schoolString});
+    if (doc){
+      // req.flash('message', "School String is correct! please continue enter ID now.")
+      res.redirect("/user/login/"+schoolString)
+    }else{
+      req.flash('message', "Invalid input, please try again! ")
+      res.render('index.html', { title: 'Express', message:req.flash('message')});
+    }
+  }
+  else{
+      // req.flash('message', "Invalid input, please try again! ")
+      res.render('index.html', { title: 'Express', message:req.flash('message')});
   }
 });
 

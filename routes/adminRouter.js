@@ -37,10 +37,15 @@ router.get("/passwordChange", auth.adminLoginRequired,  async function (req, res
 
 // changes admin string
 router.post("/passwordChange",  auth.adminLoginRequired, async function (req, res) {
-    await req.user.setPassword(req.body.password);
-    await req.user.save();
-    req.flash("message", req.body.password)
-    res.render("adminPasswordChange.html", {message:req.flash('message')});
+    if (req.body.password.length >= 8){
+        await req.user.setPassword(req.body.password);
+        await req.user.save();
+        req.flash("message", req.body.password)
+        res.render("adminPasswordChange.html", {message:req.flash('message')});
+    }
+    else{
+        res.render("adminPasswordChange.html", {message:"psw too short"})
+    }
 });
 
 
