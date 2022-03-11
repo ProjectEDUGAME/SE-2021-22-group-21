@@ -757,3 +757,53 @@ body::after{
     right: 0;
     margin: auto;
 }
+
+.box {
+    margin: auto;
+    font-family: OpenDyslexic;
+    text-align: center;
+    font-size: min(3.5vh,2.5vw);
+    color: #000000;
+    font-weight: bolder;
+        text-shadow: 1px 1px #FFBBBB,
+            0px 2px #FFBBBB,
+            -1px 1px #FFBBBB,
+            -2px 0px #FFBBBB,
+            -1px -1px #FFBBBB,
+            0px -2px #FFBBBB,
+            1px -1px #FFBBBB,
+            2px 0px #FFBBBB;
+
+    width: min(60vh,42.85vw);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: min(1vh,1vw) solid #F8D5BF;
+    box-sizing: border-box;
+    padding: min(2vh,1.42vw);
+    font-size: min(2.3vh,1.64vw);
+    text-align: center;
+    border-radius: 20px;
+}
+
+#space-fill-end{
+    height: min(44.5vh,31.78vw);
+}
+
+.cheering img{
+    width: min(100vh,71.42vw);
+    height: auto;
+}
+
+.cheering{
+    text-align: center;
+}
+
+
+#end-logout{
+    float: right;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#last{
+    margin-right: min(5vh,3.57vw);
+    margin-top: min(-6.5vh,-4.64vw);
+}
