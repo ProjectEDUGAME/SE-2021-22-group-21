@@ -311,9 +311,9 @@ h2{
 }
 
 #participant-details .btn-pink-submit{
-    width: min(35vh,25vw);
+    width: min(36vh,27vw);
     display: block;
-    margin-top: min(3.5vh,2.5vw);
+    margin-top: min(2.5vh,1.78vw);
     font-size: min(3.5vh,2.5vw);
 }
 
