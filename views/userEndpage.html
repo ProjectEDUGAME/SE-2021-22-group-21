@@ -27,7 +27,7 @@
         The game is now finished. You can clich the pink button to log out.
         </div>
         <div id="last">
-            <button class="btn btn-pink" id="end-logout">log out</button>
+            <a type="button" class="btn btn-pink" id="end-logout" href="/user/logout">log out</button>
         </div>
 
         
@@ -38,6 +38,31 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="/main.js"></script>
+    {% if color == "green" %}
+        <script>
+            changeGreenBg()
+        </script>
+    {% elif color == "yellow" %}
+        <script>
+            changeYellowBg()
+        </script>
+    {% elif  color == "orange" %}
+        <script>
+            changeOrangeBg()
+        </script>
+    {% elif  color == "pink" %}
+        <script>
+            changePinkBg()
+        </script>
+    {% elif  color == "purple" %}
+        <script>
+            changePurpleBg()
+        </script>
+    {% else %}
+        <script>
+            changeBlueBg()
+        </script>
+    {% endif %}
 </body>
 
 </html>

@@ -4,7 +4,7 @@ exports.loginRequired = function (req, res, next){
         return next();
     }
     req.flash('message', 'Please login!')
-    res.redirect("/user/login");
+    res.redirect("/user/index");
 }
 
 exports.adminLoginRequired = function (req, res, next){

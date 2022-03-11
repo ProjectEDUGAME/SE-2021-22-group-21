@@ -49,7 +49,8 @@ router.get('/classroom', auth.loginRequired,function(req, res, next) {
 // });
 
 router.get('/endpage', auth.loginRequired,function(req, res, next) {
-  res.render('userEndpage.html', { title: 'Express' });
+  var color = req.user.wallColour;
+  res.render('userEndpage.html', { title: 'Express' , message:req.flash('message'), color:color});
 });
 
 router.get('/wallcolour', auth.loginRequired,function(req, res, next) {
