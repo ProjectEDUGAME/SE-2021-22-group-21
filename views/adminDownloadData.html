@@ -19,7 +19,7 @@
                 <label for="schoolList" class="form-label">Please select a school</label>
                 <div class="d-flex justify-content-center mb-3">
                     <select name="school"  class="form-select" id="schoolList" aria-label="Default select example">
-                        <option selected>Open this select menu</option> 
+                        <option selected value ="">Open this select menu</option> 
                         <!-- <option value =""></option> -->
                         {% for s in schools %}
                         <option value ="{{s.id}}">{{s.name}}</option>

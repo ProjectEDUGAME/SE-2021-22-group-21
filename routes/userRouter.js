@@ -3,13 +3,9 @@ var router = express.Router();
 var auth = require("../auth")
 const User = require("../models/userModel");
 const School = require("../models/schoolModel");
-const passport = require("passport");
 
-/* GET users listing. */
-router.get('/', auth.loginRequired, function(req, res, next) {
-  res.render('userHome.html',  {message:req.flash('message')});
-});
 
+// TUTORIAL
 router.get('/tutorial', auth.loginRequired,function(req, res, next) {
   var user = req.user;
   user.initialized = 1;
@@ -17,13 +13,13 @@ router.get('/tutorial', auth.loginRequired,function(req, res, next) {
   res.render('userTutorial.html', { title: 'Express' });
 });
 
+
+
+// CLASSROOM ('home' page)
 router.get('/classroom', auth.loginRequired,function(req, res, next) {
   var color = req.user.wallColour;
   var bell = req.user.bell;
   var chatter = req.user.chatter;
-  // if (!color){
-  //   color = "green";
-  // }
 
   if (color && bell && chatter){
     res.render('userClassroom.html', { title: 'Express' , message:req.flash('message'), color:color, done: "true"});
@@ -34,25 +30,18 @@ router.get('/classroom', auth.loginRequired,function(req, res, next) {
     }
     res.render('userClassroom.html', { title: 'Express' , message:req.flash('message'), color:color});
   }
-  
 });
 
-// router.get('/checkDone', auth.loginRequired,function(req, res, next) {
-//   var color = req.user.wallColour;
-//   var bell = req.user.bell;
-//   if (color && bell){
-//     res.render('endpage.html', { title: 'Express' });
-//   }
-//   else{
-//     res.redirect("/user/classroom");
-//   }
-// });
 
+// ENDPAGE
 router.get('/endpage', auth.loginRequired,function(req, res, next) {
   var color = req.user.wallColour;
   res.render('userEndpage.html', { title: 'Express' , message:req.flash('message'), color:color});
 });
 
+
+
+// WALL COLOUR EVENT
 router.get('/wallcolour', auth.loginRequired,function(req, res, next) {
   res.render('eventWallColour.html', { title: 'Express' });
 });
@@ -70,12 +59,10 @@ router.post('/wallcolour', auth.loginRequired,function(req, res, next) {
   })
 });
 
+
+// BELL EVENT
 router.get('/bell', auth.loginRequired,function(req, res, next) {
   res.render('eventBell.html', { title: 'Express' });
-});
-
-router.get('/chatter', auth.loginRequired,function(req, res, next) {
-  res.render('eventChatter.html', { title: 'Express' });
 });
 
 router.post('/bell', auth.loginRequired,function(req, res, next) {
@@ -91,6 +78,12 @@ router.post('/bell', auth.loginRequired,function(req, res, next) {
   })
 });
 
+
+// CHATTER EVENT
+router.get('/chatter', auth.loginRequired,function(req, res, next) {
+  res.render('eventChatter.html', { title: 'Express' });
+});
+
 router.post('/chatter', auth.loginRequired,function(req, res, next) {
   var chatter = req.body.chatter;
   var user = req.user;
@@ -104,6 +97,8 @@ router.post('/chatter', auth.loginRequired,function(req, res, next) {
   })
 });
 
+
+// INDEX (user login pt 1)
 router.get('/index', async function(req, res, next) {
   res.render('index.html');
 });
@@ -111,7 +106,7 @@ router.get('/index', async function(req, res, next) {
 router.post('/index', async function(req, res, next) {
   let schoolString = req.body.schoolString;
   if(schoolString){
-    const doc = await School.findOne({string: schoolString});
+    const doc = await School.findOne({accessString: schoolString});
     if (doc){
       // req.flash('message', "School String is correct! please continue enter ID now.")
       res.redirect("/user/login/"+schoolString)
@@ -126,10 +121,12 @@ router.post('/index', async function(req, res, next) {
   }
 });
 
+
+
+// INSTITUTE PAGE (login pt 2)
 router.get('/login/:string', async function(req, res, next) {
   let schoolString = req.params["string"];
   const doc = await School.findOne({accessString: schoolString});
-  console.log(doc)
   if (doc){
     res.render('userLogin.html', { title: 'Express', doc:doc});
   }else{
@@ -138,9 +135,7 @@ router.get('/login/:string', async function(req, res, next) {
   }
 });
 
-
 router.post('/login/:string',  function(req, res, next) {
-    // const doc = await School.findOne({accessString: req.body.schoolstring});
     let doc = {name: req.body.name, accessString: req.body.schoolstring};
     User.findOne({username:req.body.username}).populate("school").exec(function (err, user) {
         if (err){
@@ -173,6 +168,7 @@ router.post('/login/:string',  function(req, res, next) {
 
 
 
+// LOGOUT
 router.get('/logout', function (req,res) {
   req.logout();
   res.redirect("/user/index");
