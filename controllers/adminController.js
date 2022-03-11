@@ -116,6 +116,11 @@ module.exports.generateInstitute = async function (req, res) {
             school = new School({name: name, accessString: string, postCode: postCode, ids: ids}) 
             // Save the new model instance, passing a callback
             await school.save();
+
+            for (let u of users){
+                u.school = school.id;  // assign foreign object id to user object
+                await u.save()
+            }
         }
         else{
             for (const el of school.ids){
@@ -124,12 +129,13 @@ module.exports.generateInstitute = async function (req, res) {
             allIds = ids.concat(oldIds)
             // console.log(allIds, oldIds, ids)
             await School.updateOne({ 'postCode': postCode, 'school': name },{ $set: { ids: allIds}})
+
+            for (let u of users){
+                u.school = school._id;  // assign foreign object id to user object
+                await u.save()
+            }
         }
 
-        for (let u of users){
-            u.school = school.id;  // assign foreign object id to user object
-            await u.save()
-        }
 
         // console.log(oldIds)
         // download
