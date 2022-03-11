@@ -517,6 +517,14 @@ h3{
     text-align: center;
 }
 
+#classroom-done-btn{
+    position: absolute;
+    z-index: 2;
+    margin-left: min(5vh,3.57vw);
+    margin-top: min(5vh,3.57vw);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
 .modal-title{
     color: #3181F9;
     font-family: Balloda;
