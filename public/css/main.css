@@ -596,7 +596,7 @@ h3{
     background-color: rgba(255, 255, 255, 0.76);
     border: min(1vh,1vw) solid #F8D5BF;
     box-sizing: border-box;
-    padding: min(0.8vh,0.57vw);
+    padding: min(1.75vh,1.25vw);
     font-size: min(2.5vh,1.78vw);
     text-align: center;
     border-radius: 20px;
@@ -617,21 +617,18 @@ h3{
     height: min(65.4vh,46.71vw);
 }
 
-#wallcolour-tick .svg-btn{
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
-    box-shadow: none;
-    margin-left: min(2vh,1.42vw);
-}
 
-#wallcolour-tick img{
-    width: min(15vh,10.71vw);
+.happy-btn{
+    width: min(10vh,7.14vw);
     height: auto;
-    margin-top: min(2vh,1.42vw);
+    font-size: min(3.5vh,2.5vw);
+    border-color: #00FF19;
+    background-color: #E3FFD9;
+    border-radius: min(5vh,3.57vw);
+    line-height: min(3.5vh,2.5vw);
+    padding: min(1vh,1vw) min(2vh,2vw);
+    color: #2CD03D;
+    margin-left: min(4vh,2.85vw);
 }
 
 #btn-green{
@@ -688,7 +685,7 @@ body::after{
     background-color: rgba(255, 255, 255, 0.76);
     border: min(1vh,1vw) solid #F8D5BF;
     box-sizing: border-box;
-    padding: min(0.8vh,0.57vw);
+    padding: min(2.2vh,1.57vw);
     font-size: min(2.5vh,1.78vw);
     text-align: center;
     border-radius: 20px;
@@ -700,15 +697,22 @@ body::after{
     margin-right: min(6vh,4.28vw);
 }
 
-#wallcolour-tick{
+#wallcolour-happy{
     display: inline-block;
 }
 
-#wallcolour-tick img{
-    width: min(13vh,9.28vw);
-    height: auto;
-    margin-top: 0;
-    margin-left: min(3vh,2.14vw);
+#wallcolour-happy .happy-btn {
+    padding: min(1.5vh,1.5vw) min(2vh,2vw);
+    width: min(12vh,8.57vw);
+}
+
+#wallcolour-back{
+    display:inline-block; 
+    margin-left: min(4vh,2.85vw);
+}
+
+#wallcolour-back .back-btn{
+    padding: min(1.5vh,1.5vw) min(2vh,2vw);
 }
 
 #space-fill-bell{
@@ -746,6 +750,16 @@ body::after{
 #bell-wrapper{
     display: flex;
     flex-direction: column;
+}
+
+.back-btn{
+    font-size: min(3.5vh,2.5vw);
+    border-color: #d6bdf6;
+    border-radius: min(2vh,1.42vw);
+    line-height: min(3.5vh,2.5vw);
+    padding: min(1vh,1vw) min(2vh,2vw);
+    color: #c69ff8;
+    text-shadow: 0 0 min(2vh,1.42vw) #d6bdf6;
 }
 
 #chatter-bg{
