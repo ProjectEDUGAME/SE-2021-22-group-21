@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const { v4: uuidv4 } = require('uuid');
-// var database =  require("../data.json");
 const adminController =  require("../controllers/adminController.js");
 const {render} = require("nunjucks");
 // Access the userModel.js and school.js files
@@ -16,7 +15,7 @@ const passport = require("passport");
 
 // loads admin home page
 router.get('/home', auth.adminLoginRequired, function(req, res, next) {
-    res.render("admin.html", {user:req.user, message:req.flash("message")});
+    res.render("adminHome.html", {user:req.user, message:req.flash("message")});
 });
 
 // loads download data page
@@ -24,7 +23,7 @@ router.get("/download", auth.adminLoginRequired,  async function (req, res) {
     var schools = await School.find({});
 
 
-    res.render("downloadData.html", {schools: schools})
+    res.render("adminDownloadData.html", {schools: schools})
 });
 
 //finds and downloads data
@@ -33,7 +32,7 @@ router.post("/download", auth.adminLoginRequired,  adminController.downloadInsti
 
 // load change admin string page
 router.get("/passwordChange", auth.adminLoginRequired,  async function (req, res) {
-    res.render("passwordChange.html");
+    res.render("adminPasswordChange.html");
 });
 
 // changes admin string
@@ -41,7 +40,7 @@ router.post("/passwordChange",  auth.adminLoginRequired, async function (req, re
     await req.user.setPassword(req.body.password);
     await req.user.save();
     req.flash("message", req.body.password)
-    res.render("passwordChange.html", {message:req.flash('message')});
+    res.render("adminPasswordChange.html", {message:req.flash('message')});
 });
 
 
@@ -49,7 +48,7 @@ router.post("/passwordChange",  auth.adminLoginRequired, async function (req, re
 
 // load generate institute string page
 router.get('/inst', auth.adminLoginRequired,  function(req, res, next) {
-    res.render("generateInstituteString.html", {message:req.flash('message')});
+    res.render("adminGenerateInstString.html", {message:req.flash('message')});
 });
 
 // Generates new institute
@@ -84,7 +83,7 @@ router.post('/register', function(req, res) {
 });
 
 router.get("/login", function(req, res) {
-    res.render("login.html", {message:req.flash('message')});
+    res.render("adminLogin.html", {message:req.flash('message')});
 })
 
 
@@ -93,16 +92,16 @@ router.post("/login", function (req, res) {
     passport.authenticate('local', function (err, user, info) {
         if (err) {
             req.flash('message', err)
-            res.render("login.html", {message: req.flash('message')});
+            res.render("adminLogin.html", {message: req.flash('message')});
         }else{
             if (!user) {
                 req.flash('message', "Invalid Username or password")
-                res.render("login.html", {message: req.flash('message')});
+                res.render("adminLogin.html", {message: req.flash('message')});
             }else{
                 req.login(user, function (err) {
                     if (err) {
                         req.flash('message', err)
-                        res.render("login.html", {message: req.flash('message')});
+                        res.render("adminLogin.html", {message: req.flash('message')});
                     }
                     req.flash('message', "login successful!");
                     res.redirect("/admin/home")
