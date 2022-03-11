@@ -17,6 +17,10 @@ router.get('/home', auth.adminLoginRequired, function(req, res, next) {
 // DOwNOAD DATA
 router.get("/download", auth.adminLoginRequired,  async function (req, res) {
     var schools = await School.find({});
+    schools.sort(function(a,b){ 
+        var x = a.name.toLowerCase() < b.name.toLowerCase()? -1:1; 
+        return x; 
+    });
     res.render("adminDownloadData.html", {schools: schools})
 });
 
