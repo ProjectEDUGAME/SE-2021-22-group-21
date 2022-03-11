@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var auth = require("../auth")
 const User = require("../models/userModel");
+const School = require("../models/schoolModel");
 const passport = require("passport");
 
 /* GET users listing. */
@@ -33,16 +34,16 @@ router.get('/classroom', auth.loginRequired,function(req, res, next) {
   
 });
 
-router.get('/checkDone', auth.loginRequired,function(req, res, next) {
-  var color = req.user.wallColour;
-  var bell = req.user.bell;
-  if (color && bell){
-    res.render('endpage.html', { title: 'Express' });
-  }
-  else{
-    res.redirect("/user/classroom");
-  }
-});
+// router.get('/checkDone', auth.loginRequired,function(req, res, next) {
+//   var color = req.user.wallColour;
+//   var bell = req.user.bell;
+//   if (color && bell){
+//     res.render('endpage.html', { title: 'Express' });
+//   }
+//   else{
+//     res.redirect("/user/classroom");
+//   }
+// });
 
 router.get('/endpage', auth.loginRequired,function(req, res, next) {
   res.render('endpage.html', { title: 'Express' });
@@ -86,35 +87,69 @@ router.post('/bell', auth.loginRequired,function(req, res, next) {
   })
 });
 
-router.get('/login', async function(req, res, next) {
-  res.render('userLogin.html', { message: req.flash("message")});
+router.get('/index', async function(req, res, next) {
+  res.render('index.html', { message: req.flash("message")});
+});
+
+router.post('/index', async function(req, res, next) {
+  let schoolString = req.body.schoolString;
+  const doc = await School.findOne({string: schoolString});
+  if (doc){
+    // req.flash('message', "School String is correct! please continue enter ID now.")
+    res.redirect("/user/login/"+schoolString)
+  }else{
+    req.flash('message', "Invalid input, please try again! ")
+    res.render('index.html', { title: 'Express', message:req.flash('message')});
+  }
+});
+
+router.get('/login/:string', async function(req, res, next) {
+  // res.render('participantDetails.html', { message: req.flash("message")});
+  let schoolString = req.params["string"];
+  const doc = await School.findOne({accessString: schoolString});
+  console.log(doc)
+  if (doc){
+    res.render('participantDetails.html', { title: 'Express', doc:doc});
+  }else{
+    req.flash('message', "Invalid input, please try again! ")
+    res.redirect("/index")
+  }
 });
 
 
-router.post('/login',  function(req, res, next) {
+router.post('/login/:string',  function(req, res, next) {
+    console.log("hello?")
+    console.log(req.body.username)
+    console.log(req.body.schoolstring)
     User.findOne({username:req.body.username}).populate("school").exec(function (err, user) {
         if (err){
+          console.log("1")
           req.flash("message", err)
-          res.render('userLogin.html', { message: req.flash("message")});
+          res.render('participantDetails.html', { message: req.flash("message")});
         }
         if (!user){
+          console.log("2")
           req.flash("message", "User Not Found")
-          res.render('userLogin.html', { message: req.flash("message")});
+          res.render('participantDetails.html', { message: req.flash("message")});
         }else{
+          console.log(user.school.accessString)
           if (user.school.accessString === req.body.schoolstring ){
+            console.log("3")
             req.flash("message", "Login Successfully!")
             req.login(user, function (err) {
               if (err) {
+                console.log("4")
                 req.flash('message', err)
-                res.render("userLogin.html", {message: req.flash('message')});
+                res.render("participantDetails.html", {message: req.flash('message')});
               }
               req.flash('message', "login successful!");
               res.redirect("/user/tutorial")
 
             })
           }else{
+            console.log("5")
             req.flash("message", "Login Failed! School Not Matched")
-            res.redirect("/user/login")
+            res.redirect("/user/login/:string")
           }
 
         }

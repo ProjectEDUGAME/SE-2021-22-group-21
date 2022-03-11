@@ -11,7 +11,7 @@ const router = express.Router();
 // });
 
 router.get('/', function(req, res, next) {
-  res.redirect("/user/login")
+  res.redirect("/user/index")
 });
 
 
