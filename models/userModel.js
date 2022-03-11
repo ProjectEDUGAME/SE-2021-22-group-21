@@ -16,7 +16,12 @@ const userSchema = new Schema({
      bell: {
           type: Number,
                min: 0,
-          max: 5
+          max: 100
+     },
+     chatter: {
+          type: Number,
+               min: 0,
+          max: 100
      },
      // email: {type: String},
      initialized: {

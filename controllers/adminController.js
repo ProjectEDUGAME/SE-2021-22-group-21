@@ -42,7 +42,7 @@ module.exports.downloadInstitute = async function (req, res) {
     }
     else{
         try {
-            data = await User.find({school: sID, initialized: 1},  {_id: 0, username: 1, school: 1, wallColour: 1, bell: 1})
+            data = await User.find({school: sID, initialized: 1},  {_id: 0, username: 1, school: 1, wallColour: 1, bell: 1, chatter: 1})
             console.log(data)
 
         } catch (err) {
@@ -73,7 +73,7 @@ module.exports.downloadInstitute = async function (req, res) {
     }
 
 
-    const fields = ["username", "school", "wallColour", "bell"];
+    const fields = ["username", "school", "wallColour", "bell", "chatter"];
 
     const json2csv = new Parser({fields});
     const csv = json2csv.parse(data);

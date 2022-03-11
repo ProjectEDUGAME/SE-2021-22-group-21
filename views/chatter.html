@@ -25,6 +25,7 @@
         <div id="space-fill-bell"></div>
 
         <div id="bell-volume-box">
+            <form method="POST" action="">
             <div onclick="audioSwitch()" id="play-btn">
                 <button type="button" class="btn btn-play">
                     <i class="fa-solid fa-play" id="bell-icon"></i>
@@ -33,7 +34,7 @@
 
             <div id="volume-slider">
                 <div id="bell-wrapper">
-                    <input oninput="switchVolume(event);" class="slider" id="bell-slider" type="range" min="0" max="100"
+                    <input oninput="switchVolume(event);" class="slider" name="chatter" id="bell-slider" type="range" min="0" max="100"
                         step="10" list="steplist">
                     <datalist id="steplist">
                         <option value="0"></option>
@@ -68,6 +69,7 @@
                     <img src="/img/tickmark.svg">
                 </button>
             </div>
+            </form>
         </div>
 
 

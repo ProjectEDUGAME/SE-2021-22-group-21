@@ -20,15 +20,18 @@ router.get('/tutorial', auth.loginRequired,function(req, res, next) {
 router.get('/classroom', auth.loginRequired,function(req, res, next) {
   var color = req.user.wallColour;
   var bell = req.user.bell;
+  var chatter = req.user.chatter;
   // if (!color){
   //   color = "green";
   // }
 
-  if (color){ // && bell
+  if (color && bell && chatter){
     res.render('classroom.html', { title: 'Express' , message:req.flash('message'), color:color, done: "true"});
   }
   else{
-    color = "green";
+    if (!color){
+      color = "green";
+    }
     res.render('classroom.html', { title: 'Express' , message:req.flash('message'), color:color});
   }
   
@@ -59,7 +62,7 @@ router.post('/wallcolour', auth.loginRequired,function(req, res, next) {
   user.wallColour = colour;
   user.save(function (err) {
     if(err){
-      req.flash("meesage", err);
+      req.flash("message", err);
       res.redirect("/user/wallcolour");
     }
     res.redirect("/user/classroom");
@@ -75,13 +78,26 @@ router.get('/chatter', auth.loginRequired,function(req, res, next) {
 });
 
 router.post('/bell', auth.loginRequired,function(req, res, next) {
-  var bell = req.body.options;
+  var bell = req.body.bell;
   var user = req.user;
   user.bell = bell;
   user.save(function (err) {
     if(err){
-      req.flash("meesage", err);
+      req.flash("message", err);
       res.redirect("/user/bell");
+    }
+    res.redirect("/user/classroom");
+  })
+});
+
+router.post('/chatter', auth.loginRequired,function(req, res, next) {
+  var chatter = req.body.chatter;
+  var user = req.user;
+  user.chatter = chatter;
+  user.save(function (err) {
+    if(err){
+      req.flash("message", err);
+      res.redirect("/user/chatter");
     }
     res.redirect("/user/classroom");
   })
@@ -160,7 +176,7 @@ router.post('/login/:string',  function(req, res, next) {
 
 router.get('/logout', function (req,res) {
   req.logout();
-  res.redirect("/user/login");
+  res.redirect("/user/index");
 })
 
 
