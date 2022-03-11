@@ -100,6 +100,7 @@ router.post('/chatter', auth.loginRequired,function(req, res, next) {
 
 // INDEX (user login pt 1)
 router.get('/index', async function(req, res, next) {
+  req.logout();
   res.render('index.html');
 });
 
