@@ -19,6 +19,7 @@
             <h2>Participant details</h2>
             <form method="POST">
                 <p>Your school name is <span id='school-name'>{{ doc.name }}</span></p>
+                <input type="text"  name="name" style="display:none;" value="{{doc.name}}"/>
                 <div>
                     <label for="participant-id">Please input a participant ID into the field and press the button below
                         to start the game:</label>

@@ -105,7 +105,7 @@ router.post('/chatter', auth.loginRequired,function(req, res, next) {
 });
 
 router.get('/index', async function(req, res, next) {
-  res.render('index.html', { message: req.flash("message")});
+  res.render('index.html');
 });
 
 router.post('/index', async function(req, res, next) {
@@ -128,27 +128,29 @@ router.get('/login/:string', async function(req, res, next) {
     res.render('userLogin.html', { title: 'Express', doc:doc});
   }else{
     req.flash('message', "Invalid input, please try again! ")
-    res.redirect("/index")
+    res.redirect("/user/index")
   }
 });
 
 
 router.post('/login/:string',  function(req, res, next) {
+    // const doc = await School.findOne({accessString: req.body.schoolstring});
+    let doc = {name: req.body.name, accessString: req.body.schoolstring};
     User.findOne({username:req.body.username}).populate("school").exec(function (err, user) {
         if (err){
           req.flash("message", err)
-          res.render('userLogin.html', { message: req.flash("message")});
+          res.render('userLogin.html', { message: req.flash("message"), doc:doc});
         }
         if (!user){
           req.flash("message", "User Not Found")
-          res.render('userLogin.html', { message: req.flash("message")});
+          res.render('userLogin.html', { message: req.flash("message"), doc:doc});
         }else{
           if (user.school.accessString === req.body.schoolstring ){
             req.flash("message", "Login Successfully!")
             req.login(user, function (err) {
               if (err) {
                 req.flash('message', err)
-                res.render("userLogin.html", {message: req.flash('message')});
+                res.render("userLogin.html", {message: req.flash('message'), doc:doc});
               }
               req.flash('message', "login successful!");
               res.redirect("/user/tutorial")
