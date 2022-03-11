@@ -58,7 +58,7 @@ router.post("/inst", auth.adminLoginRequired,  adminController.generateInstitute
 
 // LOGIN
 router.get("/login", function(req, res) {
-    res.render("adminLogin.html", {message:req.flash('message')});
+    res.render("adminLogin.html");
 })
 
 router.post("/login", function (req, res) {
@@ -68,7 +68,7 @@ router.post("/login", function (req, res) {
             res.render("adminLogin.html", {message: req.flash('message')});
         }else{
             if (!user) {
-                req.flash('message', "Invalid Username or password")
+                req.flash('message', "Invalid input, please try again! ")
                 res.render("adminLogin.html", {message: req.flash('message')});
             }else{
                 req.login(user, function (err) {

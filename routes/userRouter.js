@@ -144,7 +144,7 @@ router.post('/login/:string',  function(req, res, next) {
           res.render('userLogin.html', { message: req.flash("message"), doc:doc});
         }
         if (!user){
-          req.flash("message", "User Not Found")
+          req.flash("message", "User Not Found! :(")
           res.render('userLogin.html', { message: req.flash("message"), doc:doc});
         }else{
           if (user.school.accessString === req.body.schoolstring ){

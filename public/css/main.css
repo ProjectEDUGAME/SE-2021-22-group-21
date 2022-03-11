@@ -306,7 +306,7 @@ h2{
 
 #participant-details .warning{
     color: #b50705;
-    font-size: min(2vh,1.5vw);
+    font-size: min(3vh,2.14vw);
     margin-bottom: min(1.75vh, 1.25vw);
 }
 
