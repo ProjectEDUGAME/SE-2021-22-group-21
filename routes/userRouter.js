@@ -21,7 +21,7 @@ router.get('/classroom', auth.loginRequired,function(req, res, next) {
   var bell = req.user.bell;
   var chatter = req.user.chatter;
 
-  if (color && bell && chatter){
+  if (color != undefined && bell != undefined && chatter != undefined){
     res.render('userClassroom.html', { title: 'Express' , message:req.flash('message'), color:color, done: "true"});
   }
   else{

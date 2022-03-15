@@ -79,6 +79,8 @@ module.exports.generateInstitute = async function (req, res) {
             let stringA = uuidv4().replace("-", "");
             let stringB = uuidv4().replace("-", "");
             string = Buffer.from(stringA, 'hex').toString('base64') + Buffer.from(stringB, 'hex').toString('base64')
+            string = string.replace("/", "");
+
 
             // Store school do db
             school = new School({name: name, accessString: string, postCode: postCode, ids: ids})
