@@ -321,7 +321,7 @@ h2{
 h3{
     font-family: OpenDyslexic;
     text-align: center;
-    font-size: min(5.65vh,4.03vw);
+    font-size: min(5.65vh,3.9vw);
     color: #3181F9;
     font-weight: bolder;
         text-shadow: 1px 1px #FFAAAA,
@@ -366,8 +366,8 @@ h3{
 #check-sound-level .btn-audio{
     background-color: #D9FFFA;
     border: 0.5vh solid #00FFFF;
-    border-radius: 25px;
-    width: min(11vh,5.57vw);
+    border-radius: min(3.5vh,2.5vw);
+    width: min(11vh,9.57vw);
     margin-top: min(2vh,1.42vw);
 }
 
@@ -428,7 +428,7 @@ h3{
 }
 
 #tutorial-volume-slider .ticks{
-    column-gap: min(21.5vh,15.35vw);
+    column-gap: min(21.5vh,10.5vw);
 }
 
 #slider {
@@ -446,20 +446,20 @@ h3{
 
 #slider-tutorial .pregame{
     width: min(75.5vh,53.5vw);
-    margin-top: min(8vh,5.7vw);
+    margin-top: min(8vh,3vw);
 }
 
 #colour-picker-tutorial .pregame{
     width: min(56vh,40vw);
     color: #54B8BE;
-    text-shadow: 1px 1px #2CD0C6,
-            0px 2px #2CD0C6,
-            -1px 1px #2CD0C6,
-            -2px 0px #2CD0C6,
-            -1px -1px #2CD0C6,
-            0px -2px #2CD0C6,
-            1px -1px #2CD0C6,
-            2px 0px #2CD0C6;
+    text-shadow: 1px 1px #affdf8,
+            0px 2px #affdf8,
+            -1px 1px #affdf8,
+            -2px 0px #affdf8,
+            -1px -1px #affdf8,
+            0px -2px #affdf8,
+            1px -1px #affdf8,
+            2px 0px #affdf8;
 }
 
 #colour-picker img{
@@ -568,7 +568,7 @@ h3{
 
 #wallColour-info-box{
     font-family: OpenDyslexic;
-    text-align: center;
+    /* text-align: center; */
     font-size: min(3.5vh,2.5vw);
     color: #3181F9;
     font-weight: bolder;
@@ -581,13 +581,12 @@ h3{
             1px -1px #FFAAAA,
             2px 0px #FFAAAA;
 
-    width: min(50.5vh,36.01vw);
+    width: min(76vh,54.28vw);
     background-color: rgba(255, 255, 255, 0.76);
     border: min(1vh,1vw) solid #F8D5BF;
     box-sizing: border-box;
     padding: min(2vh,1.42vw);
     font-size: min(2.3vh,1.64vw);
-    text-align: center;
     border-radius: 20px;
 }
 
@@ -716,7 +715,7 @@ body::after{
 }
 
 #space-fill-bell{
-    height: min(61.4vh,43.85vw);
+    height: min(57.8vh,43.85vw);
 }
 
 .btn-play{
