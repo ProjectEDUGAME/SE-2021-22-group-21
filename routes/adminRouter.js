@@ -76,7 +76,7 @@ router.post("/login", function (req, res) {
                         req.flash('message', err)
                         res.render("adminLogin.html", {message: req.flash('message')});
                     }
-                    req.flash('message', "login successful!");
+                    // req.flash('message', "login successful!");
                     res.redirect("/admin/home")
 
                 })
@@ -90,7 +90,7 @@ router.post("/login", function (req, res) {
 // LOGOUT
 router.get("/logout", function(req, res){
     req.logout();
-    req.flash("message", "logout successfully!")
+    // req.flash("message", "logout successfully!")
     res.redirect("/admin/login");
 });
 
