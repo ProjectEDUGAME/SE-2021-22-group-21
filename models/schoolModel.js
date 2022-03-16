@@ -22,8 +22,7 @@ const schoolSchema = new Schema({
           type: Array,
           required: false
      },
-     users:[{type: Schema.Types.ObjectId, ref: 'User'}]
-
+     
 // Automatically creates timestamps for each of these above
 }, {timestamps: true});
 
