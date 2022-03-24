@@ -109,7 +109,6 @@ router.post('/index', async function(req, res, next) {
   if(schoolString){
     const doc = await School.findOne({accessString: schoolString});
     if (doc){
-      // req.flash('message', "School String is correct! please continue enter ID now.")
       res.redirect("/user/login/"+schoolString)
     }else{
       req.flash('message', "Invalid input, please try again! ")
@@ -117,7 +116,6 @@ router.post('/index', async function(req, res, next) {
     }
   }
   else{
-      // req.flash('message', "Invalid input, please try again! ")
       res.render('index.html', { title: 'Express', message:req.flash('message')});
   }
 });

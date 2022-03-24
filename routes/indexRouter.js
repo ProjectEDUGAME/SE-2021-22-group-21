@@ -10,8 +10,4 @@ router.get('/user/login', function(req, res, next) {
 });
 
 
-
-
-
-
 module.exports = router;
