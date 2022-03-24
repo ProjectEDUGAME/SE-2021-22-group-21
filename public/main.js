@@ -1,55 +1,24 @@
 /* eslint-disable no-unused-vars */
 
+// swtich pages in one html
 const switchTo = (currentID, nextID) => {
-    // currentID = "child-log-in"
-    // nextID = "admin-log-in"
-
     document.getElementById(currentID).classList.add("hidden");
     document.getElementById(nextID).classList.remove("hidden");
 };
 
-// const accessStringSubmit = (event) => {
-//     event.preventDefault();
-
-//     let data = {};
-
-//     let accessStr = document.getElementById('child-str').value;
-//     if (accessStr === ''){
-//         console.log('Please put in a valid institue log in string.');
-//         return;
-//     }
-
-//     data['access-str'] = accessStr;
-
-//     fetch('/login', {
-//         method: 'POST',
-//         body: data,
-//     }).then((res) =>{
-//         if (res.ok) {
-//             return res.json();
-//         } else {
-//             throw new Error(res.status);
-//         }
-//     }).then((resData) => {
-//         // {"school-name": "St Mary's Primary School"}
-//         let schoolName = resData['school-name'];
-//         document.getElementById('school-name').innerText = schoolName;
-//         switchTo('child-log-in', 'participant-details');
-//     }).catch((err) =>{
-//         console.error(err);
-//     });
-// }
-
+// copy input text function for admin password change
 const copyText = () =>{
     let newPasscode = document.getElementById("newPassword");
     navigator.clipboard.writeText(newPasscode.innerText);
     document.getElementById("copy-text-btn").innerText="Copied!"
 }
 
+// pop up function for admin password change
 const hidePopUp = () =>{
     document.getElementById("staticBackdrop").style.display = "none";
 }
 
+// wall colour event wall colour change
 const changeGreenBg = () =>{
     document.getElementById("game-bg").style.backgroundImage = "url('/img/green-bg.png')";
 }

@@ -20,9 +20,9 @@
                 <div class="d-flex justify-content-center mb-3">
                     <select name="school"  class="form-select" id="schoolList" aria-label="Default select example">
                         <option selected value ="">Open this select menu</option> 
-                        <!-- <option value =""></option> -->
                         {% for s in schools %}
-                        <option value ="{{s.id}}">{{s.name}}</option>
+                        <!-- add all schools stored in the database in the list-->
+                        <option value ="{{s.id}}">{{s.name}}</option> 
                         {% endfor %}
                     </select>
                 </div> 

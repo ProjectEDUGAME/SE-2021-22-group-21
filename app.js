@@ -40,7 +40,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); 
-// app.use(express.static('public'));  Just personal question why you need to use ^ instead of < --Karsta
 app.use(session({
     resave: true,
     saveUninitialized: true,
