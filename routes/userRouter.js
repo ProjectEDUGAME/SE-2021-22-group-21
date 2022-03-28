@@ -124,6 +124,7 @@ router.post('/index', async function(req, res, next) {
 
 // INSTITUTE PAGE (login pt 2)
 router.get('/login/:string', async function(req, res, next) {
+  req.logout();
   let schoolString = req.params["string"];
   const doc = await School.findOne({accessString: schoolString});
   if (doc){
@@ -146,18 +147,18 @@ router.post('/login/:string',  function(req, res, next) {
           res.render('userLogin.html', { message: req.flash("message"), doc:doc});
         }else{
           if (user.school.accessString === req.body.schoolstring ){
-            req.flash("message", "Login Successfully!")
+            // req.flash("message", "Login Successfully!")
             req.login(user, function (err) {
               if (err) {
                 req.flash('message', err)
                 res.render("userLogin.html", {message: req.flash('message'), doc:doc});
               }
-              req.flash('message', "login successful!");
+              // req.flash('message', "login successful!");
               res.redirect("/user/tutorial")
 
             })
           }else{
-            req.flash("message", "Login Failed! School Not Matched")
+            // req.flash("message", "Login Failed! School Not Matched")
             res.redirect("/user/login/:string")
           }
 
